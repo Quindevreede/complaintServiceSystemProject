@@ -3,6 +3,7 @@ package nl.quin.complaintservicesystem.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Set;
 
 @Entity
@@ -17,6 +18,9 @@ public class Complaint {
 
     @Column
     String name;
+
+    @Column
+    String commentary;
 
     @OneToMany(mappedBy = "complaint")
 //    @JsonIgnore
@@ -45,6 +49,12 @@ public class Complaint {
     }
     public void setName(String name) {
         this.name = name;
+    }
+    public String getCommentary() {
+        return commentary;
+    }
+    public void setCommentary(String commentary) {
+        this.commentary = commentary;
     }
 
     public Set<CustomerComplaintResult> getResults() {

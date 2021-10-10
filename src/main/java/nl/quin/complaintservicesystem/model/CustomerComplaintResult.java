@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -30,7 +31,7 @@ public class CustomerComplaintResult {
     private LocalDate date;
 
     @Column
-    private Double score;
+    private BigDecimal extraCosts;
 
     // getters and setters
     public CustomerComplaintResultKey getId() {
@@ -57,11 +58,13 @@ public class CustomerComplaintResult {
     public void setDate(LocalDate date) {
         this.date = date;
     }
-    public Double getScore() {
-        return score;
+   /* public BigDecimal getExtraCosts() {
+        return extraCosts;
     }
-    public void setScore(Double score) {
-        this.score = score;
+    public void setExtraCosts(BigDecimal extraCosts) {
+        this.extraCosts = extraCosts;
     }
+
+    */
 
 }

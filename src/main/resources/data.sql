@@ -1,14 +1,3 @@
-INSERT INTO users (username, password, enabled)
-VALUES ('user', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE),
-       ('admin', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE),
-       ('quin', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE);
-
-INSERT INTO authorities (username, authority)
-VALUES ('user', 'ROLE_USER'),
-       ('admin', 'ROLE_USER'),
-       ('admin', 'ROLE_ADMIN'),
-       ('quin', 'ROLE_USER'),
-       ('quin', 'ROLE_ADMIN');
 
 INSERT INTO users (username, password, enabled) VALUES ('user', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE);
 INSERT INTO users (username, password, enabled) VALUES ('admin', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE);
@@ -31,8 +20,8 @@ INSERT INTO authorities (username, authority) VALUES ('production', 'ROLE_ADMIN'
 INSERT INTO authorities (username, authority) VALUES ('management', 'ROLE_USER');
 INSERT INTO authorities (username, authority) VALUES ('management', 'ROLE_ADMIN');
 
-INSERT INTO complaint (code, name) VALUES ('SPR', 'Springboot');
-INSERT INTO complaint (code, name) VALUES ('DON', 'Database Ontwikkeling');
+INSERT INTO complaint (code, name, commentary ) VALUES ('BadCOLOR', 'someKindOfNameHere?', 'qwertyp');
+INSERT INTO complaint (code, name, commentary) VALUES ('BadPAPER', 'KindOfNameTHere?', 'asdf');
 
 INSERT INTO customers (first_name, last_name, customer_nr)
 VALUES

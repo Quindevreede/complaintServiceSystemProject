@@ -72,11 +72,12 @@ public class CustomerComplaintResultService {
         if (result.getDate() != null) {
             existingResult.setDate(result.getDate());
         }
-      /*  if (result.getScore() != null) {
-            existingResult.setScore(result.getScore());
+     /*   if (result.getExtraCosts() != null) {
+            existingResult.setExtraCosts(result.getExtraCosts());
         }
 
-       */
+      */
+
         customerComplaintResultRepository.save(existingResult);
     }
 

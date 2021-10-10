@@ -1,13 +1,16 @@
 package nl.quin.complaintservicesystem.service;
 
 import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
+import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
 import nl.quin.complaintservicesystem.model.Complaint;
+import nl.quin.complaintservicesystem.model.Customer;
 import nl.quin.complaintservicesystem.repository.ComplaintRepository;
 import nl.quin.complaintservicesystem.repository.CustomerComplaintResultRepository;
 import nl.quin.complaintservicesystem.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Map;
 
@@ -48,12 +51,34 @@ public class ComplaintService {
     }
 
     public void updateComplaint(long id, Complaint complaint) {
-        // ToDo
+        if (!complaintRepository.existsById(id)) { throw new UserNotFoundException(); }
+        Complaint storedComplaint = complaintRepository.findById(id).orElse(null);
+        storedComplaint.setCode(complaint.getCode());
+        storedComplaint.setName(complaint.getName());
+        storedComplaint.setCommentary(complaint.getCommentary());
+        complaintRepository.save(complaint);
     }
 
     public void partialUpdateComplaint(long id, Map<String, String> fields) {
-        // ToDo
+        if (!complaintRepository.existsById(id)) { throw new UserNotFoundException(); }
+        Complaint storedComplaint = complaintRepository.findById(id).orElse(null);
+        for (String field : fields.keySet()) {
+            switch (field) {
+                case "code":
+                    storedComplaint.setCode((String) fields.get(field));
+                    break;
+                case "name":
+                    storedComplaint.setName((String) fields.get(field));
+                    break;
+                case "badPrintCommentary":
+                    storedComplaint.setCommentary((String) fields.get(field));
+                    break;
+            }
+        }
+        complaintRepository.save(storedComplaint);
     }
+
+
 
     public void deleteComplaint(long id) {
         if (!complaintRepository.existsById(id)) { throw new RecordNotFoundException(); }
