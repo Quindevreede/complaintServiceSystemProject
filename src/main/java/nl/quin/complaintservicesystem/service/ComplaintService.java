@@ -56,7 +56,7 @@ public class ComplaintService {
     }
 
     public void deleteComplaint(long id) {
-        if (!courseRepository.existsById(id)) { throw new RecordNotFoundException(); }
+        if (!complaintRepository.existsById(id)) { throw new RecordNotFoundException(); }
         complaintRepository.deleteById(id);
     }
 

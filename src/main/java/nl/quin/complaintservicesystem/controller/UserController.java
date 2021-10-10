@@ -68,6 +68,7 @@ public class UserController {
         }
     }
 
+    // http://users/management/authorities/ROLE_ADMIN
     @DeleteMapping(value = "/{username}/authorities/{authority}")
     public ResponseEntity<Object> deleteUserAuthority(@PathVariable("username") String username, @PathVariable("authority") String authority) {
         userService.removeAuthority(username, authority);

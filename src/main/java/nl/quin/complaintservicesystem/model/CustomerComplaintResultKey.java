@@ -12,7 +12,7 @@ public class CustomerComplaintResultKey implements Serializable {
     private Long customerId;
 
     @Column(name = "complaint_id")
-    private Long courseId;
+    private Long complaintId;
 
     // constructor(s)
     public CustomerComplaintResultKey() {}

@@ -20,7 +20,7 @@ public class Customer {
     String lastName;
 
     @Column(name = "customer_nr")
-    String studentNr;
+    String customerNr;
 
     @OneToMany(mappedBy = "customer")
     @JsonIgnoreProperties("customer")

@@ -3,6 +3,7 @@ package nl.quin.complaintservicesystem.controller;
 import nl.quin.complaintservicesystem.model.Complaint;
 import nl.quin.complaintservicesystem.model.CustomerComplaintResult;
 import nl.quin.complaintservicesystem.model.CustomerComplaintResultKey;
+import nl.quin.complaintservicesystem.service.ComplaintService;
 import nl.quin.complaintservicesystem.service.CustomerComplaintResultService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,7 +48,7 @@ public class ComplaintController {
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<Object> updateComplaint(@PathVariable("id") long id, @RequestBody Complaint complaint) {
-        complaintService.updateCourse(id, complaint);
+        complaintService.updateComplaint(id, complaint);
         return ResponseEntity.noContent().build();
     }
 
