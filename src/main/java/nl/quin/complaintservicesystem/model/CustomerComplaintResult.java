@@ -31,7 +31,7 @@ public class CustomerComplaintResult {
     private LocalDate date;
 
     @Column
-    private BigDecimal extraCosts;
+    private BigDecimal extra_costs;
 
     // getters and setters
     public CustomerComplaintResultKey getId() {
@@ -58,13 +58,13 @@ public class CustomerComplaintResult {
     public void setDate(LocalDate date) {
         this.date = date;
     }
-   /* public BigDecimal getExtraCosts() {
-        return extraCosts;
+    public BigDecimal getExtra_costs() {
+        return extra_costs;
     }
-    public void setExtraCosts(BigDecimal extraCosts) {
-        this.extraCosts = extraCosts;
+    public void setExtra_costs(BigDecimal extra_costs) {
+        this.extra_costs = extra_costs;
     }
 
-    */
+
 
 }

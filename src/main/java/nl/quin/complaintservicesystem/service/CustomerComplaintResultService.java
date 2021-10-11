@@ -61,7 +61,7 @@ public class CustomerComplaintResultService {
         if (!customerComplaintResultRepository.existsById(id)) { throw new RecordNotFoundException(); }
         CustomerComplaintResult existingResult = customerComplaintResultRepository.findById(id).orElse(null);
         existingResult.setDate(result.getDate());
-       // existingResult.setScore(result.getScore());
+        existingResult.setExtra_costs(result.getExtra_costs());
         customerComplaintResultRepository.save(existingResult);
     }
 
@@ -72,11 +72,11 @@ public class CustomerComplaintResultService {
         if (result.getDate() != null) {
             existingResult.setDate(result.getDate());
         }
-     /*   if (result.getExtraCosts() != null) {
-            existingResult.setExtraCosts(result.getExtraCosts());
+        if (result.getExtra_costs() != null) {
+            existingResult.setExtra_costs(result.getExtra_costs());
         }
 
-      */
+
 
         customerComplaintResultRepository.save(existingResult);
     }
