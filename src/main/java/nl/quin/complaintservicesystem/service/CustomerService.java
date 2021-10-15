@@ -53,7 +53,7 @@ public class CustomerService {
         Customer storedCustomer = customerRepository.findById(id).orElse(null);
         storedCustomer.setFirstName(customer.getFirstName());
         storedCustomer.setLastName(customer.getLastName());
-        storedCustomer.setCustomerNr(customer.getCustomerNr());
+        storedCustomer.setOrderNr(customer.getOrderNr());
         customerRepository.save(customer);
     }
 
@@ -68,8 +68,8 @@ public class CustomerService {
                 case "last_name":
                     storedCustomer.setLastName((String) fields.get(field));
                     break;
-                case "customer_nr":
-                    storedCustomer.setCustomerNr((String) fields.get(field));
+                case "order_nr":
+                    storedCustomer.setOrderNr((String) fields.get(field));
                     break;
             }
         }

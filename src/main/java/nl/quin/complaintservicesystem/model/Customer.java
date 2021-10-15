@@ -19,8 +19,8 @@ public class Customer {
     @Column(name = "last_name")
     String lastName;
 
-    @Column(name = "customer_nr")
-    String customerNr;
+    @Column(name = "order_nr")
+    String orderNr;
 
     @OneToMany(mappedBy = "customer")
     @JsonIgnoreProperties("customer")
@@ -55,12 +55,10 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public String getCustomerNr() {
-        return customerNr;
-    }
+    public String getOrderNr() { return orderNr; }
 
-    public void setCustomerNr(String customerNr) {
-        this.customerNr = customerNr;
+    public void setOrderNr(String orderNr) {
+        this.orderNr = orderNr;
     }
 
     public Set<CustomerComplaintResult> getResults() {

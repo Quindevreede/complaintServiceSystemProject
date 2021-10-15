@@ -1,13 +1,13 @@
 package nl.quin.complaintservicesystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import nl.quin.complaintservicesystem.model.Customer;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.Set;
 
 @Entity
-public class Complaint {
+public class Complaint /*extends Customer*/ {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +21,9 @@ public class Complaint {
 
     @Column
     String commentary;
+
+    @Column
+    String customerNr;
 
     @OneToMany(mappedBy = "complaint")
 //    @JsonIgnore
@@ -56,6 +59,7 @@ public class Complaint {
     public void setCommentary(String commentary) {
         this.commentary = commentary;
     }
+   // public String getCustomerNr() { return customerNr; }
 
     public Set<CustomerComplaintResult> getResults() {
         return results;

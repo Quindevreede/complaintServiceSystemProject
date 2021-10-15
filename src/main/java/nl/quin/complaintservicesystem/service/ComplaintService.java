@@ -3,14 +3,12 @@ package nl.quin.complaintservicesystem.service;
 import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
 import nl.quin.complaintservicesystem.model.Complaint;
-import nl.quin.complaintservicesystem.model.Customer;
 import nl.quin.complaintservicesystem.repository.ComplaintRepository;
 import nl.quin.complaintservicesystem.repository.CustomerComplaintResultRepository;
 import nl.quin.complaintservicesystem.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Map;
 
@@ -56,6 +54,7 @@ public class ComplaintService {
         storedComplaint.setCode(complaint.getCode());
         storedComplaint.setName(complaint.getName());
         storedComplaint.setCommentary(complaint.getCommentary());
+       // storedComplaint.getCustomerNr();
         complaintRepository.save(complaint);
     }
 
@@ -73,6 +72,11 @@ public class ComplaintService {
                 case "badPrintCommentary":
                     storedComplaint.setCommentary((String) fields.get(field));
                     break;
+              /*  case "customerNumber":
+                    storedComplaint.setCustomerNr((String) fields.get(field));
+                    break;
+
+               */
             }
         }
         complaintRepository.save(storedComplaint);

@@ -76,8 +76,6 @@ public class CustomerComplaintResultService {
             existingResult.setExtra_costs(result.getExtra_costs());
         }
 
-
-
         customerComplaintResultRepository.save(existingResult);
     }
 

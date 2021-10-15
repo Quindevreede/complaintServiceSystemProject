@@ -85,7 +85,7 @@ public class CustomerController {
         return ResponseEntity.ok().body(customerComplaintResultService.getResultsByCustomerId(id));
     }
 
-    @GetMapping(value = "/{customer_id}/courses/{course_id}")
+    @GetMapping(value = "/{customer_id}/courses/{complaint_id}")
     public ResponseEntity<Object> getCustomerComplaintResult(@PathVariable("customer_id") long customerId,
                                                          @PathVariable("complaint_id") long complaintId) {
         return ResponseEntity.ok().body(customerComplaintResultService.getResultById(customerId, complaintId));

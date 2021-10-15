@@ -20,10 +20,14 @@ INSERT INTO authorities (username, authority) VALUES ('production', 'ROLE_ADMIN'
 INSERT INTO authorities (username, authority) VALUES ('management', 'ROLE_USER');
 INSERT INTO authorities (username, authority) VALUES ('management', 'ROLE_ADMIN');
 
-INSERT INTO complaint (code, name, commentary ) VALUES ('BadCOLOR', 'someKindOfNameHere?', 'qwertyp');
-INSERT INTO complaint (code, name, commentary) VALUES ('BadPAPER', 'KindOfNameTHere?', 'asdf');
+INSERT INTO complaint (code, name, commentary) VALUES ('BadCOLOR', 'Dog picture', 'Black is grey, PRINT AGAIN with better ink');
+INSERT INTO complaint (code, name, commentary) VALUES ('BadPAPER', 'Family photo', 'Too much ink for paper,PRINT AGAIN with better paper ');
+INSERT INTO complaint (code, name, commentary) VALUES ('BadPRINT', 'Car painting', 'Glitch in print, PRINT AGAIN');
+INSERT INTO complaint (code, name, commentary) VALUES ('BadMISC', 'Disney art', 'Borders too wide, PRINT AGAIN without borders');
+INSERT INTO complaint (code, name, commentary) VALUES ('BadCOLOR', 'Business sticker', 'Ink is running in top left corner, PRINT AGAIN with better ink');
 
-INSERT INTO customers (first_name, last_name, customer_nr)
+
+INSERT INTO customers (first_name, last_name, order_nr)
 VALUES
       ('Tom', 'de Boer', '345674')
      ,('Yassine', 'Azdad', '123124')
@@ -38,10 +42,8 @@ VALUES
 
 INSERT INTO customer_complaint_results (complaint_id, customer_id, date, extra_costs)
 VALUES
-      ('1', '1', '2020-10-10', '12.22')
-     ,('1', '2', '2020-10-10', '12.22')
-     ,('1', '3', '2020-10-10', '12.22')
-     ,('2', '1', '2020-10-15', '12.22')
-     ,('2', '3', '2020-10-15', '12.22')
-     ,('2', '4', '2020-10-15', '12.22')
-     ,('2', '5', '2020-10-15', '12.22');
+      ('1', '1', '2019-10-15' , '12.22')
+     ,('2', '1', '2020-10-10', '0.90')
+     ,('3', '3', '2020-10-10', '0.00')
+     ,('4', '4', '2020-10-15', '2.88')
+     ,('5', '5', '2020-10-15', '4');
