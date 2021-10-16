@@ -42,8 +42,21 @@ VALUES
 
 INSERT INTO customer_complaint_results (complaint_id, customer_id, date, extra_costs)
 VALUES
-      ('1', '1', '2019-10-15' , '12.22')
-     ,('2', '1', '2020-10-10', '0.90')
-     ,('3', '3', '2020-10-10', '0.00')
-     ,('4', '4', '2020-10-15', '2.88')
-     ,('5', '5', '2020-10-15', '4');
+      ('1', '1', 'now' , '12.22')
+     ,('2', '1', 'now', '0.90')
+     ,('3', '3', 'now', '0.00')
+     ,('4', '4', 'now', '2.88')
+     ,('5', '5', 'now', '4');
+
+INSERT INTO employee (first_name, last_name, order_nr)
+VALUES
+      ('Harry', 'de Boer', '345674')
+     ,('Yassine', 'Azdad', '123124')
+     ,('Debby', 'Huismans', '452235')
+     ,('Jay', 'Richardson', '467892')
+     ,('Maninder', 'Singh', '745631')
+     ,('Ilias', 'al Gris', '928345')
+     ,('Eghbol', 'Sarwar', '372940')
+     ,('Bart', 'Heijenk', '344611')
+     ,('Quincy', 'Soerkarso', '946389')
+     ,('Asare', 'Twum', '329573');

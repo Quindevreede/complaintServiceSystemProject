@@ -22,8 +22,8 @@ public class Complaint /*extends Customer*/ {
     @Column
     String commentary;
 
-    @Column
-    String customerNr;
+    @Column(name = "order_nr_customer")
+    String orderNrCustomer;
 
     @OneToMany(mappedBy = "complaint")
 //    @JsonIgnore
@@ -59,7 +59,10 @@ public class Complaint /*extends Customer*/ {
     public void setCommentary(String commentary) {
         this.commentary = commentary;
     }
-   // public String getCustomerNr() { return customerNr; }
+    public String getOrderNrCustomer() { return orderNrCustomer; }
+    public void setOrderNrCustomer(String orderNrCustomer) {
+        this.orderNrCustomer = orderNrCustomer;
+    }
 
     public Set<CustomerComplaintResult> getResults() {
         return results;

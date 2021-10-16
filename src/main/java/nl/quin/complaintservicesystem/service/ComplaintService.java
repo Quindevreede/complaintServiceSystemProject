@@ -54,7 +54,7 @@ public class ComplaintService {
         storedComplaint.setCode(complaint.getCode());
         storedComplaint.setName(complaint.getName());
         storedComplaint.setCommentary(complaint.getCommentary());
-       // storedComplaint.getCustomerNr();
+        storedComplaint.setOrderNrCustomer((complaint.getOrderNrCustomer()));
         complaintRepository.save(complaint);
     }
 
@@ -72,11 +72,10 @@ public class ComplaintService {
                 case "badPrintCommentary":
                     storedComplaint.setCommentary((String) fields.get(field));
                     break;
-              /*  case "customerNumber":
-                    storedComplaint.setCustomerNr((String) fields.get(field));
+                case "orderNrCustomer":
+                    storedComplaint.setOrderNrCustomer((String) fields.get(field));
                     break;
 
-               */
             }
         }
         complaintRepository.save(storedComplaint);

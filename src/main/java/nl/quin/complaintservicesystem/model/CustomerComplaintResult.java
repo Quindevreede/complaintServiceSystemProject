@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -30,7 +29,7 @@ public class CustomerComplaintResult {
     private Complaint complaint;
 
     @Column
-    private Timestamp date;
+    private LocalDate date;
 
     @Column
     private BigDecimal extra_costs;
@@ -54,9 +53,9 @@ public class CustomerComplaintResult {
     public void setComplaint(Complaint complaint) {
         this.complaint = complaint;
     }
-    public Timestamp getDate() {return date;}
-    public void setDate(Timestamp date) {
-        this.date = date;
+    public LocalDate getDate() {return date;}
+    public void setDate(LocalDate date) {
+        this.date = date.now();
     }
     public BigDecimal getExtra_costs() {
         return extra_costs;

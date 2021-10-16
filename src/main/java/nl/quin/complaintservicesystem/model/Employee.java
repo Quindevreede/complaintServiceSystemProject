@@ -6,8 +6,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "customers")
-public class Customer {
+@Table(name = "employees")
+public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,15 +25,14 @@ public class Customer {
     @Column(name = "order_nr")
     String orderNr;
 
-    @Column(name = "customer_commentary")
-    String customerCommentary;
+    @Column(name = "employee_commentary")
+    String employeeCommentary;
 
 
-    @OneToMany(mappedBy = "customer")
-    @JsonIgnoreProperties("customer")
+    @OneToMany(mappedBy = "employee")
+    @JsonIgnoreProperties("employee")
 //    @JsonBackReference
 //    @JsonManagedReference
-    Set<CustomerComplaintResult> results;
 
     // standard constructors
 
@@ -74,18 +73,10 @@ public class Customer {
         this.orderNr = orderNr;
     }
 
-    public String getCustomerCommentary() { return customerCommentary; }
+    public String getEmployeeCommentary() { return employeeCommentary; }
 
-    public void setCustomerCommentary(String customerCommentary) {
-        this.customerCommentary = customerCommentary;
-    }
-
-    public Set<CustomerComplaintResult> getResults() {
-        return results;
-    }
-
-    public void setResults(Set<CustomerComplaintResult> results) {
-        this.results = results;
+    public void setEmployeeCommentary(String customerCommentary) {
+        this.employeeCommentary = customerCommentary;
     }
 
 }
