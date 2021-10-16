@@ -48,7 +48,7 @@ VALUES
      ,('4', '4', 'now', '2.88')
      ,('5', '5', 'now', '4');
 
-INSERT INTO employee (first_name, last_name, order_nr)
+INSERT INTO employees (first_name, last_name, order_nr)
 VALUES
       ('Harry', 'de Boer', '345674')
      ,('Yassine', 'Azdad', '123124')
