@@ -3,9 +3,8 @@ package nl.quin.complaintservicesystem.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "employees")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Employee {
+@Table(name = "production_employees")
+public class ProductionEmployee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,8 +22,8 @@ public class Employee {
     @Column(name = "order_nr")
     String orderNr;
 
-    @Column(name = "employee_commentary")
-    String employeeCommentary;
+    @Column(name = "production_commentary")
+    String productionCommentary;
 
     // standard constructors
 
@@ -65,10 +64,10 @@ public class Employee {
         this.orderNr = orderNr;
     }
 
-    public String getEmployeeCommentary() { return employeeCommentary; }
+    public String getProductionCommentary() { return productionCommentary; }
 
-    public void setEmployeeCommentary(String customerCommentary) {
-        this.employeeCommentary = customerCommentary;
+    public void setProductionCommentary(String productionCommentary) {
+        this.productionCommentary = productionCommentary;
     }
-
 }
+

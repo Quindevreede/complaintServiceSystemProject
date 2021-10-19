@@ -60,3 +60,16 @@ VALUES
      ,('Bart', 'Heijenk', '344611')
      ,('Quincy', 'Soerkarso', '946389')
      ,('Asare', 'Twum', '329573');
+
+INSERT INTO customers_service_employees (first_name, last_name, order_nr)
+VALUES
+('Harry', 'de Boer', '345674')
+     ,('Yassine', 'Azdad', '123124')
+     ,('Debby', 'Huismans', '452235')
+     ,('Jay', 'Richardson', '467892')
+     ,('Maninder', 'Singh', '745631')
+     ,('Ilias', 'al Gris', '928345')
+     ,('Eghbol', 'Sarwar', '372940')
+     ,('Bart', 'Heijenk', '344611')
+     ,('Quincy', 'Soerkarso', '946389')
+     ,('Asare', 'Twum', '329573');

@@ -1,13 +1,12 @@
 package nl.quin.complaintservicesystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import nl.quin.complaintservicesystem.model.Customer;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Complaint /*extends Customer*/ {
+public class Complaint {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
