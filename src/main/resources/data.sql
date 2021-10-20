@@ -48,6 +48,7 @@ VALUES
      ,('4', '4', 'now', '2.88')
      ,('5', '5', 'now', '4');
 
+/*
 INSERT INTO employees (first_name, last_name, order_nr)
 VALUES
       ('Harry', 'de Boer', '345674')
@@ -60,10 +61,10 @@ VALUES
      ,('Bart', 'Heijenk', '344611')
      ,('Quincy', 'Soerkarso', '946389')
      ,('Asare', 'Twum', '329573');
-
+*/
 INSERT INTO customers_service_employees (first_name, last_name, order_nr)
 VALUES
-('Harry', 'de Boer', '345674')
+('Henk', 'Smit', '0666')
      ,('Yassine', 'Azdad', '123124')
      ,('Debby', 'Huismans', '452235')
      ,('Jay', 'Richardson', '467892')
@@ -73,3 +74,7 @@ VALUES
      ,('Bart', 'Heijenk', '344611')
      ,('Quincy', 'Soerkarso', '946389')
      ,('Asare', 'Twum', '329573');
+
+
+INSERT INTO roles (id,name) VALUES('1','ROLE_USER');
+INSERT INTO roles (id,name) VALUES('2','ROLE_ADMIN');

@@ -2,10 +2,9 @@ package nl.quin.complaintservicesystem.model;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "employees")
+@Entity (name = "employees")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Employee {
+public abstract class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +21,6 @@ public class Employee {
 
     @Column(name = "order_nr")
     String orderNr;
-
-    @Column(name = "employee_commentary")
-    String employeeCommentary;
 
     // standard constructors
 
@@ -63,12 +59,6 @@ public class Employee {
 
     public void setOrderNr(String orderNr) {
         this.orderNr = orderNr;
-    }
-
-    public String getEmployeeCommentary() { return employeeCommentary; }
-
-    public void setEmployeeCommentary(String customerCommentary) {
-        this.employeeCommentary = customerCommentary;
     }
 
 }

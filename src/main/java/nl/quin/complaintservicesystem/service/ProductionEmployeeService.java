@@ -2,6 +2,7 @@ package nl.quin.complaintservicesystem.service;
 
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
 
+import nl.quin.complaintservicesystem.model.Employee;
 import nl.quin.complaintservicesystem.model.ProductionEmployee;
 import nl.quin.complaintservicesystem.repository.ProductionEmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;

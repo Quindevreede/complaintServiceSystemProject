@@ -49,7 +49,6 @@ public class EmployeeService {
         storedEmployee.setLastName(employee.getLastName());
         storedEmployee.setEmail(employee.getEmail());
         storedEmployee.setOrderNr(employee.getOrderNr());
-        storedEmployee.setEmployeeCommentary((employee.getEmployeeCommentary()));
         employeeRepository.save(employee);
     }
 
@@ -69,9 +68,7 @@ public class EmployeeService {
                 case "order_nr":
                     storedEmployee.setOrderNr((String) fields.get(field));
                     break;
-                case "customer_commentary":
-                    storedEmployee.setEmployeeCommentary((String) fields.get(field));
-                    break;
+
             }
         }
         employeeRepository.save(storedEmployee);
