@@ -1,9 +1,6 @@
 package nl.quin.complaintservicesystem.controller;
 
-import nl.quin.complaintservicesystem.exceptions.BadRequestException;
-import nl.quin.complaintservicesystem.exceptions.ForbiddenException;
-import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
-import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
+import nl.quin.complaintservicesystem.exceptions.*;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +30,11 @@ public class ExceptionController {
     @ExceptionHandler(value = ForbiddenException.class)
     public ResponseEntity<Object> exception(ForbiddenException exception) {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+    }
+
+    @ExceptionHandler(value = FileStorageException.class)
+    public ResponseEntity<Object> exception(FileStorageException exception) {
+        return ResponseEntity.badRequest().build();
     }
 
 }

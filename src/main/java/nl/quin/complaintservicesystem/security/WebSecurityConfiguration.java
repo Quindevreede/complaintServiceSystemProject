@@ -62,6 +62,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+
         http
                 //HTTP Basic authentication
                 .httpBasic()
@@ -71,17 +72,15 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/customers/**").permitAll()
                 .antMatchers("/complaints/**").hasRole("USER")
                 .antMatchers("/users/**").hasRole("ADMIN")
-                .antMatchers("/public").permitAll()
+                .antMatchers("/file-upload").hasRole("USER")
                 .antMatchers("/roles").permitAll()
                 .and()
                 .csrf().disable()
                 .formLogin().disable()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
+        http.cors();
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
     }
-
-
 }
