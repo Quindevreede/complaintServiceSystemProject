@@ -16,7 +16,7 @@ public class CustomerServiceEmployeeService {
     @Autowired
     CustomerServiceEmployeeRepository customerServiceEmployeeRepository;
 
-    public Collection<CustomerServiceEmployee> getAllCustomerServiceEmployees() {
+    public Collection<CustomerServiceEmployee> getAllCustomerServiceEmployee() {
         return customerServiceEmployeeRepository.findAll();
     }
 
@@ -42,11 +42,8 @@ public class CustomerServiceEmployeeService {
     public void updateCustomerServiceEmployee(long id, CustomerServiceEmployee customerServiceEmployee) {
         if (!customerServiceEmployeeRepository.existsById(id)) { throw new UserNotFoundException(); }
         CustomerServiceEmployee storedCustomerServiceEmployee = customerServiceEmployeeRepository.findById(id).orElse(null);
-        storedCustomerServiceEmployee.setFirstName(customerServiceEmployee.getFirstName());
-        storedCustomerServiceEmployee.setLastName(customerServiceEmployee.getLastName());
-        storedCustomerServiceEmployee.setEmail(customerServiceEmployee.getEmail());
-        storedCustomerServiceEmployee.setOrderNr(customerServiceEmployee.getOrderNr());
-        storedCustomerServiceEmployee.setCustomerServiceCommentary((customerServiceEmployee.getCustomerServiceCommentary()));
+        storedCustomerServiceEmployee.setPosition(customerServiceEmployee.getPosition());
+        storedCustomerServiceEmployee.setCompanyPhoneNumber(customerServiceEmployee.getCompanyPhoneNumber());
         customerServiceEmployeeRepository.save(customerServiceEmployee);
     }
 
@@ -55,19 +52,14 @@ public class CustomerServiceEmployeeService {
         CustomerServiceEmployee storedCustomerServiceEmployee = customerServiceEmployeeRepository.findById(id).orElse(null);
         for (String field : fields.keySet()) {
             switch (field) {
-                case "first_name":
-                    storedCustomerServiceEmployee.setFirstName((String) fields.get(field));
-                    break;
                 case "last_name":
                     storedCustomerServiceEmployee.setLastName((String) fields.get(field));
                     break;
-                case "email":
-                    storedCustomerServiceEmployee.setEmail((String) fields.get(field));
-                case "order_nr":
-                    storedCustomerServiceEmployee.setOrderNr((String) fields.get(field));
+                case "position":
+                    storedCustomerServiceEmployee.setPosition((String) fields.get(field));
                     break;
-                case "customerService_commentary":
-                    storedCustomerServiceEmployee.setCustomerServiceCommentary((String) fields.get(field));
+                case "company_phone_number":
+                    storedCustomerServiceEmployee.setCompanyPhoneNumber((String) fields.get(field));
                     break;
             }
         }

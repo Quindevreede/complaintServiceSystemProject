@@ -3,46 +3,34 @@ package nl.quin.complaintservicesystem.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "customers_service_employees")
+@Table(name = "customer_service_employees")
 public class CustomerServiceEmployee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "first_name")
-    String firstName;
-
     @Column(name = "last_name")
     String lastName;
 
-    @Column(name = "email")
-    String email;
+    @Column(name = "position")
+    String position;
 
-    @Column(name = "order_nr")
-    String orderNr;
-
-    @Column(name = "customerService_commentary")
-    String customerServiceCommentary;
+    @Column(name = "company_phone_number")
+    String CompanyPhoneNumber;
 
     // standard constructors
 
-    // getters, and setters
+    public CustomerServiceEmployee() {
+    }
 
+    // getters, and setters
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -53,22 +41,20 @@ public class CustomerServiceEmployee {
         this.lastName = lastName;
     }
 
-    public String getEmail() { return email; }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public String getPosition() {
+        return position;
     }
 
-    public String getOrderNr() { return orderNr; }
-
-    public void setOrderNr(String orderNr) {
-        this.orderNr = orderNr;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
-    public String getCustomerServiceCommentary() { return customerServiceCommentary; }
+    public String getCompanyPhoneNumber() {
+        return CompanyPhoneNumber;
+    }
 
-    public void setCustomerServiceCommentary(String customerServiceCommentary) {
-        this.customerServiceCommentary = customerServiceCommentary;
+    public void setCompanyPhoneNumber(String companyPhoneNumber) {
+        CompanyPhoneNumber = companyPhoneNumber;
     }
 }
 

@@ -1,11 +1,11 @@
-package nl.quin.complaintservicesystem.model;
+ package nl.quin.complaintservicesystem.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+        import com.fasterxml.jackson.annotation.JsonIgnore;
+        import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.*;
-import java.math.BigDecimal;
-import java.time.LocalDate;
+        import javax.persistence.*;
+        import java.math.BigDecimal;
+        import java.time.LocalDate;
 
 @Entity
 @Table(name = "customer_complaint_results")
@@ -32,18 +32,6 @@ public class CustomerComplaintResult {
 
     @Column
     private BigDecimal extra_costs;
-
-    @ManyToOne
-    @JoinColumn(name = "customer_service_id")
-    private CustomerServiceEmployee customerService;
-
-    public CustomerServiceEmployee getCustomerService() {
-        return customerService;
-    }
-
-    public void setCustomerService(CustomerServiceEmployee customerService) {
-        this.customerService = customerService;
-    }
 
     // getters and setters
     public CustomerComplaintResultKey getId() {

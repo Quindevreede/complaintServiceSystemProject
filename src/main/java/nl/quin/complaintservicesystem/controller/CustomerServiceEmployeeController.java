@@ -13,20 +13,20 @@ import java.util.Map;
 
 /**
  * CustomerServiceEmployeeController
- * Implements endpoints for customer service employees resource
+ * Implements endpoints for production employees resource
  *
- * GET /customersserviceemployees
- * POST /customersserviceemployees
- * GET /customersserviceemployees/{id}
- * PUT /customersserviceemployees/{id}
- * PATCH /customersserviceemployees/{id}
- * DELETE /customersserviceemployees/{id}
+ * GET /customer_service_employees
+ * POST /customer_service_employees
+ * GET /customer_service_employees/{id}
+ * PUT /customer_service_employees/{id}
+ * PATCH /customer_service_employees/{id}
+ * DELETE /customer_service_employees/{id}
  *
  */
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/customers_service_employees")
+@RequestMapping(value = "/customer_service_employees")
 public class CustomerServiceEmployeeController {
 
     @Autowired

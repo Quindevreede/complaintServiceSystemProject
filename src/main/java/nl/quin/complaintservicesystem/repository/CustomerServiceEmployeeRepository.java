@@ -1,6 +1,7 @@
 package nl.quin.complaintservicesystem.repository;
 
 import nl.quin.complaintservicesystem.model.CustomerServiceEmployee;
+import nl.quin.complaintservicesystem.model.ProductionEmployee;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

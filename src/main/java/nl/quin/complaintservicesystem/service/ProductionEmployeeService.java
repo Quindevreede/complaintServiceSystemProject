@@ -2,7 +2,6 @@ package nl.quin.complaintservicesystem.service;
 
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
 
-import nl.quin.complaintservicesystem.model.Employee;
 import nl.quin.complaintservicesystem.model.ProductionEmployee;
 import nl.quin.complaintservicesystem.repository.ProductionEmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,11 +42,8 @@ public class ProductionEmployeeService {
     public void updateProductionEmployee(long id, ProductionEmployee productionEmployee) {
         if (!productionEmployeeRepository.existsById(id)) { throw new UserNotFoundException(); }
         ProductionEmployee storedProductionEmployee = productionEmployeeRepository.findById(id).orElse(null);
-        storedProductionEmployee.setFirstName(productionEmployee.getFirstName());
-        storedProductionEmployee.setLastName(productionEmployee.getLastName());
-        storedProductionEmployee.setEmail(productionEmployee.getEmail());
-        storedProductionEmployee.setOrderNr(productionEmployee.getOrderNr());
-        storedProductionEmployee.setProductionCommentary((productionEmployee.getProductionCommentary()));
+        storedProductionEmployee.setProductionDepartment(productionEmployee.getProductionDepartment());
+        storedProductionEmployee.setCompanyPhoneNumber(productionEmployee.getCompanyPhoneNumber());
         productionEmployeeRepository.save(productionEmployee);
     }
 
@@ -56,19 +52,14 @@ public class ProductionEmployeeService {
         ProductionEmployee storedProductionEmployee = productionEmployeeRepository.findById(id).orElse(null);
         for (String field : fields.keySet()) {
             switch (field) {
-                case "first_name":
-                    storedProductionEmployee.setFirstName((String) fields.get(field));
-                    break;
                 case "last_name":
                     storedProductionEmployee.setLastName((String) fields.get(field));
                     break;
-                case "email":
-                    storedProductionEmployee.setEmail((String) fields.get(field));
-                case "order_nr":
-                    storedProductionEmployee.setOrderNr((String) fields.get(field));
+                case "production_department":
+                    storedProductionEmployee.setProductionDepartment((String) fields.get(field));
                     break;
-                case "production_commentary":
-                    storedProductionEmployee.setProductionCommentary((String) fields.get(field));
+                case "company_phone_number":
+                    storedProductionEmployee.setCompanyPhoneNumber((String) fields.get(field));
                     break;
             }
         }

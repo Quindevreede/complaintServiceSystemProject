@@ -15,12 +15,12 @@ import java.util.Map;
  * ProductionEmployeeController
  * Implements endpoints for production employees resource
  *
- * GET /productionemployees
- * POST /productionemployees
- * GET /productionemployees/{id}
- * PUT /productionemployees/{id}
- * PATCH /productionemployees/{id}
- * DELETE /productionemployees/{id}
+ * GET /production_employees
+ * POST /production_employees
+ * GET /production_employees/{id}
+ * PUT /production_employees/{id}
+ * PATCH /production_employees/{id}
+ * DELETE /production_employees/{id}
  *
  */
 

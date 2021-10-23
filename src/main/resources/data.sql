@@ -39,42 +39,27 @@ VALUES
      ,('Bart', 'Heijenk', '344611')
      ,('Quincy', 'Soerkarso', '946389')
      ,('Asare', 'Twum', '329573');
-
+/*
 INSERT INTO customer_complaint_results (complaint_id, customer_id, date, extra_costs)
 VALUES
-      ('1', '1', 'now' , '12.22')
-     ,('2', '1', 'now', '0.90')
-     ,('3', '3', 'now', '0.00')
-     ,('4', '4', 'now', '2.88')
-     ,('5', '5', 'now', '4');
-
-/*
-INSERT INTO employees (first_name, last_name, order_nr)
-VALUES
-      ('Harry', 'de Boer', '345674')
-     ,('Yassine', 'Azdad', '123124')
-     ,('Debby', 'Huismans', '452235')
-     ,('Jay', 'Richardson', '467892')
-     ,('Maninder', 'Singh', '745631')
-     ,('Ilias', 'al Gris', '928345')
-     ,('Eghbol', 'Sarwar', '372940')
-     ,('Bart', 'Heijenk', '344611')
-     ,('Quincy', 'Soerkarso', '946389')
-     ,('Asare', 'Twum', '329573');
+      ('1', '1', 'now' , 12.22)
+     ,('2', '1', 'now', 0.90)
+     ,('3', '3', 'now', 0.00)
+     ,('4', '4', 'now', 2.88)
+     ,('5', '5', 'now', 4);
 */
-INSERT INTO customers_service_employees (first_name, last_name, order_nr)
+INSERT INTO production_employees (last_name, production_department, company_phone_number)
 VALUES
-('Henk', 'Smit', '0666')
-     ,('Yassine', 'Azdad', '123124')
-     ,('Debby', 'Huismans', '452235')
-     ,('Jay', 'Richardson', '467892')
-     ,('Maninder', 'Singh', '745631')
-     ,('Ilias', 'al Gris', '928345')
-     ,('Eghbol', 'Sarwar', '372940')
-     ,('Bart', 'Heijenk', '344611')
-     ,('Quincy', 'Soerkarso', '946389')
-     ,('Asare', 'Twum', '329573');
+('de Vreede', 'Posters & Stickers', '201')
+     ,('van de Berg', 'Books', '202')
+     ,('Meyers', 'Small Prints', '203')
+     ,('Ruyters', 'Postcards', '204');
 
+INSERT INTO customer_service_employees (last_name, position, company_phone_number)
+VALUES
+('van Dongen(M)', 'Head of Service', '101')
+     ,('van Dongen(R)', 'Service Representative', '102')
+     ,('Wong', 'Phone/Email Representative', '103');
 
 INSERT INTO roles (id,name) VALUES('1','ROLE_USER');
 INSERT INTO roles (id,name) VALUES('2','ROLE_ADMIN');
