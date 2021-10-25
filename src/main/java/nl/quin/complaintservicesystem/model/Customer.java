@@ -13,6 +13,9 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    @Column(name = "order_number_customer")
+    String orderNumberCustomer;
+
     @Column(name = "first_name")
     String firstName;
 
@@ -21,9 +24,6 @@ public class Customer {
 
     @Column(name = "email")
     String email;
-
-    @Column(name = "order_nr")
-    String orderNr;
 
     @Column(name = "customer_commentary")
     String customerCommentary;
@@ -46,6 +46,12 @@ public class Customer {
         this.id = id;
     }
 
+    public String getOrderNumberCustomer() { return orderNumberCustomer; }
+
+    public void setOrderNumberCustomer(String orderNumberCustomer) {
+        this.orderNumberCustomer = orderNumberCustomer;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -66,12 +72,6 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getOrderNr() { return orderNr; }
-
-    public void setOrderNr(String orderNr) {
-        this.orderNr = orderNr;
     }
 
     public String getCustomerCommentary() { return customerCommentary; }

@@ -51,10 +51,10 @@ public class CustomerService {
     public void updateCustomer(long id, Customer customer) {
         if (!customerRepository.existsById(id)) { throw new UserNotFoundException(); }
         Customer storedCustomer = customerRepository.findById(id).orElse(null);
+        storedCustomer.setOrderNumberCustomer(customer.getOrderNumberCustomer());
         storedCustomer.setFirstName(customer.getFirstName());
         storedCustomer.setLastName(customer.getLastName());
         storedCustomer.setEmail(customer.getEmail());
-        storedCustomer.setOrderNr(customer.getOrderNr());
         storedCustomer.setCustomerCommentary((customer.getCustomerCommentary()));
         customerRepository.save(customer);
     }
@@ -64,6 +64,9 @@ public class CustomerService {
         Customer storedCustomer = customerRepository.findById(id).orElse(null);
         for (String field : fields.keySet()) {
             switch (field) {
+                case "order_number_customer":
+                    storedCustomer.setOrderNumberCustomer((String) fields.get(field));
+                    break;
                 case "first_name":
                     storedCustomer.setFirstName((String) fields.get(field));
                     break;
@@ -72,9 +75,6 @@ public class CustomerService {
                     break;
                 case "email":
                     storedCustomer.setEmail((String) fields.get(field));
-                case "order_nr":
-                    storedCustomer.setOrderNr((String) fields.get(field));
-                    break;
                 case "customer_commentary":
                     storedCustomer.setCustomerCommentary((String) fields.get(field));
                     break;

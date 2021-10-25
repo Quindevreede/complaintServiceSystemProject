@@ -11,6 +11,7 @@
 @Table(name = "customer_complaint_results")
 public class CustomerComplaintResult {
 
+
     @EmbeddedId
     @JsonIgnore
     private CustomerComplaintResultKey id;
