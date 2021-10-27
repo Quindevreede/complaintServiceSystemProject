@@ -14,23 +14,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.Map;
 
-/**
- * CustomerController
- * Implements endpoints for customer resource
- *
- * GET /customers
- * POST /customers
- * GET /customers/{id}
- * PUT /customers/{id}
- * PATCH /customers/{id}
- * DELETE /customers/{id}
- *
- * GET /customers/{id}/complaints => return complaints with id
- * POST /customers/{id}/complaints => body { complaints_id:{id} }
- * DELETE /customers/{id}/complaints/{complaints_id}
- *
- */
-
 @RestController
 @CrossOrigin
 @RequestMapping(value = "/customers")

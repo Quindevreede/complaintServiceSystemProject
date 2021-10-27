@@ -11,19 +11,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.Map;
 
-/**
- * CustomerServiceEmployeeController
- * Implements endpoints for production employees resource
- *
- * GET /customer_service_employees
- * POST /customer_service_employees
- * GET /customer_service_employees/{id}
- * PUT /customer_service_employees/{id}
- * PATCH /customer_service_employees/{id}
- * DELETE /customer_service_employees/{id}
- *
- */
-
 @RestController
 @CrossOrigin
 @RequestMapping(value = "/customer_service_employees")

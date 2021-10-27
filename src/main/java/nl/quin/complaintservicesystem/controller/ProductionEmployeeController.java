@@ -11,19 +11,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.Map;
 
-/**
- * ProductionEmployeeController
- * Implements endpoints for production employees resource
- *
- * GET /production_employees
- * POST /production_employees
- * GET /production_employees/{id}
- * PUT /production_employees/{id}
- * PATCH /production_employees/{id}
- * DELETE /production_employees/{id}
- *
- */
-
 @RestController
 @CrossOrigin
 @RequestMapping(value = "/production_employees")

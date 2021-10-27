@@ -5,6 +5,7 @@ import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
 import nl.quin.complaintservicesystem.model.Authority;
 import nl.quin.complaintservicesystem.model.User;
 import nl.quin.complaintservicesystem.payload.request.UserPostRequest;
+import nl.quin.complaintservicesystem.repository.RoleRepository;
 import nl.quin.complaintservicesystem.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
@@ -55,7 +57,7 @@ public class UserService {
         user.setPassword(encryptedPassword);
         user.setEmail(userPostRequest.getEmail());
         user.setEnabled(true);
-
+ //       user.setRoles(Arrays.asList(RoleRepository.getRoleByName("ROLE_USER")));
         User newUser = userRepository.save(user);
         return newUser.getUsername();
     }

@@ -1,4 +1,5 @@
 package nl.quin.complaintservicesystem.controller;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -7,7 +8,7 @@ public class BaseController {
 
     @RequestMapping(value = "/")
     public String index() {
-        return "Endpoint: POST /file-upload";
+        return "Basic Page";
     }
 
 }
