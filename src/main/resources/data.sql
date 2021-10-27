@@ -65,5 +65,3 @@ VALUES
      ,('van Dongen(R)', 'Service Representative', '102')
      ,('Wong', 'Phone/Email Representative', '103');
 
-INSERT INTO roles (id,name) VALUES('1','ROLE_USER');
-INSERT INTO roles (id,name) VALUES('2','ROLE_ADMIN');

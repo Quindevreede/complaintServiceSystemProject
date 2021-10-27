@@ -14,6 +14,10 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    //Corresponds to user id : username
+    @Column
+    String username;
+
     @Column(name = "order_number_customer")
     String orderNumberCustomer;
 
@@ -49,6 +53,14 @@ public class Customer {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getOrderNumberCustomer() { return orderNumberCustomer; }

@@ -30,4 +30,6 @@ public class Method1RequestDto {
         public void setFile(MultipartFile file) {
                 this.file = file;
         }
+
+        //klacht aan bestand koppelen klachtnummer id meegeven
 }

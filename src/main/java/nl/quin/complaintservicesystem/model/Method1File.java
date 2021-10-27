@@ -19,6 +19,7 @@ public class Method1File {
 
     @Column(name = "description")
     private String description;
+//ordernummer One to one relation
 
     @Column(name = "media_type")
     private String mediaType;

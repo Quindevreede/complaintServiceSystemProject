@@ -25,6 +25,9 @@ public class CustomerService {
     @Autowired
     CustomerComplaintResultRepository customerComplaintResultRepository;
 
+    @Autowired
+    UserService userService;
+
     public Collection<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
@@ -44,6 +47,7 @@ public class CustomerService {
     }
 
     public long createCustomer (Customer customer) {
+        customer.setUsername(userService.getCurrentUserName()); //TODO if no currentUserName?
         Customer  storedCustomer  = customerRepository.save(customer);
         return storedCustomer .getId();
     }

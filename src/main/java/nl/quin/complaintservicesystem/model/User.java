@@ -21,9 +21,6 @@ public class User {
     @Column
     private String email;
 
-    @Column
-    private String role;
-
     @OneToMany(
             targetEntity = nl.quin.complaintservicesystem.model.Authority.class,
             mappedBy = "username",
@@ -76,17 +73,4 @@ public class User {
         this.authorities.remove(authority);
     }
 
- /*   public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public void setAuthorities(Set<Authority> authorities) {
-        this.authorities = authorities;
-    }
-
-  */
 }
