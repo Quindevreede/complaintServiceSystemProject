@@ -3,10 +3,10 @@ package nl.quin.complaintservicesystem.service;
 import nl.quin.complaintservicesystem.exceptions.FileStorageException;
 import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
 
-import nl.quin.complaintservicesystem.model.Method1File;
-import nl.quin.complaintservicesystem.payload.request.Method1RequestDto;
-import nl.quin.complaintservicesystem.payload.response.Method1ResponseDto;
-import nl.quin.complaintservicesystem.repository.Method1Repository;
+import nl.quin.complaintservicesystem.model.UploadDownload;
+import nl.quin.complaintservicesystem.payload.request.UploadDownloadRequestDto;
+import nl.quin.complaintservicesystem.payload.response.UploadDownloadResponseDto;
+import nl.quin.complaintservicesystem.repository.UploadDownloadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -26,14 +26,17 @@ import java.nio.file.StandardCopyOption;
 import java.util.Optional;
 
 @Service
-public class Method1Service {
+public class UploadDownloadService {
 
     @Value("${app.upload.dir:${user.home}}")
     private String uploadDirectory;  // relative to root
     private final Path uploads = Paths.get("uploads");
 
     @Autowired
-    private Method1Repository repository;
+    private UploadDownloadRepository repository;
+
+    @Autowired
+    private UserService username;
 
     public void init() {
         try {
@@ -43,13 +46,13 @@ public class Method1Service {
         }
     }
 
-    public Iterable<Method1File> getFiles() {
+    public Iterable<UploadDownload> getFiles() {
         return repository.findAll();
     }
 
-    public long uploadFile(Method1RequestDto method1Dto) {
+    public long uploadFile(UploadDownloadRequestDto uploadDownloadDto) {
 
-        MultipartFile file = method1Dto.getFile();
+        MultipartFile file = uploadDownloadDto.getFile();
 
         String originalFilename = StringUtils.cleanPath(file.getOriginalFilename());
         Path copyLocation = this.uploads.resolve(file.getOriginalFilename());
@@ -60,19 +63,20 @@ public class Method1Service {
             throw new FileStorageException("Could not store file " + originalFilename + ". Please try again!");
         }
 
-        Method1File newFileToStore = new Method1File();
+        UploadDownload newFileToStore = new UploadDownload();
         newFileToStore.setFileName(originalFilename);
         newFileToStore.setLocation(copyLocation.toString());
-        newFileToStore.setTitle(method1Dto.getTitle());
-        newFileToStore.setDescription(method1Dto.getDescription());
+        newFileToStore.setTitle(uploadDownloadDto.getTitle());
+        newFileToStore.setDescription(uploadDownloadDto.getDescription());
+        newFileToStore.setUploadedByUsername(username.getCurrentUserName());
 
-        Method1File saved = repository.save(newFileToStore);
+        UploadDownload saved = repository.save(newFileToStore);
 
         return saved.getId();
     }
 
     public void deleteFile(long id) {
-        Optional<Method1File> stored = repository.findById(id);
+        Optional<UploadDownload> stored = repository.findById(id);
 
         if (stored.isPresent()) {
             String filename = stored.get().getFileName();
@@ -91,19 +95,20 @@ public class Method1Service {
         }
     }
 
-    public Method1ResponseDto getFileById(long id) {
-        Optional<Method1File> stored = repository.findById(id);
+    public UploadDownloadResponseDto getFileById(long id) {
+        Optional<UploadDownload> stored = repository.findById(id);
 
         if (stored.isPresent()) {
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                     .buildAndExpand("download").toUri();
 
-            Method1ResponseDto responseDto = new Method1ResponseDto();
+            UploadDownloadResponseDto responseDto = new UploadDownloadResponseDto();
             responseDto.setFileName(stored.get().getFileName());
             responseDto.setTitle(stored.get().getTitle());
             responseDto.setDescription(stored.get().getDescription());
             responseDto.setMediaType(stored.get().getMediaType());
             responseDto.setDownloadUri(uri.toString());
+            responseDto.setUsername(username.getCurrentUserName());
             return responseDto;
         }
         else {
@@ -116,7 +121,7 @@ public class Method1Service {
     }
 
     public Resource downloadFile(long id) {
-        Optional<Method1File> stored = repository.findById(id);
+        Optional<UploadDownload> stored = repository.findById(id);
 
         if (stored.isPresent()) {
             String filename = stored.get().getFileName();

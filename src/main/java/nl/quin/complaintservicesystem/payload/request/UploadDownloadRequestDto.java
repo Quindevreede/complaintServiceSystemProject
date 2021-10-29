@@ -2,7 +2,7 @@ package nl.quin.complaintservicesystem.payload.request;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class Method1RequestDto {
+public class UploadDownloadRequestDto {
         private String title;
         private String description;
         private MultipartFile file;
@@ -31,5 +31,5 @@ public class Method1RequestDto {
                 this.file = file;
         }
 
-        //klacht aan bestand koppelen klachtnummer id meegeven
+        //TODO klacht aan bestand koppelen klachtnummer id meegeven
 }

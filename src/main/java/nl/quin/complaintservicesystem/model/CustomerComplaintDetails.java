@@ -7,8 +7,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "customers")
-public class Customer {
+@Table(name = "customer_complaint_details")
+public class CustomerComplaintDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,32 +18,32 @@ public class Customer {
     @Column
     String username;
 
-    @Column(name = "order_number_customer")
+    @Column
     String orderNumberCustomer;
 
-    @Column(name = "first_name")
+    @Column
     String firstName;
 
-    @Column(name = "last_name")
+    @Column
     String lastName;
 
-    @Column(name = "email")
+    @Column
     String email;
 
-    @Column(name = "customer_commentary")
+    @Column
     String customerCommentary;
 
-
-    @OneToMany(mappedBy = "customer",
+/*
+   @OneToMany(mappedBy = "customer_details",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
-            fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("customer")
-    @JsonBackReference
-//    @JsonManagedReference
+            fetch = FetchType.EAGER)
+ //   @JsonIgnoreProperties("customer_details")
+ //   @JsonBackReference
 
-    Set<CustomerComplaintResult> results;
 
+    Set<CustomerDetailsUploadDownloadResult> results;
+ */
     // standard constructors
 
     // getters, and setters
@@ -63,7 +63,9 @@ public class Customer {
         this.username = username;
     }
 
-    public String getOrderNumberCustomer() { return orderNumberCustomer; }
+    public String getOrderNumberCustomer() {
+        return orderNumberCustomer;
+    }
 
     public void setOrderNumberCustomer(String orderNumberCustomer) {
         this.orderNumberCustomer = orderNumberCustomer;
@@ -85,18 +87,22 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public String getEmail() { return email; }
+    public String getEmail() {
+        return email;
+    }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getCustomerCommentary() { return customerCommentary; }
+    public String getCustomerCommentary() {
+        return customerCommentary;
+    }
 
     public void setCustomerCommentary(String customerCommentary) {
         this.customerCommentary = customerCommentary;
     }
-
+/*
     public Set<CustomerComplaintResult> getResults() {
         return results;
     }
@@ -104,5 +110,7 @@ public class Customer {
     public void setResults(Set<CustomerComplaintResult> results) {
         this.results = results;
     }
+
+ */
 
 }

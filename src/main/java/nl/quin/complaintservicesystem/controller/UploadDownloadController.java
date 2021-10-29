@@ -1,10 +1,9 @@
 package nl.quin.complaintservicesystem.controller;
 
-import nl.quin.complaintservicesystem.model.Customer;
-import nl.quin.complaintservicesystem.model.Method1File;
-import nl.quin.complaintservicesystem.payload.request.Method1RequestDto;
-import nl.quin.complaintservicesystem.payload.response.Method1ResponseDto;
-import nl.quin.complaintservicesystem.service.Method1Service;
+import nl.quin.complaintservicesystem.model.UploadDownload;
+import nl.quin.complaintservicesystem.payload.request.UploadDownloadRequestDto;
+import nl.quin.complaintservicesystem.payload.response.UploadDownloadResponseDto;
+import nl.quin.complaintservicesystem.service.UploadDownloadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -14,33 +13,31 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
-import java.util.Optional;
 
 
 @RestController
-@RequestMapping("api/method1")
+@RequestMapping("upload_download")
 @CrossOrigin
-public class Method1Controller {
+public class UploadDownloadController {
 
     @Autowired
-    Method1Service methode1Service;
+    UploadDownloadService uploadDownloadService;
 
     @GetMapping("/files")
     public ResponseEntity<Object> getFiles() {
-        Iterable<Method1File> files = methode1Service.getFiles();
+        Iterable<UploadDownload> files = uploadDownloadService.getFiles();
         return ResponseEntity.ok().body(files);
     }
 
     @GetMapping("/files/{id}")
     public ResponseEntity<Object> getFileInfo(@PathVariable long id) {
-        Method1ResponseDto response = methode1Service.getFileById(id);
+        UploadDownloadResponseDto response = uploadDownloadService.getFileById(id);
         return ResponseEntity.ok().body(response);
     }
 
     @GetMapping("/files/{id}/download")
     public ResponseEntity downloadFile(@PathVariable long id) {
-        Resource resource = methode1Service.downloadFile(id);
+        Resource resource = uploadDownloadService.downloadFile(id);
         String mediaType = "application/octet-stream";
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(mediaType))
@@ -50,8 +47,8 @@ public class Method1Controller {
 
     /*
     @PutMapping(value = "/files/{id}")
-    public ResponseEntity<Object> updateUploadFile(@PathVariable("id") long id, @RequestBody Method1Service methode1Service) {
-        methode1Service.updateUploadFile(id, methode1Service);
+    public ResponseEntity<Object> updateUploadFile(@PathVariable("id") long id, @RequestBody uploadDownloadService uploadDownloadService) {
+        uploadDownloadService.updateUploadFile(id, uploadDownloadService);
         return ResponseEntity.noContent().build();
     }
      */
@@ -59,8 +56,8 @@ public class Method1Controller {
     @PostMapping(value = "/files",
             consumes = {MediaType.MULTIPART_FORM_DATA_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE} )
-    public ResponseEntity<Object> uploadFile(Method1RequestDto method1Dto) {
-        long newId = methode1Service.uploadFile(method1Dto);
+    public ResponseEntity<Object> uploadFile(UploadDownloadRequestDto uploadDownloadDto) {
+        long newId = uploadDownloadService.uploadFile(uploadDownloadDto);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(newId).toUri();
@@ -70,7 +67,7 @@ public class Method1Controller {
 
     @DeleteMapping("/files/{id}")
     public ResponseEntity<Object> deleteFile(@PathVariable long id) {
-        methode1Service.deleteFile(id);
+        uploadDownloadService.deleteFile(id);
         return ResponseEntity.noContent().build();
     }
 

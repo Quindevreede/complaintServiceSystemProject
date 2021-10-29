@@ -1,13 +1,12 @@
 package nl.quin.complaintservicesystem.payload.response;
 
-import org.springframework.web.multipart.MultipartFile;
-
-public class Method1ResponseDto {
+public class UploadDownloadResponseDto {
         private String title;
         private String description;
         private String fileName;
         private String mediaType;
         private String downloadUri;
+        private String username;
 
         public String getTitle() {
                 return title;
@@ -47,5 +46,13 @@ public class Method1ResponseDto {
 
         public void setDownloadUri(String downloadUri) {
                 this.downloadUri = downloadUri;
+        }
+
+        public String getUsername() {
+                return username;
+        }
+
+        public void setUsername(String username) {
+                this.username = username;
         }
 }

@@ -1,15 +1,22 @@
 package nl.quin.complaintservicesystem.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
-@Table(name = "method_1_files")
-public class Method1File {
+@Table(name = "upload_download_files")
+public class UploadDownload {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column
+    private String username;
 
     @Column(name = "file_name")
     private String fileName;
@@ -32,6 +39,19 @@ public class Method1File {
 
     @Column(name = "uploaded_by_username")
     private String uploadedByUsername;
+
+
+/*
+    @OneToMany(mappedBy = "upload_download",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("upload_download")
+    @JsonBackReference
+//    @JsonManagedReference
+
+    Set<CustomerDetailsUploadDownloadResult> results;
+*/
 
     public long getId() {
         return id;

@@ -1,7 +1,7 @@
 package nl.quin.complaintservicesystem.controller;
 
-import nl.quin.complaintservicesystem.model.CustomerServiceEmployee;
-import nl.quin.complaintservicesystem.service.CustomerServiceEmployeeService;
+import nl.quin.complaintservicesystem.model.CustomerAssistEmployee;
+import nl.quin.complaintservicesystem.service.CustomerAssistEmployeeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,25 +13,25 @@ import java.util.Map;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/customer_service_employees")
-public class CustomerServiceEmployeeController {
+@RequestMapping(value = "/customer_assist_employees")
+public class CustomerAssistEmployeeController {
 
     @Autowired
-    private CustomerServiceEmployeeService customerServiceEmployeeService;
+    private CustomerAssistEmployeeService customerAssistEmployeeService;
 
     @GetMapping(value = "")
     public ResponseEntity<Object> searchCustomerServiceEmployees(@RequestParam(name="name", defaultValue="") String name) {
-        return ResponseEntity.ok().body(customerServiceEmployeeService.getCustomerServiceEmployees(name));
+        return ResponseEntity.ok().body(customerAssistEmployeeService.getCustomerServiceEmployees(name));
     }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Object> getCustomerServiceEmployee(@PathVariable("id") long id) {
-        return ResponseEntity.ok().body(customerServiceEmployeeService.getCustomerServiceEmployeeById(id));
+        return ResponseEntity.ok().body(customerAssistEmployeeService.getCustomerServiceEmployeeById(id));
     }
 
     @PostMapping(value = "")
-    public ResponseEntity<Object> createCustomerServiceEmployee(@RequestBody CustomerServiceEmployee customerServiceEmployee) {
-        long newId = customerServiceEmployeeService.createCustomerServiceEmployee(customerServiceEmployee);
+    public ResponseEntity<Object> createCustomerServiceEmployee(@RequestBody CustomerAssistEmployee customerAssistEmployee) {
+        long newId = customerAssistEmployeeService.createCustomerServiceEmployee(customerAssistEmployee);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(newId).toUri();
@@ -40,20 +40,20 @@ public class CustomerServiceEmployeeController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Object> updateCustomerServiceEmployee(@PathVariable("id") long id, @RequestBody CustomerServiceEmployee customerServiceEmployee) {
-        customerServiceEmployeeService.updateCustomerServiceEmployee(id, customerServiceEmployee);
+    public ResponseEntity<Object> updateCustomerServiceEmployee(@PathVariable("id") long id, @RequestBody CustomerAssistEmployee customerAssistEmployee) {
+        customerAssistEmployeeService.updateCustomerServiceEmployee(id, customerAssistEmployee);
         return ResponseEntity.noContent().build();
     }
 
     @PatchMapping(value = "/{id}")
     public ResponseEntity<Object> updateCustomerServiceEmployeePartial(@PathVariable("id") long id, @RequestBody Map<String, String> fields) {
-        customerServiceEmployeeService.partialUpdateCustomerServiceEmployee(id, fields);
+        customerAssistEmployeeService.partialUpdateCustomerServiceEmployee(id, fields);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Object> deleteCustomerServiceEmployee(@PathVariable("id") long id) {
-        customerServiceEmployeeService.deleteCustomerServiceEmployee(id);
+        customerAssistEmployeeService.deleteCustomerServiceEmployee(id);
         return ResponseEntity.noContent().build();
     }
 

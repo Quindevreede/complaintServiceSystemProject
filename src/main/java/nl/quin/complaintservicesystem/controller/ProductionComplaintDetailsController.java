@@ -1,10 +1,10 @@
 package nl.quin.complaintservicesystem.controller;
 
-import nl.quin.complaintservicesystem.model.Complaint;
-import nl.quin.complaintservicesystem.model.CustomerComplaintResult;
-import nl.quin.complaintservicesystem.model.CustomerComplaintResultKey;
-import nl.quin.complaintservicesystem.service.ComplaintService;
-import nl.quin.complaintservicesystem.service.CustomerComplaintResultService;
+import nl.quin.complaintservicesystem.model.ProductionComplaintDetails;
+//import nl.quin.complaintservicesystem.model.CustomerComplaintResult;
+//import nl.quin.complaintservicesystem.model.CustomerComplaintResultKey;
+//import nl.quin.complaintservicesystem.service.CustomerComplaintResultService;
+import nl.quin.complaintservicesystem.service.ProductionComplaintDetailsService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,28 +17,28 @@ import java.util.Map;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/complaints")
-public class ComplaintController {
+@RequestMapping(value = "/production_complaint_details")
+public class ProductionComplaintDetailsController {
 
     @Autowired
-    ComplaintService complaintService;
+    ProductionComplaintDetailsService productionComplaintDetailsService;
 
-    @Autowired
-    private CustomerComplaintResultService customerComplaintResultService;
+  //  @Autowired
+  //  private CustomerComplaintResultService customerComplaintResultService;
 
     @GetMapping(value = "")
-    public ResponseEntity<Object> searchComplaint(@RequestParam(name="name", defaultValue="") String name) {
-        return ResponseEntity.ok().body(complaintService.getComplaints(name));
+    public ResponseEntity<Object> searchComplaintDetails(@RequestParam(name="name", defaultValue="") String name) {
+        return ResponseEntity.ok().body(productionComplaintDetailsService.getComplaintDetails(name));
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Object> getComplaint(@PathVariable("id") long id) {
-        return ResponseEntity.ok().body(complaintService.getComplaintById(id));
+    public ResponseEntity<Object> getComplaintDetails(@PathVariable("id") long id) {
+        return ResponseEntity.ok().body(productionComplaintDetailsService.getComplaintDetailsById(id));
     }
 
     @PostMapping(value = "")
-    public ResponseEntity<Object> createComplaint(@RequestBody Complaint complaint) {
-        long newId = complaintService.createComplaint(complaint);
+    public ResponseEntity<Object> createComplaintDetails(@RequestBody ProductionComplaintDetails productionComplaintDetails) {
+        long newId = productionComplaintDetailsService.createComplaintDetails(productionComplaintDetails);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(newId).toUri();
@@ -47,23 +47,23 @@ public class ComplaintController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Object> updateComplaint(@PathVariable("id") long id, @RequestBody Complaint complaint) {
-        complaintService.updateComplaint(id, complaint);
+    public ResponseEntity<Object> updateComplaint(@PathVariable("id") long id, @RequestBody ProductionComplaintDetails productionComplaintDetails) {
+        productionComplaintDetailsService.updateComplaintDetails(id, productionComplaintDetails);
         return ResponseEntity.noContent().build();
     }
 
     @PatchMapping(value = "/{id}")
     public ResponseEntity<Object> updateComplaintPartial(@PathVariable("id") long id, @RequestBody Map<String, String> fields) {
-        complaintService.partialUpdateComplaint(id, fields);
+        productionComplaintDetailsService.partialUpdateComplaintDetails(id, fields);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Object> deleteComplaint(@PathVariable("id") long id) {
-        complaintService.deleteComplaint(id);
+        productionComplaintDetailsService.deleteComplaintDetails(id);
         return ResponseEntity.noContent().build();
     }
-
+/*
     @GetMapping(value = "/{id}/customers")
     public ResponseEntity<Object> getCustomerComplaintResults(@PathVariable("id") long id) {
         return ResponseEntity.ok().body(customerComplaintResultService.getResultsByComplaintId(id));
@@ -85,5 +85,7 @@ public class ComplaintController {
 
         return ResponseEntity.created(location).body(location);
     }
+
+ */
 
 }
