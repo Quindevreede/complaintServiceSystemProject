@@ -22,11 +22,13 @@ public class CustomerComplaintDetailsService {
     @Autowired
     ProductionComplaintDetailsRepository productionComplaintDetailsRepository;
 
+
 //    @Autowired
 //    CustomerComplaintResultRepository customerComplaintResultRepository;
 
     @Autowired
-    UserService userService;
+    UserService username;
+
 
     public Collection<CustomerComplaintDetails> getAllCustomers() {
         return customerComplaintDetailsRepository.findAll();
@@ -47,7 +49,7 @@ public class CustomerComplaintDetailsService {
     }
 
     public long createCustomer (CustomerComplaintDetails customerComplaintDetails) {
-        customerComplaintDetails.setUsername(userService.getCurrentUserName()); //TODO if no currentUserName?
+        customerComplaintDetails.setUsername(username.getCurrentUserName()); //TODO if no currentUserName?
         CustomerComplaintDetails storedCustomerComplaintDetails = customerComplaintDetailsRepository.save(customerComplaintDetails);
         return storedCustomerComplaintDetails.getId();
     }
@@ -55,6 +57,7 @@ public class CustomerComplaintDetailsService {
     public void updateCustomer(long id, CustomerComplaintDetails customerComplaintDetails) {
         if (!customerComplaintDetailsRepository.existsById(id)) { throw new UserNotFoundException(); }
         CustomerComplaintDetails storedCustomerComplaintDetails = customerComplaintDetailsRepository.findById(id).orElse(null);
+        storedCustomerComplaintDetails.setUsername(username.getCurrentUserName());
         storedCustomerComplaintDetails.setOrderNumberCustomer(customerComplaintDetails.getOrderNumberCustomer());
         storedCustomerComplaintDetails.setFirstName(customerComplaintDetails.getFirstName());
         storedCustomerComplaintDetails.setLastName(customerComplaintDetails.getLastName());

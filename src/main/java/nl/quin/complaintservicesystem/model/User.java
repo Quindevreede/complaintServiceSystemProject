@@ -18,9 +18,6 @@ public class User {
     @Column(nullable = false)
     private boolean enabled = true;
 
-    @Column
-    private String email;
-
     @OneToMany(
             targetEntity = nl.quin.complaintservicesystem.model.Authority.class,
             mappedBy = "username",
@@ -51,14 +48,6 @@ public class User {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public Set<Authority> getAuthorities() {

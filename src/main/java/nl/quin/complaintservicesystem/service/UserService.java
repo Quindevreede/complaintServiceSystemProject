@@ -55,7 +55,6 @@ public class UserService {
         User user = new User();
         user.setUsername(userPostRequest.getUsername());
         user.setPassword(encryptedPassword);
-        user.setEmail(userPostRequest.getEmail());
         user.setEnabled(true);
         user.getAuthorities().add(new Authority(user.getUsername(),"ROLE_USER"));
         User newUser = userRepository.save(user);

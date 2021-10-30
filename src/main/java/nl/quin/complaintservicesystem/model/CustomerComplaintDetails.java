@@ -2,6 +2,8 @@ package nl.quin.complaintservicesystem.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import nl.quin.complaintservicesystem.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -40,8 +42,6 @@ public class CustomerComplaintDetails {
             fetch = FetchType.EAGER)
  //   @JsonIgnoreProperties("customer_details")
  //   @JsonBackReference
-
-
     Set<CustomerDetailsUploadDownloadResult> results;
  */
     // standard constructors
@@ -106,11 +106,9 @@ public class CustomerComplaintDetails {
     public Set<CustomerComplaintResult> getResults() {
         return results;
     }
-
     public void setResults(Set<CustomerComplaintResult> results) {
         this.results = results;
     }
-
  */
 
 }

@@ -22,12 +22,12 @@ public class CustomerComplaintDetailsController {
     @Autowired
     private CustomerComplaintDetailsService customerComplaintDetailsService;
 
- //   @Autowired
- //   private CustomerComplaintResultService customerComplaintResultService;
+    //   @Autowired
+    //   private CustomerComplaintResultService customerComplaintResultService;
 
     @GetMapping(value = "")
     public ResponseEntity<Object> searchCustomerDetails(@RequestParam(name="name", defaultValue="") String name) {
-       return ResponseEntity.ok().body(customerComplaintDetailsService.getCustomers(name));
+        return ResponseEntity.ok().body(customerComplaintDetailsService.getCustomers(name));
     }
 
     @GetMapping(value = "/{id}")

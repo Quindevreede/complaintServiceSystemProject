@@ -50,8 +50,15 @@ VALUES
      ,('3', '3', 'now', 0.00)
      ,('4', '4', 'now', 2.88)
      ,('5', '5', 'now', 4);
-   */
 
+INSERT INTO user_customer_complaint_details_results (user_id, customer_complaint_details_id, date, extra_costs)
+VALUES
+('1', '1', 'now' , 12.22)
+     ,('2', '1', 'now', 0.90)
+     ,('3', '3', 'now', 0.00)
+     ,('4', '4', 'now', 2.88)
+     ,('5', '5', 'now', 4);
+*/
 
 INSERT INTO production_employees (last_name, production_department, company_phone_number)
 VALUES
