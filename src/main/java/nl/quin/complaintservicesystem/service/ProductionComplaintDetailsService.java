@@ -3,8 +3,9 @@ package nl.quin.complaintservicesystem.service;
 import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
 import nl.quin.complaintservicesystem.model.ProductionComplaintDetails;
+//import nl.quin.complaintservicesystem.repository.CustomerComplaintDetailsProductionComplaintDetailsResultRepository;
+import nl.quin.complaintservicesystem.repository.CustomerComplaintDetailsRepository;
 import nl.quin.complaintservicesystem.repository.ProductionComplaintDetailsRepository;
-// import nl.quin.complaintservicesystem.repository.CustomerComplaintResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,11 +19,11 @@ public class ProductionComplaintDetailsService {
     @Autowired
     ProductionComplaintDetailsRepository productionComplaintDetailsRepository;
 
-//    @Autowired
-//    CustomerDetailsRepository customerDetailsRepository;
+    @Autowired
+    CustomerComplaintDetailsRepository customerComplaintDetailsRepository;
 
 //    @Autowired
-//    CustomerComplaintResultRepository customerComplaintResultRepository;
+  //  CustomerComplaintDetailsProductionComplaintDetailsResultRepository customerComplaintDetailsProductionComplaintDetailsResultRepository;
 
     public Collection<ProductionComplaintDetails> getAllComplaintDetails() {
         return productionComplaintDetailsRepository.findAll();

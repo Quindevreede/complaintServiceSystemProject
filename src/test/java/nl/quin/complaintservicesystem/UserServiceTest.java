@@ -18,12 +18,23 @@ class UserServiceTest {
     UserService userService;
 
     //arrange
-    @Test
+/*    @Test
     void testCreateCustomer() {
         UserPostRequest userPostRequest = new UserPostRequest();
         userPostRequest.setUsername("quin");
         String username = userService.createUser(userPostRequest);
 
+        assertEquals(userPostRequest.getUsername(), username);
+    }
+
+ */
+
+    @Test
+    void testCreateCustomer() {
+        UserPostRequest userPostRequest = new UserPostRequest();
+        userPostRequest.setUsername("quin");
+        userPostRequest.setPassword("p4ssw0rd");
+        String username = userService.createUser(userPostRequest);
         assertEquals(userPostRequest.getUsername(), username);
     }
 

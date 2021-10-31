@@ -73,3 +73,67 @@ VALUES
      ,('van Dongen(R)', 'Service Representative', '102')
      ,('Wong', 'Phone/Email Representative', '103');
 
+insert into teams (id, naam, land, jaar)
+values
+    (1, 'Oranje', 'NL', 2020),
+    (2, 'Oranje', 'NL', 2016),
+    (3, 'Oranje', 'NL', 2012);
+
+insert into spelers (rugnummer, naam, positie, team_id)
+values
+    (1, 'Justin Bijlow', 'GK', 1),
+    (13, 'Tim Krul', 'GK', 1),
+    (23, 'Joël Drommel', 'GK', 1),
+    (2, 'Jurriën Timber', 'DF', 1),
+    (3, 'Matthijs de Ligt', 'DF', 1),
+    (4, 'Virgil van Dijk (captain)', 'DF', 1),
+    (5, 'Tyrell Malacia', 'DF', 1),
+    (6, 'Stefan de Vrij', 'DF', 1),
+    (17, 'Daley Blind', 'DF', 1),
+    (18, 'Devyne Rensch', 'DF', 1),
+    (22, 'Denzel Dumfries', 'DF', 1),
+    (8, 'Georginio Wijnaldum (vice-captain),', 'MF', 1),
+    (12, 'Guus Til', 'MF', 1),
+    (14, 'Davy Klaassen', 'MF', 1),
+    (15, 'Marten de Roon', 'MF', 1),
+    (16, 'Ryan Gravenberch', 'MF', 1),
+    (20, 'Teun Koopmeiners', 'MF', 1),
+    (21, 'Frenkie de Jong', 'MF', 1),
+    (7, 'Steven Bergwijn', 'FW', 1),
+    (9, 'Donyell Malen', 'FW', 1),
+    (10, 'Memphis Depay', 'FW', 1),
+    (11, 'Steven Berghuis', 'FW', 1),
+    (19, 'Wout Weghorst', 'FW', 1);
+
+INSERT INTO course (code, name) VALUES ('SPR', 'Springboot');
+INSERT INTO course (code, name) VALUES ('DON', 'Database Ontwikkeling');
+
+INSERT INTO students (first_name, last_name, student_nr)
+VALUES
+('Tom', 'de Boer', '345674')
+     ,('Yassine', 'Azdad', '123124')
+     ,('Debby', 'Huismans', '452235')
+     ,('Jay', 'Richardson', '467892')
+     ,('Maninder', 'Singh', '745631')
+     ,('Ilias', 'al Gris', '928345')
+     ,('Eghbol', 'Sarwar', '372940')
+     ,('Bart', 'Heijenk', '344611')
+     ,('Quincy', 'Soerkarso', '946389')
+     ,('Asare', 'Twum', '329573');
+
+INSERT INTO student_course_results (course_id, student_id, date, score)
+VALUES
+('1', '1', '2020-10-10', '9')
+     ,('1', '2', '2020-10-10', '8')
+     ,('1', '3', '2020-10-10', '7')
+     ,('2', '1', '2020-10-15', '9')
+     ,('2', '3', '2020-10-15', '8')
+     ,('2', '4', '2020-10-15', '9')
+     ,('2', '5', '2020-10-15', '8');
+
+insert into customers (first_name, last_name, date_of_birth)
+values
+    ('Peter','Anema','1956-08-20'),
+    ('Robert','Anema','1957-11-28'),
+    ('Ted','Anema','1959-12-07'),
+    ('Walter','Anema','1960-01-10');

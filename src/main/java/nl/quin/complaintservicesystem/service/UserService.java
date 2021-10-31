@@ -59,8 +59,8 @@ public class UserService {
         user.getAuthorities().add(new Authority(user.getUsername(),"ROLE_USER"));
         User newUser = userRepository.save(user);
         return newUser.getUsername();
-    }
-// Wat je doet hier in Create User kun je alleen maar customers creeeren
+    } // Wat je doet hier in Create User kun je alleen maar customers creeeren
+
     public void deleteUser(String username) {
         userRepository.deleteById(username);
     }

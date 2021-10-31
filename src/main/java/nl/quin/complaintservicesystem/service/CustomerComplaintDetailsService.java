@@ -22,10 +22,6 @@ public class CustomerComplaintDetailsService {
     @Autowired
     ProductionComplaintDetailsRepository productionComplaintDetailsRepository;
 
-
-//    @Autowired
-//    CustomerComplaintResultRepository customerComplaintResultRepository;
-
     @Autowired
     UserService username;
 
