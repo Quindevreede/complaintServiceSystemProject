@@ -1,7 +1,7 @@
 package nl.quin.complaintservicesystem.service;
 
-import nl.quin.complaintservicesystem.domain.Address;
-import nl.quin.complaintservicesystem.domain.Person;
+import nl.quin.complaintservicesystem.model.Address;
+import nl.quin.complaintservicesystem.model.Person;
 import nl.quin.complaintservicesystem.payload.request.AddressRequest;
 import nl.quin.complaintservicesystem.payload.request.SignupRequest;
 import nl.quin.complaintservicesystem.payload.response.ErrorResponse;

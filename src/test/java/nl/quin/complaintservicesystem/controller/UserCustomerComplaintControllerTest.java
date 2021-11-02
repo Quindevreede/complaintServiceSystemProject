@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest
 @ContextConfiguration(classes={ComplaintServiceSystemApplication.class})
-class UserControllerTest {
+class UserCustomerComplaintControllerTest {
 
     @Autowired
     private MockMvc mvc;
