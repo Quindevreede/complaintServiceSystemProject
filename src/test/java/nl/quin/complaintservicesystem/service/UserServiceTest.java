@@ -1,4 +1,4 @@
-package nl.quin.complaintservicesystem.service;
+/*package nl.quin.complaintservicesystem.service;
 
 import nl.quin.complaintservicesystem.ComplaintServiceSystemApplication;
 import nl.quin.complaintservicesystem.model.User;
@@ -47,7 +47,7 @@ public class UserServiceTest {
                 .when(userRepository.findByUsername(user.getUsername()))
                 .thenReturn(user);
 
-        String name = "johndoe";
+        String username = "johndoe";
         String expected = "johndoe";
 
         User found = userService.getUser(username);
@@ -71,3 +71,5 @@ public class UserServiceTest {
         assertEquals(expected, found.getUsername());
     }
 }
+
+ */

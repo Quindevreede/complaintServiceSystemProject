@@ -1,7 +1,6 @@
-package nl.quin.complaintservicesystem.repository;
+/*package nl.quin.complaintservicesystem.repository;
 
 import nl.quin.complaintservicesystem.ComplaintServiceSystemApplication;
-import nl.quin.complaintservicesystem.model.CustomerAssistEmployee;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -43,3 +42,5 @@ class CustomerAssistEmployeeRepositoryTest {
 
 
 }
+
+ */
