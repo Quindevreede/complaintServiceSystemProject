@@ -91,6 +91,7 @@ public class CustomerDetailsServiceImpl implements nl.quin.complaintservicesyste
         customerComplaint.setPostalCode(customerComplaintRequest.getPostalCode());
         customerComplaint.setHouseNumber(customerComplaintRequest.getHouseNumber());
         customerComplaint.setStreetName(customerComplaintRequest.getStreetName());
+        //TODO validation not null in request?
         if(customerComplaintRequest.getAddition() != null && !customerComplaintRequest.getAddition().equals("")) {
             customerComplaint.setAddition(customerComplaintRequest.getAddition());
         }
@@ -98,7 +99,7 @@ public class CustomerDetailsServiceImpl implements nl.quin.complaintservicesyste
 
         customerComplaintRepository.save(customerComplaint);
 
-        customerDetailsWithCustomerComplaint.setCustomerComplaint(customerComplaint);
+        customerDetailsWithCustomerComplaint.getCustomerComplaintList().add(customerComplaint);
 
         return ResponseEntity.ok(createResponseObject(customerDetailsWithCustomerComplaint));
     }
@@ -131,11 +132,12 @@ public class CustomerDetailsServiceImpl implements nl.quin.complaintservicesyste
             customerDetailsResponse.setLastName(customerDetails.getLastName());
         }
 
-        if(customerDetails.getCustomerComplaint() != null) {
-            CustomerComplaint customerComplaint = customerDetails.getCustomerComplaint();
-            customerDetailsResponse.setCustomerComplaint(customerComplaint.getPostalCode(), customerComplaint.getStreetName(), customerComplaint.getHouseNumber());
-            if(customerComplaint.getAddition()!= null && !customerComplaint.getAddition().equals("")) {
-                customerDetailsResponse.setAddition(customerComplaint.getAddition());
+        if(customerDetails.getCustomerComplaintList()!=null && customerDetails.getCustomerComplaintList().size() > 0) {
+            for(CustomerComplaint customerComplaint:  customerDetails.getCustomerComplaintList()) {
+                customerDetailsResponse.addCustomerComplaint(customerComplaint);
+                if(customerComplaint.getAddition()!= null && !customerComplaint.getAddition().equals("")) {
+                    customerDetailsResponse.setAddition(customerComplaint.getAddition());
+                }
             }
         }
         return customerDetailsResponse;

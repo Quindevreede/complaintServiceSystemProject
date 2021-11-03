@@ -1,5 +1,7 @@
 package nl.quin.complaintservicesystem.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,7 +16,8 @@ public class CustomerComplaint {
     private String houseNumber;
     private String addition;
 
-    @OneToOne
+    @ManyToOne
+    @JsonBackReference
     private CustomerDetails customerDetails;
 
     public long getId() {

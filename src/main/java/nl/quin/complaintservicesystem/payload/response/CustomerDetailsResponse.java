@@ -1,10 +1,13 @@
 package nl.quin.complaintservicesystem.payload.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import nl.quin.complaintservicesystem.model.CustomerComplaint;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CustomerDetailsResponse {
-
 
     private Long userId;
     private String firstName;
@@ -17,6 +20,8 @@ public class CustomerDetailsResponse {
     private String houseNumber;
     private String addition;
 
+    private List<CustomerComplaint> customerComplaintList= new ArrayList<>();
+
     // CONSTRUCTORS
 
     public CustomerDetailsResponse() {
@@ -28,8 +33,12 @@ public class CustomerDetailsResponse {
         this.email = email;
     }
 
-    // GETTERS SETTERS
+    public void addCustomerComplaint(CustomerComplaint customerComplaint){
+        customerComplaintList.add(customerComplaint);
+    }
 
+
+    //Getters and setters
     public Long getUserId() {
         return userId;
     }
@@ -102,9 +111,11 @@ public class CustomerDetailsResponse {
         this.addition = addition;
     }
 
-    public void setCustomerComplaint(String postalCode, String streetName, String houseNumber) {
-        this.postalCode = postalCode;
-        this.streetName = streetName;
-        this.houseNumber = houseNumber;
+    public List<CustomerComplaint> getCustomerComplaintList() {
+        return customerComplaintList;
+    }
+
+    public void setCustomerComplaintList(List<CustomerComplaint> customerComplaintList) {
+        this.customerComplaintList = customerComplaintList;
     }
 }

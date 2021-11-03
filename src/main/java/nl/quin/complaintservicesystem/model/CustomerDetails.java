@@ -1,6 +1,10 @@
 package nl.quin.complaintservicesystem.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class CustomerDetails {
@@ -17,8 +21,10 @@ public class CustomerDetails {
     private String password;
 
 
-    @OneToOne(mappedBy = "customerDetails")
-    private CustomerComplaint customerComplaint;
+    @OneToMany(mappedBy = "customerDetails")
+    @JsonBackReference
+    private List<CustomerComplaint> customerComplaintList = new ArrayList<>();
+    //private CustomerComplaint customerComplaint;
 
     public long getId() {
         return id;
@@ -68,11 +74,11 @@ public class CustomerDetails {
         this.password = password;
     }
 
-    public CustomerComplaint getCustomerComplaint() {
-        return customerComplaint;
+    public List<CustomerComplaint> getCustomerComplaintList() {
+        return customerComplaintList;
     }
 
-    public void setCustomerComplaint(CustomerComplaint customerComplaint) {
-        this.customerComplaint = customerComplaint;
+    public void setCustomerComplaintList(List<CustomerComplaint> customerComplaintList) {
+        this.customerComplaintList = customerComplaintList;
     }
 }
