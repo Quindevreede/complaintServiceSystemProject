@@ -1,11 +1,7 @@
 package nl.quin.complaintservicesystem.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
 
 @Entity
 @Table(name = "upload_download_files")
@@ -40,11 +36,6 @@ public class UploadDownload {
     @Column(name = "uploaded_by_username")
     private String uploadedByUsername;
 
-    @OneToOne(orphanRemoval = true)
-    @JoinColumn(name = "customer_details_id")
-    private CustomerDetails customerDetails;
-
-    private String addition;
 
 /*
     @OneToMany(mappedBy = "upload_download",
@@ -120,21 +111,5 @@ public class UploadDownload {
 
     public void setUploadedByUsername(String uploadedByUsername) {
         this.uploadedByUsername = uploadedByUsername;
-    }
-
-    public CustomerDetails getCustomerDetails() {
-        return customerDetails;
-    }
-
-    public void setCustomerDetails(CustomerDetails customerDetails) {
-        this.customerDetails = customerDetails;
-    }
-
-    public String getAddition() {
-        return addition;
-    }
-
-    public void setAddition(String addition) {
-        this.addition = addition;
     }
 }

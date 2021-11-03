@@ -2,7 +2,7 @@ package nl.quin.complaintservicesystem.controller;
 
 import nl.quin.complaintservicesystem.payload.request.CustomerComplaintRequest;
 import nl.quin.complaintservicesystem.payload.request.CustomerDetailsRequest;
-import nl.quin.complaintservicesystem.payload.request.UploadDownloadRequestDto;
+import nl.quin.complaintservicesystem.payload.request.SignupRequest;
 import nl.quin.complaintservicesystem.service.CustomerDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,14 +39,8 @@ public class CustomerDetailsController {
 
     @PostMapping("/{id}/complaint")
     public ResponseEntity<?> addCustomerComplaintToCustomerDetailsById(@PathVariable("id") long id,
-                                                    @Valid @RequestBody CustomerComplaintRequest customerComplaintRequest) {
+                                                                       @Valid @RequestBody CustomerComplaintRequest customerComplaintRequest) {
         return customerDetailsService.addCustomerComplaintToCustomerDetailsById(id, customerComplaintRequest);
-    }
-
-    @PostMapping("/{id}/upload_download/files")
-    public ResponseEntity<?> addUploadDownloadToCustomerDetailsById(@PathVariable("id") long id,
-                                                                       @Valid @RequestBody UploadDownloadRequestDto uploadDownloadRequestDto) {
-        return customerDetailsService.addUploadDownloadToCustomerDetailsById(id, uploadDownloadRequestDto);
     }
 
     @GetMapping("/{id}")
@@ -66,4 +60,3 @@ public class CustomerDetailsController {
         return errors;
     }
 }
-

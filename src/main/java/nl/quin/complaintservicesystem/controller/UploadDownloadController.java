@@ -1,9 +1,9 @@
 package nl.quin.complaintservicesystem.controller;
 
 import nl.quin.complaintservicesystem.model.UploadDownload;
-import nl.quin.complaintservicesystem.payload.request.UploadDownloadRequestDto;
 import nl.quin.complaintservicesystem.payload.response.UploadDownloadResponseDto;
 import nl.quin.complaintservicesystem.service.UploadDownloadService;
+import nl.quin.complaintservicesystem.payload.request.UploadDownloadRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;

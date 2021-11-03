@@ -35,7 +35,7 @@ public class UserService {
         return ((UserDetails) authentication.getPrincipal()).getUsername();
     }
 
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    //    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Collection<User> getUsers() {
         return userRepository.findAll();
     }

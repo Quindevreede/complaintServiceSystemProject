@@ -70,7 +70,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/users/**").permitAll()
-                .antMatchers("/upload_download").hasRole("USER")
+                .antMatchers("/upload_download/").hasRole("USER")
                 .and()
                 .csrf().disable()
                 .formLogin().disable()

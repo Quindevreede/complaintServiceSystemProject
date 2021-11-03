@@ -110,7 +110,7 @@ public class PersonServiceImpl implements nl.quin.complaintservicesystem.service
             errorResponse.addError("id", "The user with id (" + id + ") does not exist.");
             return ResponseEntity.status(400).body(errorResponse);
         }
-        
+
         Person person = optionalPerson.get();
 
         PersonResponse personResponse = createResponseObject(person);
