@@ -2,14 +2,15 @@ package nl.quin.complaintservicesystem.service;
 
 import nl.quin.complaintservicesystem.model.CustomerComplaint;
 import nl.quin.complaintservicesystem.model.CustomerDetails;
-import nl.quin.complaintservicesystem.payload.request.AddressRequest;
+import nl.quin.complaintservicesystem.model.UploadDownload;
 import nl.quin.complaintservicesystem.payload.request.CustomerComplaintRequest;
 import nl.quin.complaintservicesystem.payload.request.CustomerDetailsRequest;
+import nl.quin.complaintservicesystem.payload.request.UploadDownloadRequestDto;
 import nl.quin.complaintservicesystem.payload.response.CustomerDetailsResponse;
 import nl.quin.complaintservicesystem.payload.response.ErrorResponse;
-import nl.quin.complaintservicesystem.payload.response.PersonResponse;
 import nl.quin.complaintservicesystem.repository.CustomerComplaintRepository;
 import nl.quin.complaintservicesystem.repository.CustomerDetailsRepository;
+import nl.quin.complaintservicesystem.repository.UploadDownloadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class CustomerDetailsServiceImpl implements nl.quin.complaintservicesyste
 
     private CustomerDetailsRepository customerDetailsRepository;
     private CustomerComplaintRepository customerComplaintRepository;
-
+    private UploadDownloadRepository uploadDownloadRepository;
     @Autowired
     public void setCustomerDetailsRepository(CustomerDetailsRepository customerDetailsRepository) {
         this.customerDetailsRepository = customerDetailsRepository;
@@ -31,6 +32,12 @@ public class CustomerDetailsServiceImpl implements nl.quin.complaintservicesyste
     public void setCustomerComplaintRepository(CustomerComplaintRepository customerComplaintRepository) {
         this.customerComplaintRepository = customerComplaintRepository;
     }
+
+    @Autowired
+    public void setUploadDownloadRepository(UploadDownloadRepository uploadDownloadRepository) {
+        this.uploadDownloadRepository = uploadDownloadRepository;
+    }
+
 
     @Override
     public ResponseEntity<?> printCustomerDetails(CustomerDetailsRequest customerDetailsRequest) {
@@ -104,6 +111,34 @@ public class CustomerDetailsServiceImpl implements nl.quin.complaintservicesyste
     }
 
     @Override
+    public ResponseEntity<?> addUploadDownloadToCustomerDetailsById(long id, UploadDownloadRequestDto uploadDownloadRequestDto) {
+
+
+        Optional<CustomerDetails> optionalCustomerDetails = customerDetailsRepository.findById(id);
+
+        if(optionalCustomerDetails.isEmpty()) {
+            ErrorResponse errorResponse = new ErrorResponse();
+            errorResponse.addError("id", "The user with id (" + id + ") does not exist.");
+            return ResponseEntity.status(400).body(errorResponse);
+        }
+
+        CustomerDetails customerDetailsWithUploadDownload = optionalCustomerDetails.get();
+        UploadDownload uploadDownload = new UploadDownload();
+        uploadDownload.setTitle(uploadDownloadRequestDto.getTitle());
+        uploadDownload.setDescription(uploadDownloadRequestDto.getDescription());
+        if(uploadDownloadRequestDto.getAddition() != null && !uploadDownloadRequestDto.getAddition().equals("")) {
+            uploadDownload.setAddition(uploadDownloadRequestDto.getAddition());
+        }
+        uploadDownload.setCustomerDetails(customerDetailsWithUploadDownload);
+
+        uploadDownloadRepository.save(uploadDownload);
+
+        customerDetailsWithUploadDownload.setUploadDownload(uploadDownload);
+
+        return ResponseEntity.ok(createResponseObject(customerDetailsWithUploadDownload));
+    }
+
+    @Override
     public ResponseEntity<?> getCustomerDetailsInfoById(long id) {
         ErrorResponse errorResponse = new ErrorResponse();
         Optional<CustomerDetails> optionalCustomerDetails = customerDetailsRepository.findById(id);
@@ -131,11 +166,11 @@ public class CustomerDetailsServiceImpl implements nl.quin.complaintservicesyste
             customerDetailsResponse.setLastName(customerDetails.getLastName());
         }
 
-        if(customerDetails.getCustomerComplaint() != null) {
-            CustomerComplaint customerComplaint = customerDetails.getCustomerComplaint();
-            customerDetailsResponse.setCustomerComplaint(customerComplaint.getPostalCode(), customerComplaint.getStreetName(), customerComplaint.getHouseNumber());
-            if(customerComplaint.getAddition()!= null && !customerComplaint.getAddition().equals("")) {
-                customerDetailsResponse.setAddition(customerComplaint.getAddition());
+        if(customerDetails.getUploadDownload() != null) {
+            UploadDownload uploadDownload = customerDetails.getUploadDownload();
+            customerDetailsResponse.setUploadDownload(uploadDownload.getTitle(), uploadDownload.getDescription());
+            if(uploadDownload.getAddition()!= null && !uploadDownload.getAddition().equals("")) {
+                customerDetailsResponse.setAddition(uploadDownload.getAddition());
             }
         }
         return customerDetailsResponse;

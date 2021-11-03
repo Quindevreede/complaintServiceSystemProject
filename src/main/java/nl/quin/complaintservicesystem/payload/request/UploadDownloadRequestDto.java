@@ -6,6 +6,7 @@ public class UploadDownloadRequestDto {
         private String title;
         private String description;
         private MultipartFile file;
+        private String addition;
 
         public String getTitle() {
                 return title;
@@ -29,6 +30,14 @@ public class UploadDownloadRequestDto {
 
         public void setFile(MultipartFile file) {
                 this.file = file;
+        }
+
+        public String getAddition() {
+                return addition;
+        }
+
+        public void setAddition(String addition) {
+                this.addition = addition;
         }
 
         //TODO klacht aan bestand koppelen klachtnummer id meegeven

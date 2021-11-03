@@ -15,6 +15,8 @@ public class CustomerDetailsResponse {
     private String postalCode;
     private String streetName;
     private String houseNumber;
+    private String title;
+    private String description;
     private String addition;
 
     // CONSTRUCTORS
@@ -94,6 +96,22 @@ public class CustomerDetailsResponse {
         this.houseNumber = houseNumber;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getAddition() {
         return addition;
     }
@@ -106,5 +124,10 @@ public class CustomerDetailsResponse {
         this.postalCode = postalCode;
         this.streetName = streetName;
         this.houseNumber = houseNumber;
+    }
+
+    public void setUploadDownload(String title, String description) {
+        this.title = title;
+        this.description = description;
     }
 }

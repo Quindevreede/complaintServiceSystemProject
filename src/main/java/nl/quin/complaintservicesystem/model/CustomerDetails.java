@@ -20,6 +20,9 @@ public class CustomerDetails {
     @OneToOne(mappedBy = "customerDetails")
     private CustomerComplaint customerComplaint;
 
+    @OneToOne(mappedBy = "customerDetails")
+    private UploadDownload uploadDownload;
+
     public long getId() {
         return id;
     }
@@ -75,4 +78,13 @@ public class CustomerDetails {
     public void setCustomerComplaint(CustomerComplaint customerComplaint) {
         this.customerComplaint = customerComplaint;
     }
+
+    public UploadDownload getUploadDownload() {
+        return uploadDownload;
+    }
+
+    public void setUploadDownload(UploadDownload uploadDownload) {
+        this.uploadDownload = uploadDownload;
+    }
+
 }
