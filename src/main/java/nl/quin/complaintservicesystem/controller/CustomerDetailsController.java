@@ -27,20 +27,25 @@ public class CustomerDetailsController {
         this.customerDetailsService = customerDetailsService;
     }
 
+    @PostMapping("/print")
+    public ResponseEntity<?> printCustomerInfo(@Valid @RequestBody CustomerDetailsRequest customerDetailsRequest) {
+        return customerDetailsService.printCustomerDetails(customerDetailsRequest);
+    }
+
     @PostMapping("/{id}")
-    public ResponseEntity<?> registerWithoutAddress(@Valid @RequestBody SignupRequest signupRequest) {
-        return customerDetailsService.registerWithoutAddress(signupRequest);
+    public ResponseEntity<?> customerDetailsWithoutAddress(@Valid @RequestBody CustomerDetailsRequest customerDetailsRequest) {
+        return customerDetailsService.registerWithoutCustomerComplaint(customerDetailsRequest);
     }
 
     @PostMapping("/{id}/complaint")
-    public ResponseEntity<?> addComplaintToCustomer(@PathVariable("id") long id,
+    public ResponseEntity<?> addCustomerComplaintToCustomerDetailsById(@PathVariable("id") long id,
                                                     @Valid @RequestBody CustomerComplaintRequest customerComplaintRequest) {
-        return customerDetailsService.addComplaintToCustomer(id, customerComplaintRequest);
+        return customerDetailsService.addCustomerComplaintToCustomerDetailsById(id, customerComplaintRequest);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getCustomerDetailsById(@PathVariable("id") long id) {
-        return customerDetailsService.getCustomerDetailsById(id);
+        return customerDetailsService.getCustomerDetailsInfoById(id);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -55,3 +60,4 @@ public class CustomerDetailsController {
         return errors;
     }
 }
+

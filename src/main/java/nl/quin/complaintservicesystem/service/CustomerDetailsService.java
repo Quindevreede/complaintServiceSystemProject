@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 public interface CustomerDetailsService {
 
     ResponseEntity<?> printCustomerDetails(CustomerDetailsRequest customerDetailsRequest);
-    ResponseEntity<?> registerWithoutAddress(CustomerDetailsRequest customerDetailsRequest);
-    ResponseEntity<?> addCustomerComplaintById(long id, CustomerComplaintRequest customerComplaintRequest);
+    ResponseEntity<?> registerWithoutCustomerComplaint(CustomerDetailsRequest customerDetailsRequest);
+    ResponseEntity<?> addCustomerComplaintToCustomerDetailsById(long id, CustomerComplaintRequest customerComplaintRequest);
     ResponseEntity<?> getCustomerDetailsInfoById(long id);
 }

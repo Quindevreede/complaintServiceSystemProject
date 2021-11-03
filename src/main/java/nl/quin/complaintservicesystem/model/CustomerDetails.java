@@ -17,7 +17,7 @@ public class CustomerDetails {
     private String password;
 
 
-    @OneToOne(mappedBy = "customer_details")
+    @OneToOne(mappedBy = "customerDetails")
     private CustomerComplaint customerComplaint;
 
     public long getId() {

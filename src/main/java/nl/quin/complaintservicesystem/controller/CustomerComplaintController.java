@@ -1,6 +1,7 @@
-package nl.quin.complaintservicesystem.controller;
-
+/*package nl.quin.complaintservicesystem.controller;
 
 public class CustomerComplaintController {
 
 }
+
+ */

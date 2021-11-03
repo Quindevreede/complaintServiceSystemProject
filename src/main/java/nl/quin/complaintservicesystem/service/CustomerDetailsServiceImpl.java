@@ -3,7 +3,9 @@ package nl.quin.complaintservicesystem.service;
 import nl.quin.complaintservicesystem.model.CustomerComplaint;
 import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.payload.request.AddressRequest;
+import nl.quin.complaintservicesystem.payload.request.CustomerComplaintRequest;
 import nl.quin.complaintservicesystem.payload.request.CustomerDetailsRequest;
+import nl.quin.complaintservicesystem.payload.response.CustomerDetailsResponse;
 import nl.quin.complaintservicesystem.payload.response.ErrorResponse;
 import nl.quin.complaintservicesystem.payload.response.PersonResponse;
 import nl.quin.complaintservicesystem.repository.CustomerComplaintRepository;
@@ -21,22 +23,22 @@ public class CustomerDetailsServiceImpl implements nl.quin.complaintservicesyste
     private CustomerComplaintRepository customerComplaintRepository;
 
     @Autowired
-    public void setCustomerDetailsRepositoryRepository(CustomerDetailsRepository customerDetailsRepository) {
+    public void setCustomerDetailsRepository(CustomerDetailsRepository customerDetailsRepository) {
         this.customerDetailsRepository = customerDetailsRepository;
     }
 
     @Autowired
-    public void setCustomerComplaintRepository(CustomerComplaintRepository customerDetailsRepository) {
-        this.customerDetailsRepository = customerDetailsRepository;
+    public void setCustomerComplaintRepository(CustomerComplaintRepository customerComplaintRepository) {
+        this.customerComplaintRepository = customerComplaintRepository;
     }
 
     @Override
     public ResponseEntity<?> printCustomerDetails(CustomerDetailsRequest customerDetailsRequest) {
-        return ResponseEntity.ok(CustomerDetailsRequest);
+        return ResponseEntity.ok(customerDetailsRequest);
     }
 
     @Override
-    public ResponseEntity<?> registerWithoutAddress(CustomerDetailsRequest customerDetailsRequest) {
+    public ResponseEntity<?> registerWithoutCustomerComplaint(CustomerDetailsRequest customerDetailsRequest) {
 
         CustomerDetails customerDetails = new CustomerDetails();
         ErrorResponse errorResponse = new ErrorResponse();
@@ -73,7 +75,7 @@ public class CustomerDetailsServiceImpl implements nl.quin.complaintservicesyste
     }
 
     @Override
-    public ResponseEntity<?> addCustomerComplaintToUserById(long id, CustomerComplaintRequest customerComplaintRequest) {
+    public ResponseEntity<?> addCustomerComplaintToCustomerDetailsById(long id, CustomerComplaintRequest customerComplaintRequest) {
 
 
         Optional<CustomerDetails> optionalCustomerDetails = customerDetailsRepository.findById(id);
