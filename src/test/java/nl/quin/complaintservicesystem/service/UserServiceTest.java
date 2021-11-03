@@ -36,7 +36,7 @@ public class UserServiceTest {
     void setUp() {
         this.user = new User();
         this.user.setUsername("johndoe");
-        this.user.setPassword("p4ssw0rd");
+        this.user.setPassword("se7en");
     }
 
     @Test

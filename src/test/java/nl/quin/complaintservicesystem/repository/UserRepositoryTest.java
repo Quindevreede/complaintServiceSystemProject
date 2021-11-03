@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ContextConfiguration;
 
+import java.util.Collection;
 import java.util.Optional;
 
 
@@ -32,7 +33,7 @@ class UserRepositoryTest {
     void setUp() {
         this.user = new User();
         this.user.setUsername("johndoe");
-        this.user.setPassword("p4ssw0rd");
+        this.user.setPassword("se7en");
     }
 
     @Test
@@ -52,5 +53,23 @@ class UserRepositoryTest {
         assertEquals(expected, actual);
     }
 
+
+/*    @Test
+    void testFindAllByLastName() {
+
+        // given
+
+        entityManager.persist(user);
+        entityManager.flush();
+
+        // when
+        Collection<User> found = userRepository.findAllByUsername(user.getUsername());
+
+        // then
+        String expected = "johndoe";
+        boolean actual = found.contains(user.getUsername());
+        assertEquals(expected, actual);
+    }
+ */
 
 }

@@ -31,14 +31,14 @@ class UserServiceTest {
     void setUp() {
         this.user = new User();
         this.user.setUsername("johndoe");
-        this.user.setPassword("p4ssw0rd");
+        this.user.setPassword("se7en");
     }
 
     @Test
     void testCreateCustomer() {
         UserPostRequest userPostRequest = new UserPostRequest();
         userPostRequest.setUsername("johndoe");
-        userPostRequest.setPassword("p4ssw0rd");
+        userPostRequest.setPassword("se7en");
         String username = userService.createUser(userPostRequest);
         assertEquals(userPostRequest.getUsername(), username);
     }
@@ -47,5 +47,4 @@ class UserServiceTest {
 
 //TODO org.springframework.beans.factory.BeanCurrentlyInCreationException: Error creating bean with name 'webSecurityConfiguration': Requested bean is currently in creation: Is there an unresolvable circular reference?
 
-
- */
+*/

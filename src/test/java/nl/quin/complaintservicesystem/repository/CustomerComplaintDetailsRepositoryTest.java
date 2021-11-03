@@ -27,7 +27,7 @@ class CustomerComplaintDetailsRepositoryTest {
     void testFindAllByLastName() {
         // given
         CustomerComplaintDetails customerComplaintDetails = new CustomerComplaintDetails();
-        customerComplaintDetails.setLastName("Manson");
+        customerComplaintDetails.setLastName("Doe");
         entityManager.persist(customerComplaintDetails);
         entityManager.flush();
 
@@ -35,7 +35,7 @@ class CustomerComplaintDetailsRepositoryTest {
         Collection<CustomerComplaintDetails> found = customerComplaintDetailsRepository.findAllByLastName(customerComplaintDetails.getLastName());
 
         // then
-        String expected = "Manson";
+        String expected = "Doe";
         String actual = customerComplaintDetails.getLastName();
         assertEquals(expected, actual);
     }
