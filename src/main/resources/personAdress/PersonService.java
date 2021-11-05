@@ -1,4 +1,4 @@
-/*package nl.quin.complaintservicesystem.service;
+package personAdress;
 
 import nl.quin.complaintservicesystem.payload.request.AddressRequest;
 import nl.quin.complaintservicesystem.payload.request.SignupRequest;
@@ -11,5 +11,3 @@ public interface PersonService {
     ResponseEntity<?> addAddressToUserById(long id, AddressRequest addressRequest);
     ResponseEntity<?> getPersonInfoById(long id);
 }
-
- */

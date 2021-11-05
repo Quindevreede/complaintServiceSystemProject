@@ -19,7 +19,6 @@ public class CustomerComplaint {
     @JsonBackReference
     private CustomerDetails customerDetails;
 
-
     public long getId() {
         return id;
     }

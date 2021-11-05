@@ -1,4 +1,4 @@
-/*package nl.quin.complaintservicesystem.payload.response;
+package personAdress;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -104,5 +104,3 @@ public class PersonResponse {
         this.houseNumber = houseNumber;
     }
 }
-
- */

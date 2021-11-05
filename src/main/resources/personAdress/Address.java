@@ -1,16 +1,30 @@
-/*package nl.quin.complaintservicesystem.payload.request;
+package personAdress;
 
-import javax.validation.constraints.NotBlank;
+import javax.persistence.*;
 
-public class AddressRequest {
+@Entity
+public class Address {
 
-    @NotBlank(message = "Postal code is mandatory")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     private String postalCode;
-    @NotBlank(message = "Streetname is mandatory")
     private String streetName;
-    @NotBlank(message = "Housenumber is mandatory")
     private String houseNumber;
     private String addition;
+
+
+    @OneToOne
+    private Person person;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getOrderNumber() {
         return postalCode;
@@ -43,6 +57,12 @@ public class AddressRequest {
     public void setLatestComplaintAddition(String addition) {
         this.addition = addition;
     }
-}
 
- */
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+}

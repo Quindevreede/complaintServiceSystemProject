@@ -1,4 +1,4 @@
-/*package nl.quin.complaintservicesystem.service;
+package personAdress;
 
 import nl.quin.complaintservicesystem.model.Address;
 import nl.quin.complaintservicesystem.model.Person;
@@ -139,5 +139,3 @@ public class PersonServiceImpl implements nl.quin.complaintservicesystem.service
         return personResponse;
     }
 }
-
- */

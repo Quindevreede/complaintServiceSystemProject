@@ -1,32 +1,22 @@
-/*package nl.quin.complaintservicesystem.model;
+package personAdress;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
-@Entity
-public class Person {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+public class SignupRequest {
 
     private String firstName;
     private String lastName;
 
+    @NotBlank(message = "Username is mandatory")
     private String username;
+
+    @NotBlank(message = "Email is mandatory")
     private String email;
+
+    @NotBlank(message = "Password is mandatory")
     private String password;
-
-
-    @OneToOne(mappedBy = "person")
-    private Address address;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    @NotBlank(message = "Repeated Password is mandatory")
+    private String repeatedPassword;
 
     public String getFirstName() {
         return firstName;
@@ -68,13 +58,11 @@ public class Person {
         this.password = password;
     }
 
-    public Address getAddress() {
-        return address;
+    public String getRepeatedPassword() {
+        return repeatedPassword;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setRepeatedPassword(String repeatedPassword) {
+        this.repeatedPassword = repeatedPassword;
     }
 }
-
- */
