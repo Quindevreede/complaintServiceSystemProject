@@ -4,6 +4,7 @@ import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
 import nl.quin.complaintservicesystem.model.Authority;
 import nl.quin.complaintservicesystem.model.User;
+import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.payload.request.UserPostRequest;
 import nl.quin.complaintservicesystem.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,5 +93,7 @@ public class UserService {
         user.removeAuthority(authorityToRemove);
         userRepository.save(user);
     }
+
+
 
 }

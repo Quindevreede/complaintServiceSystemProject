@@ -25,4 +25,5 @@ public class CustomerComplaintRequest {
     public void setCustomerCommentary(String customerCommentary) {
         this.customerCommentary = customerCommentary;
     }
+
 }

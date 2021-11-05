@@ -1,5 +1,7 @@
 package nl.quin.complaintservicesystem.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -36,18 +38,10 @@ public class UploadDownload {
     @Column(name = "uploaded_by_username")
     private String uploadedByUsername;
 
+    @OneToOne(mappedBy = "uploadDownload")
+    @JsonBackReference("customerComplaintUploadDownload")
+    CustomerComplaint customerComplaint;
 
-/*
-    @OneToMany(mappedBy = "upload_download",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.EAGER)
-    @JsonIgnoreProperties("upload_download")
-    @JsonBackReference
-//    @JsonManagedReference
-
-    Set<CustomerDetailsUploadDownloadResult> results;
-*/
 
     public long getId() {
         return id;

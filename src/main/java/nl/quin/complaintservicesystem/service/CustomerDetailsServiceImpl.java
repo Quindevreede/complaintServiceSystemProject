@@ -8,6 +8,7 @@ import nl.quin.complaintservicesystem.payload.response.CustomerDetailsResponse;
 import nl.quin.complaintservicesystem.payload.response.ErrorResponse;
 import nl.quin.complaintservicesystem.repository.CustomerComplaintRepository;
 import nl.quin.complaintservicesystem.repository.CustomerDetailsRepository;
+import nl.quin.complaintservicesystem.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ public class CustomerDetailsServiceImpl implements nl.quin.complaintservicesyste
 
     private CustomerDetailsRepository customerDetailsRepository;
     private CustomerComplaintRepository customerComplaintRepository;
+    private UserRepository userRepository;
 
     @Autowired
     public void setCustomerDetailsRepository(CustomerDetailsRepository customerDetailsRepository) {
@@ -56,7 +58,7 @@ public class CustomerDetailsServiceImpl implements nl.quin.complaintservicesyste
         }
 
         customerDetails.setEmail(customerDetailsRequest.getEmail());
-        customerDetails.setUsername(customerDetailsRequest.getUsername());
+        customerDetails.setUser(userRepository.findByUsername(customerDetailsRequest.getUsername()).get());
 
         if(errorResponse.hasErrors()) {
             return ResponseEntity.status(400).body(errorResponse);
@@ -92,6 +94,21 @@ public class CustomerDetailsServiceImpl implements nl.quin.complaintservicesyste
         return ResponseEntity.ok(createResponseObject(customerDetailsWithCustomerComplaint));
     }
 
+@Override
+    public void addUserToCustomerDetailsById(Long customerDetailsId, String username) {
+        var optionalUser = userRepository.findById(username);
+        var optionalCustomerDetails = customerDetailsRepository.findById(customerDetailsId);
+
+
+        if (optionalCustomerDetails.isPresent() && optionalUser.isPresent()) {
+            var user = optionalUser.get();
+            var customerDetails = optionalCustomerDetails.get();
+
+            customerDetails.setUser(user);
+            customerDetailsRepository.save(customerDetails);
+        }
+    }
+
     @Override
     public ResponseEntity<?> getCustomerDetailsInfoById(long id) {
         ErrorResponse errorResponse = new ErrorResponse();
@@ -111,7 +128,7 @@ public class CustomerDetailsServiceImpl implements nl.quin.complaintservicesyste
 
     private CustomerDetailsResponse createResponseObject(CustomerDetails customerDetails) {
         CustomerDetailsResponse customerDetailsResponse = new CustomerDetailsResponse(customerDetails.getId(),
-                customerDetails.getUsername(), customerDetails.getEmail());
+                customerDetails.getUser().getUsername(), customerDetails.getEmail());
 
         if(customerDetails.getFirstName() != null && !customerDetails.getFirstName().equals("")) {
             customerDetailsResponse.setFirstName(customerDetails.getFirstName());

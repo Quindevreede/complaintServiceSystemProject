@@ -15,9 +15,9 @@ public class CustomerDetailsResponse {
     private String username;
     private String email;
 
-    private String postalCode;
-    private String streetName;
-    private String houseNumber;
+    private String orderNumber;
+    private String customerCommentary;
+
 
     private List<CustomerComplaint> customerComplaintList= new ArrayList<>();
 
@@ -78,29 +78,20 @@ public class CustomerDetailsResponse {
         this.email = email;
     }
 
-
-    public String getPostalCode() {
-        return postalCode;
+    public String getOrderNumber() {
+        return orderNumber;
     }
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
     }
 
-    public String getStreetName() {
-        return streetName;
+    public String getCustomerCommentary() {
+        return customerCommentary;
     }
 
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
-    }
-
-    public String getHouseNumber() {
-        return houseNumber;
-    }
-
-    public void setHouseNumber(String houseNumber) {
-        this.houseNumber = houseNumber;
+    public void setCustomerCommentary(String customerCommentary) {
+        this.customerCommentary = customerCommentary;
     }
 
     public List<CustomerComplaint> getCustomerComplaintList() {

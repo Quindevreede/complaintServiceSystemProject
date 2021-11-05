@@ -19,6 +19,10 @@ public class CustomerDetails {
     private String username;
     private String email;
 
+    @OneToOne
+    @JsonBackReference("customerDetails")
+    User user;
+
     @OneToMany(mappedBy = "customerDetails")
     @JsonBackReference
     private List<CustomerComplaint> customerComplaintList = new ArrayList<>();
@@ -56,12 +60,22 @@ public class CustomerDetails {
         this.username = username;
     }
 
+
+
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<CustomerComplaint> getCustomerComplaintList() {

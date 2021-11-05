@@ -1,6 +1,14 @@
-/*package nl.quin.complaintservicesystem.service;
+package nl.quin.complaintservicesystem.service;
+import nl.quin.complaintservicesystem.model.CustomerComplaint;
 
-public class CustomerComplaintService {
+import java.util.List;
+
+    public interface CustomerComplaintService {
+        List<CustomerComplaint> getCustomerComplaints();
+
+        CustomerComplaint getCustomerComplaint(Long id);
+
+
 }
 
- */
+

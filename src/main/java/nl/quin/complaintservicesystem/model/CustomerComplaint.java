@@ -19,6 +19,10 @@ public class CustomerComplaint {
     @JsonBackReference
     private CustomerDetails customerDetails;
 
+    @OneToOne
+    @JsonBackReference("customerComplaintUploadDownload")
+    UploadDownload uploadDownload;
+
     public long getId() {
         return id;
     }
@@ -49,5 +53,13 @@ public class CustomerComplaint {
 
     public void setCustomerDetails(CustomerDetails customerDetails) {
         this.customerDetails = customerDetails;
+    }
+
+    public UploadDownload getUploadDownload() {
+        return uploadDownload;
+    }
+
+    public void setUploadDownload(UploadDownload uploadDownload) {
+        this.uploadDownload = uploadDownload;
     }
 }

@@ -1,5 +1,7 @@
 package nl.quin.complaintservicesystem.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,6 +27,12 @@ public class User {
             orphanRemoval = true,
             fetch = FetchType.EAGER)
     private Set<nl.quin.complaintservicesystem.model.Authority> authorities = new HashSet<>();
+
+
+    @OneToOne(mappedBy = "user")
+    @JsonBackReference("customerDetails")
+    CustomerDetails customerDetails;
+
 
     public String getUsername() {
         return username;
@@ -62,4 +70,11 @@ public class User {
         this.authorities.remove(authority);
     }
 
+    public CustomerDetails getCustomerDetails() {
+        return customerDetails;
+    }
+
+    public void setCustomerDetails(CustomerDetails customerDetails) {
+        this.customerDetails = customerDetails;
+    }
 }
