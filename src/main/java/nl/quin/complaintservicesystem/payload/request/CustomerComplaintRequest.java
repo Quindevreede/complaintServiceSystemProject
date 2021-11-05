@@ -4,43 +4,25 @@ import javax.validation.constraints.NotBlank;
 
 public class CustomerComplaintRequest {
 
-    @NotBlank(message = "Postal code is mandatory")
-    private String postalCode;
-    @NotBlank(message = "Streetname is mandatory")
-    private String streetName;
-    @NotBlank(message = "Housenumber is mandatory")
-    private String houseNumber;
-    private String addition;
+    @NotBlank(message = "Order Number is mandatory")
+    private String orderNumber;
+    @NotBlank(message = "Customer Commentary is mandatory")
+    private String customerCommentary;
 
-    public String getPostalCode() {
-        return postalCode;
+    //GETTERS SETTERS
+    public String getOrderNumber() {
+        return orderNumber;
     }
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
     }
 
-    public String getStreetName() {
-        return streetName;
+    public String getCustomerCommentary() {
+        return customerCommentary;
     }
 
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
-    }
-
-    public String getHouseNumber() {
-        return houseNumber;
-    }
-
-    public void setHouseNumber(String houseNumber) {
-        this.houseNumber = houseNumber;
-    }
-
-    public String getAddition() {
-        return addition;
-    }
-
-    public void setAddition(String addition) {
-        this.addition = addition;
+    public void setCustomerCommentary(String customerCommentary) {
+        this.customerCommentary = customerCommentary;
     }
 }

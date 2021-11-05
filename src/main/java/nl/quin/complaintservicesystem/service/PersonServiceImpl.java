@@ -1,4 +1,4 @@
-package nl.quin.complaintservicesystem.service;
+/*package nl.quin.complaintservicesystem.service;
 
 import nl.quin.complaintservicesystem.model.Address;
 import nl.quin.complaintservicesystem.model.Person;
@@ -86,11 +86,11 @@ public class PersonServiceImpl implements nl.quin.complaintservicesystem.service
 
         Person personWithAddress = optionalPerson.get();
         Address address = new Address();
-        address.setPostalCode(addressRequest.getPostalCode());
+        address.setOrderNumber(addressRequest.getOrderNumber());
         address.setHouseNumber(addressRequest.getHouseNumber());
-        address.setStreetName(addressRequest.getStreetName());
-        if(addressRequest.getAddition() != null && !addressRequest.getAddition().equals("")) {
-            address.setAddition(addressRequest.getAddition());
+        address.setCustomerCommentary(addressRequest.getCustomerCommentary());
+        if(addressRequest.getLatestComplaintAddition() != null && !addressRequest.getLatestComplaintAddition().equals("")) {
+            address.setLatestComplaintAddition(addressRequest.getLatestComplaintAddition());
         }
         address.setPerson(personWithAddress);
 
@@ -131,11 +131,13 @@ public class PersonServiceImpl implements nl.quin.complaintservicesystem.service
 
         if(person.getAddress() != null) {
             Address address = person.getAddress();
-            personResponse.setAddress(address.getPostalCode(), address.getStreetName(), address.getHouseNumber());
-            if(address.getAddition()!= null && !address.getAddition().equals("")) {
-                personResponse.setAddition(address.getAddition());
+            personResponse.setAddress(address.getOrderNumber(), address.getCustomerCommentary(), address.getHouseNumber());
+            if(address.getLatestComplaintAddition()!= null && !address.getLatestComplaintAddition().equals("")) {
+                personResponse.setLatestComplaintAddition(address.getLatestComplaintAddition());
             }
         }
         return personResponse;
     }
 }
+
+ */

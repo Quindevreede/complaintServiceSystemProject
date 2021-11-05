@@ -46,8 +46,6 @@ public class CustomerDetailsServiceTest {
         customerDetailsRequest.setLastName("lastName");
         customerDetailsRequest.setEmail("a@gmail.com");//TODO validate
         customerDetailsRequest.setUsername(user.getUsername());
-        customerDetailsRequest.setPassword(user.getPassword());
-        customerDetailsRequest.setRepeatedPassword(user.getPassword());
 
         //Act
 

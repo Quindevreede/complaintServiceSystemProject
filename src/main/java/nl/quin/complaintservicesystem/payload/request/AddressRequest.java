@@ -1,4 +1,4 @@
-package nl.quin.complaintservicesystem.payload.request;
+/*package nl.quin.complaintservicesystem.payload.request;
 
 import javax.validation.constraints.NotBlank;
 
@@ -12,19 +12,19 @@ public class AddressRequest {
     private String houseNumber;
     private String addition;
 
-    public String getPostalCode() {
+    public String getOrderNumber() {
         return postalCode;
     }
 
-    public void setPostalCode(String postalCode) {
+    public void setOrderNumber(String postalCode) {
         this.postalCode = postalCode;
     }
 
-    public String getStreetName() {
+    public String getCustomerCommentary() {
         return streetName;
     }
 
-    public void setStreetName(String streetName) {
+    public void setCustomerCommentary(String streetName) {
         this.streetName = streetName;
     }
 
@@ -36,11 +36,13 @@ public class AddressRequest {
         this.houseNumber = houseNumber;
     }
 
-    public String getAddition() {
+    public String getLatestComplaintAddition() {
         return addition;
     }
 
-    public void setAddition(String addition) {
+    public void setLatestComplaintAddition(String addition) {
         this.addition = addition;
     }
 }
+
+ */

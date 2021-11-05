@@ -2,7 +2,6 @@ package nl.quin.complaintservicesystem.controller;
 
 import nl.quin.complaintservicesystem.payload.request.CustomerComplaintRequest;
 import nl.quin.complaintservicesystem.payload.request.CustomerDetailsRequest;
-import nl.quin.complaintservicesystem.payload.request.SignupRequest;
 import nl.quin.complaintservicesystem.service.CustomerDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

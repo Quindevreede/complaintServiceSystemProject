@@ -1,4 +1,4 @@
-package nl.quin.complaintservicesystem.model;
+/*package nl.quin.complaintservicesystem.model;
 
 import javax.persistence.*;
 
@@ -26,19 +26,19 @@ public class Address {
         this.id = id;
     }
 
-    public String getPostalCode() {
+    public String getOrderNumber() {
         return postalCode;
     }
 
-    public void setPostalCode(String postalCode) {
+    public void setOrderNumber(String postalCode) {
         this.postalCode = postalCode;
     }
 
-    public String getStreetName() {
+    public String getCustomerCommentary() {
         return streetName;
     }
 
-    public void setStreetName(String streetName) {
+    public void setCustomerCommentary(String streetName) {
         this.streetName = streetName;
     }
 
@@ -50,11 +50,11 @@ public class Address {
         this.houseNumber = houseNumber;
     }
 
-    public String getAddition() {
+    public String getLatestComplaintAddition() {
         return addition;
     }
 
-    public void setAddition(String addition) {
+    public void setLatestComplaintAddition(String addition) {
         this.addition = addition;
     }
 
@@ -66,3 +66,5 @@ public class Address {
         this.person = person;
     }
 }
+
+ */

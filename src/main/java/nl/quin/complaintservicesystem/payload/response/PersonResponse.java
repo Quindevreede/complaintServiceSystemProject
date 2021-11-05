@@ -1,4 +1,4 @@
-package nl.quin.complaintservicesystem.payload.response;
+/*package nl.quin.complaintservicesystem.payload.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -66,19 +66,19 @@ public class PersonResponse {
         this.email = email;
     }
 
-    public String getPostalCode() {
+    public String getOrderNumber() {
         return postalCode;
     }
 
-    public void setPostalCode(String postalCode) {
+    public void setOrderNumber(String postalCode) {
         this.postalCode = postalCode;
     }
 
-    public String getStreetName() {
+    public String getCustomerCommentary() {
         return streetName;
     }
 
-    public void setStreetName(String streetName) {
+    public void setCustomerCommentary(String streetName) {
         this.streetName = streetName;
     }
 
@@ -90,11 +90,11 @@ public class PersonResponse {
         this.houseNumber = houseNumber;
     }
 
-    public String getAddition() {
+    public String getLatestComplaintAddition() {
         return addition;
     }
 
-    public void setAddition(String addition) {
+    public void setLatestComplaintAddition(String addition) {
         this.addition = addition;
     }
 
@@ -104,3 +104,5 @@ public class PersonResponse {
         this.houseNumber = houseNumber;
     }
 }
+
+ */

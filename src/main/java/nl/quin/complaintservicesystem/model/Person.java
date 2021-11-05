@@ -1,4 +1,4 @@
-package nl.quin.complaintservicesystem.model;
+/*package nl.quin.complaintservicesystem.model;
 
 import javax.persistence.*;
 
@@ -76,3 +76,5 @@ public class Person {
         this.address = address;
     }
 }
+
+ */

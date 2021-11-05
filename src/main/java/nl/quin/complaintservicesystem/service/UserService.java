@@ -29,7 +29,7 @@ public class UserService {
 //    @Autowired
 //    private AuthorityRepository authorityRepository;
 
-    //op public gezet, also called in customerservice
+    //op public gezet, also called in customerdetailsservice
     public String getCurrentUserName() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return ((UserDetails) authentication.getPrincipal()).getUsername();

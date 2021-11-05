@@ -2,12 +2,10 @@ package nl.quin.complaintservicesystem.service;
 
 import nl.quin.complaintservicesystem.model.CustomerComplaint;
 import nl.quin.complaintservicesystem.model.CustomerDetails;
-import nl.quin.complaintservicesystem.payload.request.AddressRequest;
 import nl.quin.complaintservicesystem.payload.request.CustomerComplaintRequest;
 import nl.quin.complaintservicesystem.payload.request.CustomerDetailsRequest;
 import nl.quin.complaintservicesystem.payload.response.CustomerDetailsResponse;
 import nl.quin.complaintservicesystem.payload.response.ErrorResponse;
-import nl.quin.complaintservicesystem.payload.response.PersonResponse;
 import nl.quin.complaintservicesystem.repository.CustomerComplaintRepository;
 import nl.quin.complaintservicesystem.repository.CustomerDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,10 +48,6 @@ public class CustomerDetailsServiceImpl implements nl.quin.complaintservicesyste
         if(customerDetailsRequest.getLastName() != null && !customerDetailsRequest.getLastName().equals("")) {
             customerDetails.setLastName(customerDetailsRequest.getLastName());
         }
-
-        if(!customerDetailsRequest.getPassword().equals(customerDetailsRequest.getRepeatedPassword())) {
-            errorResponse.addError("repeatedPassword", "The passwords do not match eachother.");
-        }
         if(customerDetailsRepository.existsByUsername(customerDetailsRequest.getUsername())) {
             errorResponse.addError("username", "The username already exists.");
         }
@@ -63,7 +57,6 @@ public class CustomerDetailsServiceImpl implements nl.quin.complaintservicesyste
 
         customerDetails.setEmail(customerDetailsRequest.getEmail());
         customerDetails.setUsername(customerDetailsRequest.getUsername());
-        customerDetails.setPassword(customerDetailsRequest.getPassword());
 
         if(errorResponse.hasErrors()) {
             return ResponseEntity.status(400).body(errorResponse);
@@ -88,13 +81,8 @@ public class CustomerDetailsServiceImpl implements nl.quin.complaintservicesyste
 
         CustomerDetails customerDetailsWithCustomerComplaint = optionalCustomerDetails.get();
         CustomerComplaint customerComplaint = new CustomerComplaint();
-        customerComplaint.setPostalCode(customerComplaintRequest.getPostalCode());
-        customerComplaint.setHouseNumber(customerComplaintRequest.getHouseNumber());
-        customerComplaint.setStreetName(customerComplaintRequest.getStreetName());
-        //TODO validation not null in request?
-        if(customerComplaintRequest.getAddition() != null && !customerComplaintRequest.getAddition().equals("")) {
-            customerComplaint.setAddition(customerComplaintRequest.getAddition());
-        }
+        customerComplaint.setOrderNumber(customerComplaintRequest.getOrderNumber());
+        customerComplaint.setCustomerCommentary(customerComplaintRequest.getCustomerCommentary());
         customerComplaint.setCustomerDetails(customerDetailsWithCustomerComplaint);
 
         customerComplaintRepository.save(customerComplaint);
@@ -135,9 +123,6 @@ public class CustomerDetailsServiceImpl implements nl.quin.complaintservicesyste
         if(customerDetails.getCustomerComplaintList()!=null && customerDetails.getCustomerComplaintList().size() > 0) {
             for(CustomerComplaint customerComplaint:  customerDetails.getCustomerComplaintList()) {
                 customerDetailsResponse.addCustomerComplaint(customerComplaint);
-                if(customerComplaint.getAddition()!= null && !customerComplaint.getAddition().equals("")) {
-                    customerDetailsResponse.setAddition(customerComplaint.getAddition());
-                }
             }
         }
         return customerDetailsResponse;

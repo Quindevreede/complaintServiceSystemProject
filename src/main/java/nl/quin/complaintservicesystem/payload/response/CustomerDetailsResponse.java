@@ -18,7 +18,6 @@ public class CustomerDetailsResponse {
     private String postalCode;
     private String streetName;
     private String houseNumber;
-    private String addition;
 
     private List<CustomerComplaint> customerComplaintList= new ArrayList<>();
 
@@ -79,6 +78,7 @@ public class CustomerDetailsResponse {
         this.email = email;
     }
 
+
     public String getPostalCode() {
         return postalCode;
     }
@@ -101,14 +101,6 @@ public class CustomerDetailsResponse {
 
     public void setHouseNumber(String houseNumber) {
         this.houseNumber = houseNumber;
-    }
-
-    public String getAddition() {
-        return addition;
-    }
-
-    public void setAddition(String addition) {
-        this.addition = addition;
     }
 
     public List<CustomerComplaint> getCustomerComplaintList() {

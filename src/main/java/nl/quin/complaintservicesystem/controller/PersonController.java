@@ -1,4 +1,4 @@
-package nl.quin.complaintservicesystem.controller;
+/*package nl.quin.complaintservicesystem.controller;
 
 import nl.quin.complaintservicesystem.payload.request.AddressRequest;
 import nl.quin.complaintservicesystem.payload.request.SignupRequest;
@@ -59,3 +59,5 @@ public class PersonController {
         return errors;
     }
 }
+
+ */

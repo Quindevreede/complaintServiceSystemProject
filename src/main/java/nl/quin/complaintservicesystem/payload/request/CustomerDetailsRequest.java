@@ -13,11 +13,6 @@ public class CustomerDetailsRequest {
     @NotBlank(message = "Email is mandatory")
     private String email;
 
-    @NotBlank(message = "Password is mandatory")
-    private String password;
-    @NotBlank(message = "Repeated Password is mandatory")
-    private String repeatedPassword;
-
     // GETTERS SETTERS
 
     public String getFirstName() {
@@ -52,19 +47,4 @@ public class CustomerDetailsRequest {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getRepeatedPassword() {
-        return repeatedPassword;
-    }
-
-    public void setRepeatedPassword(String repeatedPassword) {
-        this.repeatedPassword = repeatedPassword;
-    }
 }

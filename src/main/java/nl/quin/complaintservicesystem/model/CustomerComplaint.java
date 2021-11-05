@@ -11,14 +11,14 @@ public class CustomerComplaint {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String postalCode;
-    private String streetName;
-    private String houseNumber;
-    private String addition;
+    private String orderNumber;
+    private String customerCommentary;
+
 
     @ManyToOne
     @JsonBackReference
     private CustomerDetails customerDetails;
+
 
     public long getId() {
         return id;
@@ -28,36 +28,20 @@ public class CustomerComplaint {
         this.id = id;
     }
 
-    public String getPostalCode() {
-        return postalCode;
+    public String getOrderNumber() {
+        return orderNumber;
     }
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
     }
 
-    public String getStreetName() {
-        return streetName;
+    public String getCustomerCommentary() {
+        return customerCommentary;
     }
 
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
-    }
-
-    public String getHouseNumber() {
-        return houseNumber;
-    }
-
-    public void setHouseNumber(String houseNumber) {
-        this.houseNumber = houseNumber;
-    }
-
-    public String getAddition() {
-        return addition;
-    }
-
-    public void setAddition(String addition) {
-        this.addition = addition;
+    public void setCustomerCommentary(String customerCommentary) {
+        this.customerCommentary = customerCommentary;
     }
 
     public CustomerDetails getCustomerDetails() {
