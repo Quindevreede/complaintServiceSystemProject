@@ -58,9 +58,6 @@ public class CustomerDetailsService {
         CustomerDetails storedCustomerDetails = customerDetailsRepository.findById(id).orElse(null);
         for (String field : fields.keySet()) {
             switch (field) {
-                case "order_number":
-                    storedCustomerDetails.setFirstName((String) fields.get(field));
-                    break;
                 case "first_name":
                     storedCustomerDetails.setFirstName((String) fields.get(field));
                     break;
