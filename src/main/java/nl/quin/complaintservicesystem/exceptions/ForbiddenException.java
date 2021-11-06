@@ -1,4 +1,4 @@
-package nl.quin.complaintservicesystem.exceptions;
+package nl.novi.testjunitjupiter.exceptions;
 
 public class ForbiddenException extends RuntimeException {
     private static final long serialVersionUID = 1L;

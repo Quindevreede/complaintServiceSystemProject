@@ -1,4 +1,4 @@
-package nl.quin.complaintservicesystem.model;
+package nl.novi.testjunitjupiter.model.model;
 
 import javax.persistence.*;
 import java.io.Serializable;

@@ -1,6 +1,4 @@
-package nl.quin.complaintservicesystem.security;
-
-import nl.quin.complaintservicesystem.security.JwtUtil;
+package nl.novi.testjunitjupiter.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

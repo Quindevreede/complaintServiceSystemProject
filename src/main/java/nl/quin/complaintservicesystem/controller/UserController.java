@@ -1,9 +1,9 @@
-package nl.quin.complaintservicesystem.controller;
+package nl.novi.testjunitjupiter.controller.controller;
 
-import nl.quin.complaintservicesystem.exceptions.BadRequestException;
-import nl.quin.complaintservicesystem.model.User;
-import nl.quin.complaintservicesystem.payload.request.UserPostRequest;
-import nl.quin.complaintservicesystem.service.UserService;
+import nl.novi.testjunitjupiter.exceptions.BadRequestException;
+import nl.novi.testjunitjupiter.model.model.User;
+import nl.novi.testjunitjupiter.payload.request.UserPostRequest;
+import nl.novi.testjunitjupiter.service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;

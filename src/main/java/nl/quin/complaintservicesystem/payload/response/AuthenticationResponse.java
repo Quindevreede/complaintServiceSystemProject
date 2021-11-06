@@ -1,4 +1,4 @@
-package nl.quin.complaintservicesystem.payload.response;
+package nl.quin.complaintservicesystem;
 
 public class AuthenticationResponse {
 

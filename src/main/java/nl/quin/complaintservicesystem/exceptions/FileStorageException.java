@@ -1,4 +1,4 @@
-package nl.quin.complaintservicesystem.exceptions;
+package nl.novi.testjunitjupiter.exceptions;
 
 import java.io.Serial;
 
@@ -16,3 +16,4 @@ public class FileStorageException extends RuntimeException {
     }
 
 }
+

@@ -1,39 +1,46 @@
 package nl.quin.complaintservicesystem.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-public class CustomerDetails {
+@Table(name = "customer_complaint_details")
+public class CustomerComplaintDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    Long id;
 
-    private String firstName;
-    private String lastName;
+    //Corresponds to user id : username
+    @Column
+    String username;
 
-    private String username;
-    private String email;
+    @Column
+    String firstName;
 
-    @OneToOne
-    @JsonBackReference("customerDetails")
-    User user;
+    @Column
+    String lastName;
 
-    @OneToMany(mappedBy = "customerDetails")
-    @JsonBackReference
-    private List<CustomerComplaint> customerComplaintList = new ArrayList<>();
-    //private CustomerComplaint customerComplaint;
+    @Column
+    String email;
 
-    public long getId() {
+    // CONSTRUCTORS
+
+    // GETTERS SETTERS
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getFirstName() {
@@ -52,16 +59,6 @@ public class CustomerDetails {
         this.lastName = lastName;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-
-
     public String getEmail() {
         return email;
     }
@@ -70,19 +67,5 @@ public class CustomerDetails {
         this.email = email;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<CustomerComplaint> getCustomerComplaintList() {
-        return customerComplaintList;
-    }
-
-    public void setCustomerComplaintList(List<CustomerComplaint> customerComplaintList) {
-        this.customerComplaintList = customerComplaintList;
-    }
 }
+

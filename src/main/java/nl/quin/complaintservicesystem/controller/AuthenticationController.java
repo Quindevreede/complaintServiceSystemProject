@@ -1,15 +1,17 @@
-package nl.quin.complaintservicesystem.controller;
+package nl.novi.testjunitjupiter.controller.controller;
 
 
-import nl.quin.complaintservicesystem.payload.request.AuthenticationRequest;
-import nl.quin.complaintservicesystem.payload.response.AuthenticationResponse;
-import nl.quin.complaintservicesystem.service.UserAuthenticateService;
+import nl.novi.testjunitjupiter.payload.request.AuthenticationRequest;
+import nl.novi.testjunitjupiter.payload.response.AuthenticationResponse;
+import nl.novi.testjunitjupiter.service.service.UserAuthenticateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.security.Principal;
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600) // Cross origin allowed for port 3000
 
 @RestController
 public class AuthenticationController {

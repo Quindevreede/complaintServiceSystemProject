@@ -1,6 +1,4 @@
-package nl.quin.complaintservicesystem.model;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
+package nl.novi.testjunitjupiter.model.model;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -21,18 +19,12 @@ public class User {
     private boolean enabled = true;
 
     @OneToMany(
-            targetEntity = nl.quin.complaintservicesystem.model.Authority.class,
+            targetEntity = nl.novi.testjunitjupiter.model.model.Authority.class,
             mappedBy = "username",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.EAGER)
-    private Set<nl.quin.complaintservicesystem.model.Authority> authorities = new HashSet<>();
-
-
-    @OneToOne(mappedBy = "user")
-    @JsonBackReference("customerDetails")
-    CustomerDetails customerDetails;
-
+    private Set<nl.novi.testjunitjupiter.model.model.Authority> authorities = new HashSet<>();
 
     public String getUsername() {
         return username;
@@ -58,23 +50,16 @@ public class User {
         this.enabled = enabled;
     }
 
-    public Set<Authority> getAuthorities() {
+    public Set<nl.novi.testjunitjupiter.model.model.Authority> getAuthorities() {
         return authorities;
     }
 
-    public void addAuthority(Authority authority) {
+    public void addAuthority(nl.novi.testjunitjupiter.model.model.Authority authority) {
         this.authorities.add(authority);
     }
 
-    public void removeAuthority(Authority authority) {
+    public void removeAuthority(nl.novi.testjunitjupiter.model.model.Authority authority) {
         this.authorities.remove(authority);
     }
 
-    public CustomerDetails getCustomerDetails() {
-        return customerDetails;
-    }
-
-    public void setCustomerDetails(CustomerDetails customerDetails) {
-        this.customerDetails = customerDetails;
-    }
 }

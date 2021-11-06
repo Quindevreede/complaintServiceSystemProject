@@ -1,10 +1,8 @@
-package nl.quin.complaintservicesystem.security;
+package nl.novi.testjunitjupiter.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
-
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -24,17 +22,14 @@ import javax.sql.DataSource;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Autowired
     private DataSource dataSource;
-    @Autowired
     private JwtRequestFilter jwtRequestFilter;
 
-
-/*    @Autowired
+    @Autowired
     WebSecurityConfiguration(DataSource dataSource, JwtRequestFilter jwtRequestFilter) {
         this.dataSource = dataSource;
         this.jwtRequestFilter = jwtRequestFilter;
-    }*/
+    }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -72,8 +67,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/customers_complaint_details/**").hasRole("USER")
+                .antMatchers("/production_complaint_details/**").hasRole("ADMIN")
                 .antMatchers("/users/**").permitAll()
-                .antMatchers("/upload_download/").hasRole("USER")
+                .antMatchers("/usersone/**").permitAll()
+                .antMatchers("/customer_assist_employees/**").hasRole("ADMIN")
+                .antMatchers("/production_employees/**").hasRole("ADMIN")
+                .antMatchers("/upload_download").hasRole("USER")
                 .and()
                 .csrf().disable()
                 .formLogin().disable()

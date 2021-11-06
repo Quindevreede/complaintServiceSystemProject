@@ -1,72 +1,60 @@
 package nl.quin.complaintservicesystem.controller;
 
-import nl.quin.complaintservicesystem.payload.request.CustomerComplaintRequest;
-import nl.quin.complaintservicesystem.payload.request.CustomerDetailsRequest;
-import nl.quin.complaintservicesystem.payload.request.UserPostRequest;
-import nl.quin.complaintservicesystem.service.CustomerDetailsService;
+import nl.quin.complaintservicesystem.model.CustomerComplaintDetails;
+import nl.quin.complaintservicesystem.service.CustomerComplaintDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.persistence.Id;
-import javax.validation.Valid;
-import java.util.HashMap;
+import java.net.URI;
 import java.util.Map;
 
-@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/customer_details")
-public class CustomerDetailsController {
-
-    private CustomerDetailsService customerDetailsService;
+@CrossOrigin
+@RequestMapping(value = "/customer_complaint_details")
+public class CustomerComplaintDetailsController {
 
     @Autowired
-    public void setCustomerDetailsService(CustomerDetailsService customerDetailsService) {
-        this.customerDetailsService = customerDetailsService;
+    private CustomerComplaintDetailsService customerComplaintDetailsService;
+
+    @GetMapping(value = "")
+    public ResponseEntity<Object> searchCustomerDetails(@RequestParam(name="name", defaultValue="") String name) {
+        return ResponseEntity.ok().body(customerComplaintDetailsService.getCustomers(name));
     }
 
-    @PostMapping("/print")
-    public ResponseEntity<?> printCustomerInfo(@Valid @RequestBody CustomerDetailsRequest customerDetailsRequest) {
-        return customerDetailsService.printCustomerDetails(customerDetailsRequest);
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Object> getCustomerDetails(@PathVariable("id") long id) {
+        return ResponseEntity.ok().body(customerComplaintDetailsService.getCustomerById(id));
     }
 
-    @PostMapping("/{id}")
-    public ResponseEntity<?> customerDetailsWithoutComplaint(@Valid @RequestBody CustomerDetailsRequest customerDetailsRequest) {
-        return customerDetailsService.registerWithoutCustomerComplaint(customerDetailsRequest);
+    @PostMapping(value = "")
+    public ResponseEntity<Object> createCustomerDetails(@RequestBody CustomerComplaintDetails customerComplaintDetails) {
+        long newId = customerComplaintDetailsService.createCustomer(customerComplaintDetails);
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(newId).toUri();
+
+        return ResponseEntity.created(location).body(location);
     }
 
-    @PostMapping("/{id}/complaint")
-    public ResponseEntity<?> addCustomerComplaintToCustomerDetailsById(@PathVariable("id") long id,
-                                                                       @Valid @RequestBody CustomerComplaintRequest customerComplaintRequest) {
-        return customerDetailsService.addCustomerComplaintToCustomerDetailsById(id, customerComplaintRequest);
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Object> updateCustomerDetails(@PathVariable("id") long id, @RequestBody CustomerComplaintDetails customerComplaintDetails) {
+        customerComplaintDetailsService.updateCustomer(id, customerComplaintDetails);
+        return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getCustomerDetailsById(@PathVariable("id") long id) {
-        return customerDetailsService.getCustomerDetailsInfoById(id);
+    @PatchMapping(value = "/{id}")
+    public ResponseEntity<Object> updateCustomerDetailsPartial(@PathVariable("id") long id, @RequestBody Map<String, String> fields) {
+        customerComplaintDetailsService.partialUpdateCustomer(id, fields);
+        return ResponseEntity.noContent().build();
     }
 
-
-   @PostMapping("/{id}/user")
-    public void addUserToCustomerDetailsById(@PathVariable("id") long id,
-                                            @Valid @RequestBody String username) {
-        customerDetailsService.addUserToCustomerDetailsById(id, username);
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Object> deleteCustomerDetails(@PathVariable("id") long id) {
+        customerComplaintDetailsService.deleteCustomer(id);
+        return ResponseEntity.noContent().build();
     }
 
-
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
-        Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach(error -> {
-            String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
-        });
-        return errors;
-    }
 }
+

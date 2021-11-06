@@ -1,4 +1,4 @@
-package nl.quin.complaintservicesystem.controller;
+package nl.novi.testjunitjupiter.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
