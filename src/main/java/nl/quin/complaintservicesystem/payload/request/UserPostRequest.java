@@ -1,4 +1,4 @@
-package nl.quin.complaintservicesystem;
+package nl.quin.complaintservicesystem.payload.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,8 +1,8 @@
 package nl.quin.complaintservicesystem.service;
 
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
-import nl.quin.complaintservicesystem.model.CustomerComplaintDetails;
-import nl.quin.complaintservicesystem.repository.CustomerComplaintDetailsRepository;
+import nl.quin.complaintservicesystem.model.CustomerDetails;
+import nl.quin.complaintservicesystem.repository.CustomerDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,73 +11,73 @@ import java.util.Map;
 
 
 @Service
-public class CustomerComplaintDetailsService {
+public class CustomerDetailsService {
 
     @Autowired
-    CustomerComplaintDetailsRepository customerComplaintDetailsRepository;
+    CustomerDetailsRepository customerDetailsRepository;
 
     @Autowired
     UserService username;
 
-    public Collection<CustomerComplaintDetails> getAllCustomers() {
-        return customerComplaintDetailsRepository.findAll();
+    public Collection<CustomerDetails> getAllCustomers() {
+        return customerDetailsRepository.findAll();
     }
 
-    public Collection<CustomerComplaintDetails> getCustomers(String name) {
+    public Collection<CustomerDetails> getCustomers(String name) {
         if (name.isEmpty()) {
-            return customerComplaintDetailsRepository.findAll();
+            return customerDetailsRepository.findAll();
         }
         else {
-            return customerComplaintDetailsRepository.findAllByLastName(name);
+            return customerDetailsRepository.findAllByLastName(name);
         }
     }
 
-    public CustomerComplaintDetails getCustomerById(long id) {
-        if (!customerComplaintDetailsRepository.existsById(id)) { throw new UserNotFoundException(); }
-        return customerComplaintDetailsRepository.findById(id).orElse(null);
+    public CustomerDetails getCustomerById(long id) {
+        if (!customerDetailsRepository.existsById(id)) { throw new UserNotFoundException(); }
+        return customerDetailsRepository.findById(id).orElse(null);
     }
 
-    public long createCustomer (CustomerComplaintDetails customerComplaintDetails) {
-        customerComplaintDetails.setUsername(username.getCurrentUserName()); //TODO if no currentUserName? kan deze in uiteindelijke???
-        CustomerComplaintDetails storedCustomerComplaintDetails = customerComplaintDetailsRepository.save(customerComplaintDetails);
-        return storedCustomerComplaintDetails.getId();
+    public long createCustomer (CustomerDetails customerDetails) {
+        customerDetails.setUsername(username.getCurrentUserName()); //TODO if no currentUserName? kan deze in uiteindelijke???
+        CustomerDetails storedCustomerDetails = customerDetailsRepository.save(customerDetails);
+        return storedCustomerDetails.getId();
     }
 
-    public void updateCustomer(long id, CustomerComplaintDetails customerComplaintDetails) {
-        if (!customerComplaintDetailsRepository.existsById(id)) { throw new UserNotFoundException(); }
-        CustomerComplaintDetails storedCustomerComplaintDetails = customerComplaintDetailsRepository.findById(id).orElse(null);
-        storedCustomerComplaintDetails.setUsername(username.getCurrentUserName());
-        storedCustomerComplaintDetails.setFirstName(customerComplaintDetails.getFirstName());
-        storedCustomerComplaintDetails.setLastName(customerComplaintDetails.getLastName());
-        storedCustomerComplaintDetails.setEmail(customerComplaintDetails.getEmail());
-        customerComplaintDetailsRepository.save(customerComplaintDetails);
+    public void updateCustomer(long id, CustomerDetails customerDetails) {
+        if (!customerDetailsRepository.existsById(id)) { throw new UserNotFoundException(); }
+        CustomerDetails storedCustomerDetails = customerDetailsRepository.findById(id).orElse(null);
+        storedCustomerDetails.setUsername(username.getCurrentUserName());
+        storedCustomerDetails.setFirstName(customerDetails.getFirstName());
+        storedCustomerDetails.setLastName(customerDetails.getLastName());
+        storedCustomerDetails.setEmail(customerDetails.getEmail());
+        customerDetailsRepository.save(customerDetails);
     }
 
     public void partialUpdateCustomer(long id, Map<String, String> fields) {
-        if (!customerComplaintDetailsRepository.existsById(id)) { throw new UserNotFoundException(); }
-        CustomerComplaintDetails storedCustomerComplaintDetails = customerComplaintDetailsRepository.findById(id).orElse(null);
+        if (!customerDetailsRepository.existsById(id)) { throw new UserNotFoundException(); }
+        CustomerDetails storedCustomerDetails = customerDetailsRepository.findById(id).orElse(null);
         for (String field : fields.keySet()) {
             switch (field) {
                 case "order_number":
-                    storedCustomerComplaintDetails.setFirstName((String) fields.get(field));
+                    storedCustomerDetails.setFirstName((String) fields.get(field));
                     break;
                 case "first_name":
-                    storedCustomerComplaintDetails.setFirstName((String) fields.get(field));
+                    storedCustomerDetails.setFirstName((String) fields.get(field));
                     break;
                 case "last_name":
-                    storedCustomerComplaintDetails.setLastName((String) fields.get(field));
+                    storedCustomerDetails.setLastName((String) fields.get(field));
                     break;
                 case "email":
-                    storedCustomerComplaintDetails.setEmail((String) fields.get(field));
+                    storedCustomerDetails.setEmail((String) fields.get(field));
                     break;
             }
         }
-        customerComplaintDetailsRepository.save(storedCustomerComplaintDetails);
+        customerDetailsRepository.save(storedCustomerDetails);
     }
 
     public void deleteCustomer(long id) {
-        if (!customerComplaintDetailsRepository.existsById(id)) { throw new UserNotFoundException(); }
-        customerComplaintDetailsRepository.deleteById(id);
+        if (!customerDetailsRepository.existsById(id)) { throw new UserNotFoundException(); }
+        customerDetailsRepository.deleteById(id);
     }
 
 }

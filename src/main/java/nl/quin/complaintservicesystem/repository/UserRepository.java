@@ -1,6 +1,6 @@
-package nl.novi.testjunitjupiter.repository.repository;
+package nl.quin.complaintservicesystem.repository;
 
-import nl.novi.testjunitjupiter.model.model.User;
+import nl.quin.complaintservicesystem.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Collection;

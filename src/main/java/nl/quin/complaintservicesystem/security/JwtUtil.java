@@ -1,4 +1,4 @@
-package nl.novi.testjunitjupiter.security;
+package nl.quin.complaintservicesystem.security;
 
 
 import io.jsonwebtoken.Claims;

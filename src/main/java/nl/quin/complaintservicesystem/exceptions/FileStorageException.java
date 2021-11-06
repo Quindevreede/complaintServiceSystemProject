@@ -1,4 +1,4 @@
-package nl.novi.testjunitjupiter.exceptions;
+package nl.quin.complaintservicesystem.exceptions;
 
 import java.io.Serial;
 

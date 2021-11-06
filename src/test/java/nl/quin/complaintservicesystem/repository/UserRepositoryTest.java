@@ -39,37 +39,18 @@ class UserRepositoryTest {
     @Test
     void testFindByLastLast() {
 
-        // given
+        // Arrange
 
         entityManager.persist(user);
         entityManager.flush();
 
-        // when
+        // Act
         Optional<User> found = userRepository.findByUsername(user.getUsername());
 
-        // then
+        // Assert
         String expected = "johndoe";
         String actual = found.get().getUsername();
         assertEquals(expected, actual);
     }
-
-
-/*    @Test
-    void testFindAllByLastName() {
-
-        // given
-
-        entityManager.persist(user);
-        entityManager.flush();
-
-        // when
-        Collection<User> found = userRepository.findAllByUsername(user.getUsername());
-
-        // then
-        String expected = "johndoe";
-        boolean actual = found.contains(user.getUsername());
-        assertEquals(expected, actual);
-    }
- */
 
 }

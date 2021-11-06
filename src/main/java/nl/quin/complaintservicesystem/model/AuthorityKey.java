@@ -1,4 +1,4 @@
-package nl.novi.testjunitjupiter.model.model;
+package nl.quin.complaintservicesystem.model;
 
 import java.io.Serializable;
 

@@ -1,11 +1,11 @@
-package nl.novi.testjunitjupiter.service.service;
+package nl.quin.complaintservicesystem.service;
 
-import nl.novi.testjunitjupiter.exceptions.RecordNotFoundException;
-import nl.novi.testjunitjupiter.exceptions.UserNotFoundException;
-import nl.novi.testjunitjupiter.model.model.Authority;
-import nl.novi.testjunitjupiter.model.model.User;
-import nl.novi.testjunitjupiter.payload.request.UserPostRequest;
-import nl.novi.testjunitjupiter.repository.repository.UserRepository;
+import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
+import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
+import nl.quin.complaintservicesystem.model.Authority;
+import nl.quin.complaintservicesystem.model.User;
+import nl.quin.complaintservicesystem.payload.request.UserPostRequest;
+import nl.quin.complaintservicesystem.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

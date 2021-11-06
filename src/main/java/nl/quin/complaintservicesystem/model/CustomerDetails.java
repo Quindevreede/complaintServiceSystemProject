@@ -3,8 +3,8 @@ package nl.quin.complaintservicesystem.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "customer_complaint_details")
-public class CustomerComplaintDetails {
+@Table(name = "customer_details")
+public class CustomerDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

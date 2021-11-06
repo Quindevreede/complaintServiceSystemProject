@@ -1,7 +1,7 @@
 package nl.quin.complaintservicesystem.controller;
 
-import nl.quin.complaintservicesystem.model.CustomerComplaintDetails;
-import nl.quin.complaintservicesystem.service.CustomerComplaintDetailsService;
+import nl.quin.complaintservicesystem.model.CustomerDetails;
+import nl.quin.complaintservicesystem.service.CustomerDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,25 +12,25 @@ import java.util.Map;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/customer_complaint_details")
-public class CustomerComplaintDetailsController {
+@RequestMapping(value = "/customer_details")
+public class CustomerDetailsController {
 
     @Autowired
-    private CustomerComplaintDetailsService customerComplaintDetailsService;
+    private CustomerDetailsService customerDetailsService;
 
     @GetMapping(value = "")
     public ResponseEntity<Object> searchCustomerDetails(@RequestParam(name="name", defaultValue="") String name) {
-        return ResponseEntity.ok().body(customerComplaintDetailsService.getCustomers(name));
+        return ResponseEntity.ok().body(customerDetailsService.getCustomers(name));
     }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Object> getCustomerDetails(@PathVariable("id") long id) {
-        return ResponseEntity.ok().body(customerComplaintDetailsService.getCustomerById(id));
+        return ResponseEntity.ok().body(customerDetailsService.getCustomerById(id));
     }
 
     @PostMapping(value = "")
-    public ResponseEntity<Object> createCustomerDetails(@RequestBody CustomerComplaintDetails customerComplaintDetails) {
-        long newId = customerComplaintDetailsService.createCustomer(customerComplaintDetails);
+    public ResponseEntity<Object> createCustomerDetails(@RequestBody CustomerDetails customerDetails) {
+        long newId = customerDetailsService.createCustomer(customerDetails);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(newId).toUri();
@@ -39,20 +39,20 @@ public class CustomerComplaintDetailsController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Object> updateCustomerDetails(@PathVariable("id") long id, @RequestBody CustomerComplaintDetails customerComplaintDetails) {
-        customerComplaintDetailsService.updateCustomer(id, customerComplaintDetails);
+    public ResponseEntity<Object> updateCustomerDetails(@PathVariable("id") long id, @RequestBody CustomerDetails customerDetails) {
+        customerDetailsService.updateCustomer(id, customerDetails);
         return ResponseEntity.noContent().build();
     }
 
     @PatchMapping(value = "/{id}")
     public ResponseEntity<Object> updateCustomerDetailsPartial(@PathVariable("id") long id, @RequestBody Map<String, String> fields) {
-        customerComplaintDetailsService.partialUpdateCustomer(id, fields);
+        customerDetailsService.partialUpdateCustomer(id, fields);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Object> deleteCustomerDetails(@PathVariable("id") long id) {
-        customerComplaintDetailsService.deleteCustomer(id);
+        customerDetailsService.deleteCustomer(id);
         return ResponseEntity.noContent().build();
     }
 

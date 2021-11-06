@@ -1,4 +1,4 @@
-package nl.novi.testjunitjupiter.security;
+package nl.quin.complaintservicesystem.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -68,12 +68,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/customers_complaint_details/**").hasRole("USER")
-                .antMatchers("/production_complaint_details/**").hasRole("ADMIN")
                 .antMatchers("/users/**").permitAll()
-                .antMatchers("/usersone/**").permitAll()
-                .antMatchers("/customer_assist_employees/**").hasRole("ADMIN")
-                .antMatchers("/production_employees/**").hasRole("ADMIN")
-                .antMatchers("/upload_download").hasRole("USER")
                 .and()
                 .csrf().disable()
                 .formLogin().disable()

@@ -1,4 +1,4 @@
-package nl.novi.testjunitjupiter.exceptions;
+package nl.quin.complaintservicesystem.exceptions;
 
 public class UserNotFoundException extends RuntimeException {
     private static final long serialVersionUID = 1L;
