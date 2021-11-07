@@ -1,13 +1,19 @@
 package nl.quin.complaintservicesystem.service;
 
+import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
+import nl.quin.complaintservicesystem.model.CustomerComplaint;
 import nl.quin.complaintservicesystem.model.CustomerDetails;
+import nl.quin.complaintservicesystem.payload.response.ErrorResponse;
+import nl.quin.complaintservicesystem.repository.CustomerComplaintRepository;
 import nl.quin.complaintservicesystem.repository.CustomerDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 
 
 @Service
@@ -18,6 +24,9 @@ public class CustomerDetailsService {
 
     @Autowired
     UserService username;
+
+    @Autowired
+    CustomerComplaintRepository customerComplaintRepository;
 
     public Collection<CustomerDetails> getAllCustomers() {
         return customerDetailsRepository.findAll();
@@ -78,3 +87,15 @@ public class CustomerDetailsService {
     }
 
 }
+
+/* //TODO//TODO//TODO
+     public Iterable<CustomerComplaint> getCustomerDetailsCustomerComplaint(long id) {
+        Optional<CustomerDetails> customerDetails = customerDetailsRepository.findById(id);
+        if (customerDetails.isPresent()) {
+            return customerDetails.get().getCustomerComplaint();
+        }
+        else {
+            throw new RecordNotFoundException("Team with id " + id + " not found");
+        }
+    }
+ */

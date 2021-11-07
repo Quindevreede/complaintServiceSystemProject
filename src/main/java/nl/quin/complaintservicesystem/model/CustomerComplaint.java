@@ -1,4 +1,7 @@
 package nl.quin.complaintservicesystem.model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -52,3 +55,23 @@ public class CustomerComplaint {
     public void setCustomerCommentary(String customerCommentary) {this.customerCommentary = customerCommentary;}
 
 }
+/* //TODO//TODO//TODO
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "customer_details", nullable = false)
+    //@JsonManagedReference DEZE GEEFT "status": 415, "error": "Unsupported Media Type",
+    private CustomerDetails customerDetails;
+
+    public CustomerDetails getCustomerDetails() {return customerDetails;}
+
+    public void setCustomerDetails(CustomerDetails customerDetails) {this.customerDetails = customerDetails;}
+
+---- //TODO//TODO//TODO
+
+    public CustomerDetails getCustomerDetails() {
+        return customerDetails;
+    }
+
+    public void setCustomerDetails(CustomerDetails customerDetails) {
+        this.customerDetails = customerDetails;
+    }
+ */

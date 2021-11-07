@@ -1,6 +1,10 @@
 package nl.quin.complaintservicesystem.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "customer_details")
@@ -68,4 +72,28 @@ public class CustomerDetails {
     }
 
 }
+
+/* //TODO//TODO//TODO
+
+    @OneToMany(mappedBy = "customerDetails",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<CustomerComplaint> customerComplaint;
+
+//TODO//TODO//TODO
+---------------------
+
+    public List<CustomerComplaint> getCustomerComplaint() {
+        return customerComplaint;
+    }
+
+    public void setCustomerComplaint(List<CustomerComplaint> customerComplaint) {
+        this.customerComplaint = customerComplaint;
+    }
+
+    public void addCustomerComplaint(CustomerComplaint customerComplaint) {
+        this.customerComplaint.add(customerComplaint);
+    }
+ */
 

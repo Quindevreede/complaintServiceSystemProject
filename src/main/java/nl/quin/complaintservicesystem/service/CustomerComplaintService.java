@@ -40,7 +40,7 @@ public class CustomerComplaintService {
         return customerComplaintRepository.findById(id).orElse(null);
     }
 
-    public long createCustomer (CustomerComplaint customerComplaint) {
+    public long createCustomerComplaint (CustomerComplaint customerComplaint) {
         customerComplaint.setUsername(username.getCurrentUserName()); //TODO if no currentUserName? kan deze in uiteindelijke???
         CustomerComplaint storedCustomerComplaint = customerComplaintRepository.save(customerComplaint);
         return storedCustomerComplaint.getId();
@@ -71,11 +71,18 @@ public class CustomerComplaintService {
         customerComplaintRepository.save(storedCustomerComplaint);
     }
 
-    public void deleteCustomer(long id) {
+    public void deleteCustomerComplaint(long id) {
         if (!customerComplaintRepository.existsById(id)) { throw new UserNotFoundException(); }
         customerComplaintRepository.deleteById(id);
     }
 
 }
 
+/*//TODO//TODO//TODO
+
+    public void save(CustomerComplaint customerComplaint) {
+        customerComplaintRepository.save(customerComplaint);
+    }
+
+ */
 

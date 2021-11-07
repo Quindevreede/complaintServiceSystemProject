@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.Map;
 
@@ -30,7 +31,7 @@ public class CustomerComplaintController {
 
     @PostMapping(value = "")
     public ResponseEntity<Object> createCustomerComplaint(@RequestBody CustomerComplaint customerComplaint) {
-        long newId = customerComplaintService.createCustomer(customerComplaint);
+        long newId = customerComplaintService.createCustomerComplaint(customerComplaint);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(newId).toUri();
@@ -52,9 +53,16 @@ public class CustomerComplaintController {
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Object> deleteCustomerComplaint(@PathVariable("id") long id) {
-        customerComplaintService.deleteCustomer(id);
+        customerComplaintService.deleteCustomerComplaint(id);
         return ResponseEntity.noContent().build();
     }
 
 }
 
+/*//TODO //TODO //TODO
+    @PostMapping(value = "/customer_complaint")
+    public ResponseEntity addCustomerComplaint(@RequestBody CustomerComplaint customercomplaint) {
+        customerComplaintService.save(customercomplaint);
+        return ResponseEntity.ok("Toegevoegd");
+    }
+ */
