@@ -27,12 +27,6 @@ public class CustomerDetails {
     @Column
     String email;
 
-    @OneToMany(mappedBy = "customerDetails",
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    @JsonBackReference
-    private List<CustomerComplaint> customerComplaint;
-
     // CONSTRUCTORS
 
     // GETTERS SETTERS
@@ -77,17 +71,6 @@ public class CustomerDetails {
         this.email = email;
     }
 
-    public void setCustomerComplaint(List<CustomerComplaint> customerComplaint) {
-        this.customerComplaint = customerComplaint;
-    }
-
-    public void addCustomerComplaint(CustomerComplaint customerComplaint) {
-        this.customerComplaint.add(customerComplaint);
-    }
-
-    public List<CustomerComplaint> getCustomerComplaint() {
-        return customerComplaint;
-    }
 }
 
 /* //TODO//TODO//TODO

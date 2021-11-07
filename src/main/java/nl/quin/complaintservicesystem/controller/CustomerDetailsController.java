@@ -57,11 +57,6 @@ public class CustomerDetailsController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping(value = "/customer_details/{id}/customer_complaint")
-    public ResponseEntity getCustomerDetailsCustomerComplaint(@PathVariable long id) {
-        Iterable<CustomerComplaint> customerDetailsCustomerComplaint = customerDetailsService.getCustomerDetailsCustomerComplaint(id);
-        return ResponseEntity.ok(customerDetailsCustomerComplaint);
-    }
 }
 
 

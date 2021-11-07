@@ -9,7 +9,7 @@ VALUES
      ('user', 'ROLE_USER')
     ,('admin', 'ROLE_ADMIN');
 
-/*
+
 INSERT INTO customer_details (first_name, last_name, email)
 VALUES
       ('John', 'Doe', 'johndoe@hotmail.com')
@@ -20,5 +20,5 @@ VALUES
       ('123', 'qwertyuiop')
      ,('321', 'poiuytrewq');
 
- */
+
 

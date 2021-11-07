@@ -22,12 +22,6 @@ public class CustomerComplaint {
     @Column
     String customerCommentary;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "customer_details", nullable = false)
-    //@JsonManagedReference DEZE GEEFT "status": 415, "error": "Unsupported Media Type",
-    private CustomerDetails customerDetails;
-
-
     // CONSTRUCTORS
 
     // GETTERS SETTERS
@@ -59,11 +53,6 @@ public class CustomerComplaint {
     public String getCustomerCommentary() {return customerCommentary;}
 
     public void setCustomerCommentary(String customerCommentary) {this.customerCommentary = customerCommentary;}
-
-    public CustomerDetails getCustomerDetails() {return customerDetails;}
-
-    public void setCustomerDetails(CustomerDetails customerDetails) {this.customerDetails = customerDetails;}
-
 
 }
 /* //TODO//TODO//TODO
