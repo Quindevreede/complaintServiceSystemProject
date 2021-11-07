@@ -76,6 +76,10 @@ public class CustomerComplaintService {
         customerComplaintRepository.deleteById(id);
     }
 
+    public void save(CustomerComplaint customerComplaint) {
+        customerComplaintRepository.save(customerComplaint);
+    }
+
 }
 
 /*//TODO//TODO//TODO

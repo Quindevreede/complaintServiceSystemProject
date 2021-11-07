@@ -57,7 +57,14 @@ public class CustomerComplaintController {
         return ResponseEntity.noContent().build();
     }
 
+    @PostMapping(value = "/customer_complaint")
+    public ResponseEntity addCustomerComplaint(@RequestBody CustomerComplaint customercomplaint) {
+        customerComplaintService.save(customercomplaint);
+        return ResponseEntity.ok("Toegevoegd");
+    }
 }
+
+
 
 /*//TODO //TODO //TODO
     @PostMapping(value = "/customer_complaint")

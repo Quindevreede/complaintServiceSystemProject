@@ -86,6 +86,16 @@ public class CustomerDetailsService {
         customerDetailsRepository.deleteById(id);
     }
 
+    public Iterable<CustomerComplaint> getCustomerDetailsCustomerComplaint(long id) {
+        Optional<CustomerDetails> customerDetails = customerDetailsRepository.findById(id);
+        if (customerDetails.isPresent()) {
+            return customerDetails.get().getCustomerComplaint();
+        }
+        else {
+            throw new RecordNotFoundException("Team with id " + id + " not found");
+        }
+    }
+
 }
 
 /* //TODO//TODO//TODO
