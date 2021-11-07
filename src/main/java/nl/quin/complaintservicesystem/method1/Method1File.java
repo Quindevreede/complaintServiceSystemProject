@@ -1,11 +1,11 @@
-package nl.quin.complaintservicesystem.model;
+package nl.quin.complaintservicesystem.method1;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "upload")
-public class Upload {
+@Table(name = "method_1_files")
+public class Method1File {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,13 +20,17 @@ public class Upload {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "media_type")
+    private String mediaType;
+
     @Column(name = "location")
     private String location;
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "customer_complaint_id")
-    private CustomerComplaint customerComplaint;
+    @Column(name = "uploaded_timestamp")
+    private Date uploadedTimestamp;
+
+    @Column(name = "uploaded_by_username")
+    private String uploadedByUsername;
 
     public long getId() {
         return id;
@@ -60,6 +64,14 @@ public class Upload {
         this.description = description;
     }
 
+    public String getMediaType() {
+        return mediaType;
+    }
+
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
+    }
+
     public String getLocation() {
         return location;
     }
@@ -68,11 +80,19 @@ public class Upload {
         this.location = location;
     }
 
-    public CustomerComplaint getCustomerComplaint() {
-        return customerComplaint;
+    public Date getUploadedTimestamp() {
+        return uploadedTimestamp;
     }
 
-    public void setCustomerComplaint(CustomerComplaint customerComplaint) {
-        this.customerComplaint = customerComplaint;
+    public void setUploadedTimestamp(Date uploadedTimestamp) {
+        this.uploadedTimestamp = uploadedTimestamp;
+    }
+
+    public String getUploadedByUsername() {
+        return uploadedByUsername;
+    }
+
+    public void setUploadedByUsername(String uploadedByUsername) {
+        this.uploadedByUsername = uploadedByUsername;
     }
 }

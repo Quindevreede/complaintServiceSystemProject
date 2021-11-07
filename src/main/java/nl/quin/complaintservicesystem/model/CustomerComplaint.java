@@ -22,6 +22,10 @@ public class CustomerComplaint {
     @Column
     String customerCommentary;
 
+@OneToOne(mappedBy = "customerComplaint", cascade = CascadeType.ALL)
+@PrimaryKeyJoinColumn
+private Upload upload;
+
     // CONSTRUCTORS
 
     // GETTERS SETTERS
@@ -53,6 +57,14 @@ public class CustomerComplaint {
     public String getCustomerCommentary() {return customerCommentary;}
 
     public void setCustomerCommentary(String customerCommentary) {this.customerCommentary = customerCommentary;}
+
+    public Upload getUpload() {
+        return upload;
+    }
+
+    public void setUpload(Upload upload) {
+        this.upload = upload;
+    }
 
 }
 /* //TODO//TODO//TODO
