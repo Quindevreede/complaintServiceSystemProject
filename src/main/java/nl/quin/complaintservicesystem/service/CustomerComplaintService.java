@@ -1,16 +1,15 @@
 package nl.quin.complaintservicesystem.service;
 
+import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
 import nl.quin.complaintservicesystem.model.CustomerComplaint;
-import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.repository.CustomerComplaintRepository;
+import nl.quin.complaintservicesystem.repository.UploadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 
 @Service
@@ -18,6 +17,9 @@ public class CustomerComplaintService {
 
     @Autowired
     CustomerComplaintRepository customerComplaintRepository;
+
+    @Autowired
+    UploadRepository uploadRepository;
 
     @Autowired
     UserService username;
@@ -74,6 +76,30 @@ public class CustomerComplaintService {
     public void deleteCustomerComplaint(long id) {
         if (!customerComplaintRepository.existsById(id)) { throw new UserNotFoundException(); }
         customerComplaintRepository.deleteById(id);
+    }
+
+    public void assignUploadToCustomerComplaint(Long id, Long uploadId) {
+
+        var optionalCustomerComplaint = customerComplaintRepository.findById(id);
+
+        var optionalUpload = uploadRepository.findById(uploadId);
+
+        if (optionalCustomerComplaint.isPresent() && optionalUpload.isPresent()) {
+
+            var customerComplaint = optionalCustomerComplaint.get();
+
+            var upload = optionalUpload.get();
+
+            customerComplaint.setUpload(upload);
+
+            customerComplaintRepository.save(customerComplaint);
+
+        } else {
+
+            throw new RecordNotFoundException();
+
+        }
+
     }
 
 }

@@ -1,5 +1,7 @@
 package nl.quin.complaintservicesystem.method1;
 
+import nl.quin.complaintservicesystem.model.CustomerComplaint;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -31,6 +33,13 @@ public class Method1File {
 
     @Column(name = "uploaded_by_username")
     private String uploadedByUsername;
+
+  /*  @OneToOne
+    @MapsId
+    @JoinColumn(name = "customer_complaint_id")
+    private CustomerComplaint customerComplaint;
+
+   */
 
     public long getId() {
         return id;
@@ -95,4 +104,14 @@ public class Method1File {
     public void setUploadedByUsername(String uploadedByUsername) {
         this.uploadedByUsername = uploadedByUsername;
     }
+
+ /*   public CustomerComplaint getCustomerComplaint() {
+        return customerComplaint;
+    }
+
+    public void setCustomerComplaint(CustomerComplaint customerComplaint) {
+        this.customerComplaint = customerComplaint;
+    }
+
+  */
 }

@@ -4,11 +4,11 @@ import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
 import nl.quin.complaintservicesystem.model.CustomerComplaint;
 import nl.quin.complaintservicesystem.model.CustomerDetails;
-import nl.quin.complaintservicesystem.payload.response.ErrorResponse;
+import nl.quin.complaintservicesystem.model.Speler;
+import nl.quin.complaintservicesystem.model.Team;
 import nl.quin.complaintservicesystem.repository.CustomerComplaintRepository;
 import nl.quin.complaintservicesystem.repository.CustomerDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -67,10 +67,11 @@ public class CustomerDetailsService {
         CustomerDetails storedCustomerDetails = customerDetailsRepository.findById(id).orElse(null);
         for (String field : fields.keySet()) {
             switch (field) {
-                case "first_name":
+                case "firstName":
                     storedCustomerDetails.setFirstName((String) fields.get(field));
+                    customerDetailsRepository.save(storedCustomerDetails);
                     break;
-                case "last_name":
+                case "lastName":
                     storedCustomerDetails.setLastName((String) fields.get(field));
                     break;
                 case "email":
@@ -84,6 +85,16 @@ public class CustomerDetailsService {
     public void deleteCustomer(long id) {
         if (!customerDetailsRepository.existsById(id)) { throw new UserNotFoundException(); }
         customerDetailsRepository.deleteById(id);
+    }
+
+    public Iterable<CustomerComplaint> getCustomerDetailsCustomerComplaint(long id) {
+        Optional<CustomerDetails> customerDetails = customerDetailsRepository.findById(id);
+        if (customerDetails.isPresent()) {
+            return customerDetails.get().getCustomerComplaints();
+        }
+        else {
+            throw new RecordNotFoundException("Team with id " + id + " not found");
+        }
     }
 
 

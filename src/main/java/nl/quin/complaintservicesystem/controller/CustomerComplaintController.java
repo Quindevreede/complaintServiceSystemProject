@@ -1,13 +1,18 @@
 package nl.quin.complaintservicesystem.controller;
 
 import nl.quin.complaintservicesystem.model.CustomerComplaint;
+import nl.quin.complaintservicesystem.payload.request.UploadRequestDto;
+import nl.quin.complaintservicesystem.payload.response.UploadResponseDto;
 import nl.quin.complaintservicesystem.service.CustomerComplaintService;
+import nl.quin.complaintservicesystem.service.UploadService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.Valid;
 import java.net.URI;
 import java.util.Map;
 
@@ -18,6 +23,9 @@ public class CustomerComplaintController {
 
     @Autowired
     private CustomerComplaintService customerComplaintService;
+
+    @Autowired
+    private UploadService uploadService;
 
     @GetMapping(value = "")
     public ResponseEntity<Object> searchCustomerComplaints(@RequestParam(name="name", defaultValue="") String name) {
@@ -57,6 +65,12 @@ public class CustomerComplaintController {
         return ResponseEntity.noContent().build();
     }
 
+
+    @PutMapping("/complaint/{id}/upload/{uploadId}")
+    public void assignUploadToCustomerComplaint(@PathVariable("id") Long id,@PathVariable("uploadId") Long uploadId) {
+        customerComplaintService.assignUploadToCustomerComplaint(id, uploadId);
+    }
+
 }
 
 /*//TODO //TODO //TODO
@@ -66,3 +80,9 @@ public class CustomerComplaintController {
         return ResponseEntity.ok("Toegevoegd");
     }
  */
+
+//   @GetMapping("/{id}/upload/files/{id}")
+//    public ResponseEntity<Object> getFileInfo(@PathVariable long id) {
+//        UploadResponseDto response = uploadService.getFileById(id);
+//        return ResponseEntity.ok().body(response);
+//    }

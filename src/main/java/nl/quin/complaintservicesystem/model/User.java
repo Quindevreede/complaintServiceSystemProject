@@ -26,6 +26,9 @@ public class User {
             fetch = FetchType.EAGER)
     private Set<nl.quin.complaintservicesystem.model.Authority> authorities = new HashSet<>();
 
+    @OneToOne
+    CustomerDetails customerDetails;
+
     public String getUsername() {
         return username;
     }
@@ -62,4 +65,11 @@ public class User {
         this.authorities.remove(authority);
     }
 
+    public CustomerDetails getCustomerDetails() {
+        return customerDetails;
+    }
+
+    public void setCustomerDetails(CustomerDetails customerDetails) {
+        this.customerDetails = customerDetails;
+    }
 }

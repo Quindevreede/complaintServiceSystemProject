@@ -1,6 +1,8 @@
 package nl.quin.complaintservicesystem.model;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import nl.quin.complaintservicesystem.method1.Method1File;
 
 import javax.persistence.*;
 
@@ -22,9 +24,20 @@ public class CustomerComplaint {
     @Column
     String customerCommentary;
 
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "customer_details_id", nullable = false)
+    @JsonIgnore
+    private CustomerDetails customerDetails;
+
+
 @OneToOne(mappedBy = "customerComplaint", cascade = CascadeType.ALL)
-@PrimaryKeyJoinColumn
 private Upload upload;
+
+
+  /*  @OneToOne
+    Upload upload;
+    //TODO MET =GETTERS SETTERS
+   */
 
     // CONSTRUCTORS
 
@@ -58,6 +71,14 @@ private Upload upload;
 
     public void setCustomerCommentary(String customerCommentary) {this.customerCommentary = customerCommentary;}
 
+    public CustomerDetails getCustomerDetails() {
+        return customerDetails;
+    }
+
+    public void setCustomerDetails(CustomerDetails customerDetails) {
+        this.customerDetails = customerDetails;
+    }
+
     public Upload getUpload() {
         return upload;
     }
@@ -66,6 +87,16 @@ private Upload upload;
         this.upload = upload;
     }
 
+/*
+    public Method1File getMethod1File() {
+        return method1File;
+    }
+
+    public void setMethod1File(Method1File method1File) {
+        this.method1File = method1File;
+    }
+
+ */
 }
 /* //TODO//TODO//TODO
     @ManyToOne(fetch = FetchType.EAGER, optional = false)

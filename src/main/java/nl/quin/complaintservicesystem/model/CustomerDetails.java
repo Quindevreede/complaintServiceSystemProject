@@ -1,9 +1,9 @@
 package nl.quin.complaintservicesystem.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,6 +27,17 @@ public class CustomerDetails {
     @Column
     String email;
 
+    @OneToMany(mappedBy = "customerDetails",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
+//    @JsonBackReference
+    private List<CustomerComplaint> customerComplaints;
+
+
+ /*   @JsonIgnore
+    @OneToOne(mappedBy = "customerDetails")
+    User user;    //TODO MET H=GETTERS SETTERS
+   */
     // CONSTRUCTORS
 
     // GETTERS SETTERS
@@ -69,6 +80,20 @@ public class CustomerDetails {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<CustomerComplaint> getCustomerComplaints() {
+        return customerComplaints;
+    }
+
+    public void setCustomerComplaints(List<CustomerComplaint> customerComplaints) {
+        this.customerComplaints = customerComplaints;
+    }
+
+
+    // methoden
+    void addCustomerComplaint(CustomerComplaint customerComplaint) {
+        this.customerComplaints.add(customerComplaint);
     }
 
 }

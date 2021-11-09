@@ -2,15 +2,12 @@ package nl.quin.complaintservicesystem.service;
 
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
 import nl.quin.complaintservicesystem.model.ProductionComplaint;
-import nl.quin.complaintservicesystem.repository.CustomerComplaintRepository;
 import nl.quin.complaintservicesystem.repository.ProductionComplaintRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 
 @Service

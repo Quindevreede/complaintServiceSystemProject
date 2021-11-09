@@ -47,9 +47,9 @@ public class UploadService {
         return repository.findAll();
     }
 
-    public long uploadFile(UploadRequestDto method1Dto) {
+    public long uploadFile(UploadRequestDto uploadRequestDto) {
 
-        MultipartFile file = method1Dto.getFile();
+        MultipartFile file = uploadRequestDto.getFile();
 
         String originalFilename = StringUtils.cleanPath(file.getOriginalFilename());
         Path copyLocation = this.uploads.resolve(file.getOriginalFilename());
@@ -63,8 +63,8 @@ public class UploadService {
         Upload newFileToStore = new Upload();
         newFileToStore.setFileName(originalFilename);
         newFileToStore.setLocation(copyLocation.toString());
-        newFileToStore.setTitle(method1Dto.getTitle());
-        newFileToStore.setDescription(method1Dto.getDescription());
+        newFileToStore.setTitle(uploadRequestDto.getTitle());
+        newFileToStore.setDescription(uploadRequestDto.getDescription());
 
         Upload saved = repository.save(newFileToStore);
 

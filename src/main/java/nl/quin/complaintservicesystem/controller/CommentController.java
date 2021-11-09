@@ -27,7 +27,6 @@ public class CommentController {
                                                 Pageable pageable) {
         return commentRepository.findByPostId(postId, pageable);
     }
-
      */
 
 

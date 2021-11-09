@@ -1,5 +1,7 @@
 package nl.quin.complaintservicesystem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -20,13 +22,27 @@ public class Upload {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "media_type")
+    private String mediaType;
+
     @Column(name = "location")
     private String location;
 
-    @OneToOne
+    @Column(name = "uploaded_timestamp")
+    private Date uploadedTimestamp;
+
+    @Column(name = "uploaded_by_username")
+    private String uploadedByUsername;
+
+/*    @OneToOne
     @MapsId
     @JoinColumn(name = "customer_complaint_id")
     private CustomerComplaint customerComplaint;
+
+ */
+    @JsonIgnore
+@OneToOne(mappedBy = "upload")
+CustomerComplaint customerComplaint;
 
     public long getId() {
         return id;
@@ -60,12 +76,36 @@ public class Upload {
         this.description = description;
     }
 
+    public String getMediaType() {
+        return mediaType;
+    }
+
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
+    }
+
     public String getLocation() {
         return location;
     }
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public Date getUploadedTimestamp() {
+        return uploadedTimestamp;
+    }
+
+    public void setUploadedTimestamp(Date uploadedTimestamp) {
+        this.uploadedTimestamp = uploadedTimestamp;
+    }
+
+    public String getUploadedByUsername() {
+        return uploadedByUsername;
+    }
+
+    public void setUploadedByUsername(String uploadedByUsername) {
+        this.uploadedByUsername = uploadedByUsername;
     }
 
     public CustomerComplaint getCustomerComplaint() {
@@ -75,4 +115,6 @@ public class Upload {
     public void setCustomerComplaint(CustomerComplaint customerComplaint) {
         this.customerComplaint = customerComplaint;
     }
+
+
 }
