@@ -29,15 +29,15 @@ public class CustomerComplaint {
     @JsonIgnore
     private CustomerDetails customerDetails;
 
-
+  /*
 @OneToOne(mappedBy = "customerComplaint", cascade = CascadeType.ALL)
 private Upload upload;
-
-
-  /*  @OneToOne
-    Upload upload;
     //TODO MET =GETTERS SETTERS
    */
+
+ @OneToOne
+    Upload upload;
+
 
     // CONSTRUCTORS
 
