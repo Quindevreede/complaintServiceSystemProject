@@ -3,8 +3,10 @@ package nl.quin.complaintservicesystem.service;
 import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
 import nl.quin.complaintservicesystem.model.Authority;
+import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.model.User;
 import nl.quin.complaintservicesystem.payload.request.UserPostRequest;
+import nl.quin.complaintservicesystem.repository.CustomerDetailsRepository;
 import nl.quin.complaintservicesystem.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -22,6 +24,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private CustomerDetailsRepository customerDetailsRepository;
 
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -93,4 +98,24 @@ public class UserService {
         userRepository.save(user);
     }
 
+
+    public void assignCustomerDetailsToUser(Long customerDetailsId, String username) {
+
+        var optionalUser = userRepository.findById(username);
+
+        var optionalCustomerDetails = customerDetailsRepository.findById(customerDetailsId);
+
+        if (optionalCustomerDetails.isPresent() && optionalUser.isPresent()) {
+
+            var user = optionalUser.get();
+
+            var customerDetails = optionalCustomerDetails.get();
+
+            user.setCustomerDetails(customerDetails);
+
+            userRepository.save(user);
+
+        }
+
+    }
 }

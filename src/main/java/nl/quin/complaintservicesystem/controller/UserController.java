@@ -1,6 +1,8 @@
 package nl.quin.complaintservicesystem.controller;
 
+import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.model.User;
+import nl.quin.complaintservicesystem.service.CustomerDetailsService;
 import nl.quin.complaintservicesystem.service.UserService;
 import nl.quin.complaintservicesystem.payload.request.UserPostRequest;
 import nl.quin.complaintservicesystem.exceptions.BadRequestException;
@@ -20,6 +22,9 @@ public class UserController {
     @Lazy
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CustomerDetailsService customerDetailsService;
 
     @GetMapping(value = "")
     public ResponseEntity<Object> getUsers() {
@@ -55,7 +60,7 @@ public class UserController {
     }
 
     @GetMapping(value = "/{username}/authorities")
-    public ResponseEntity<Object> getUserAuthorities(@PathVariable("username") String username) {
+    public ResponseEntity<Object> getUserCustomerDetails(@PathVariable("username") String username) {
         return ResponseEntity.ok().body(userService.getAuthorities(username));
     }
 
@@ -75,6 +80,12 @@ public class UserController {
     public ResponseEntity<Object> deleteUserAuthority(@PathVariable("username") String username, @PathVariable("authority") String authority) {
         userService.removeAuthority(username, authority);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{username}/customer_details/{customerDetailsId}")
+    public void assignCustomerDetailsToUser(@PathVariable("username") String username,
+        @PathVariable("customerDetailsId") Long customerDetailsId){
+        userService.assignCustomerDetailsToUser(customerDetailsId, username);
     }
 
 }

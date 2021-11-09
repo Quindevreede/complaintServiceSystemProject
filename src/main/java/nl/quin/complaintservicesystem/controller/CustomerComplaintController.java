@@ -66,7 +66,7 @@ public class CustomerComplaintController {
     }
 
 
-    @PutMapping("/complaint/{id}/upload/{uploadId}")
+    @PutMapping("/{id}/upload/{uploadId}")
     public void assignUploadToCustomerComplaint(@PathVariable("id") Long id,@PathVariable("uploadId") Long uploadId) {
         customerComplaintService.assignUploadToCustomerComplaint(id, uploadId);
     }

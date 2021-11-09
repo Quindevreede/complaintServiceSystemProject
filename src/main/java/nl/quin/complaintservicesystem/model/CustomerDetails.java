@@ -34,10 +34,10 @@ public class CustomerDetails {
     private List<CustomerComplaint> customerComplaints;
 
 
- /*   @JsonIgnore
-    @OneToOne(mappedBy = "customerDetails")
-    User user;    //TODO MET H=GETTERS SETTERS
-   */
+   @JsonIgnore
+   @OneToOne(mappedBy = "customerDetails")
+   User user;
+
     // CONSTRUCTORS
 
     // GETTERS SETTERS
