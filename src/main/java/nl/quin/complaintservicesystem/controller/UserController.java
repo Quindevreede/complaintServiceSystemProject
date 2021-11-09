@@ -82,9 +82,9 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/{username}/customer_details/{customerDetailsId}")
+    @PutMapping("/{username}/customer_details/{Id}")
     public void assignCustomerDetailsToUser(@PathVariable("username") String username,
-        @PathVariable("customerDetailsId") Long customerDetailsId){
+        @PathVariable("Id") long customerDetailsId){
         userService.assignCustomerDetailsToUser(customerDetailsId, username);
     }
 
