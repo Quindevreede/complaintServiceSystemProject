@@ -1,6 +1,7 @@
 package nl.quin.complaintservicesystem.controller;
 
 import nl.quin.complaintservicesystem.model.CustomerComplaint;
+import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.payload.request.UploadRequestDto;
 import nl.quin.complaintservicesystem.payload.response.UploadResponseDto;
 import nl.quin.complaintservicesystem.service.CustomerComplaintService;
@@ -71,7 +72,24 @@ public class CustomerComplaintController {
         customerComplaintService.assignUploadToCustomerComplaint(id, uploadId);
     }
 
+    @PutMapping("/{id}/customer_details/{customer_details_Id}")
+    public void assignCustomerDetailsToJob(@PathVariable("id") Long customerComplaintId,
+                                           @PathVariable("customer_details_Id") Long customerDetailsId) {
+
+        customerComplaintService.assignCustomerDetails(customerComplaintId, customerDetailsId);
+
+    }
+   /* @PutMapping("/{id}/customer_details/{customerDetailsId}")
+    public void assignCustomerComplaintToCustomerDetails(@PathVariable("id") Long id,
+                                                         @PathVariable("customerDetailsId") Long customerDetailsId) {
+
+        customerDetailsService.assignCustomerComplaintToCustomerDetails(id, customerDetailsId);
+
+    }
+
+    */
 }
+
 
 /*//TODO //TODO //TODO
     @PostMapping(value = "/customer_complaint")

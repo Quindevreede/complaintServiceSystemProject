@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -30,9 +31,8 @@ public class CustomerDetails {
     @OneToMany(mappedBy = "customerDetails",
             fetch = FetchType.EAGER,
             cascade = CascadeType.ALL)
-//    @JsonBackReference
-    private List<CustomerComplaint> customerComplaints;
-
+    @JsonBackReference("customerComplaintCustomerDetails")
+    List<CustomerComplaint> customerComplaintList;
 
    @JsonIgnore
    @OneToOne(mappedBy = "customerDetails")
@@ -82,11 +82,12 @@ public class CustomerDetails {
         this.email = email;
     }
 
+/*
     public List<CustomerComplaint> getCustomerComplaints() {
         return customerComplaints;
     }
 
-    public void setCustomerComplaints(List<CustomerComplaint> customerComplaints) {
+    public void setCustomerComplaint(List<CustomerComplaint> customerComplaints) {
         this.customerComplaints = customerComplaints;
     }
 
@@ -95,6 +96,8 @@ public class CustomerDetails {
     void addCustomerComplaint(CustomerComplaint customerComplaint) {
         this.customerComplaints.add(customerComplaint);
     }
+
+     */
 
 }
 
@@ -109,16 +112,6 @@ public class CustomerDetails {
 //TODO//TODO//TODO
 ---------------------
 
-    public List<CustomerComplaint> getCustomerComplaint() {
-        return customerComplaint;
-    }
 
-    public void setCustomerComplaint(List<CustomerComplaint> customerComplaint) {
-        this.customerComplaint = customerComplaint;
-    }
-
-    public void addCustomerComplaint(CustomerComplaint customerComplaint) {
-        this.customerComplaint.add(customerComplaint);
-    }
  */
 

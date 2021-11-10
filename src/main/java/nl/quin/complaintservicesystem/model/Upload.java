@@ -112,9 +112,11 @@ CustomerComplaint customerComplaint;
         return customerComplaint;
     }
 
-    public void setCustomerComplaint(CustomerComplaint customerComplaint) {
+  /*  public void setCustomerComplaint(CustomerComplaint customerComplaint) {
         this.customerComplaint = customerComplaint;
     }
+
+   */
 
 
 }

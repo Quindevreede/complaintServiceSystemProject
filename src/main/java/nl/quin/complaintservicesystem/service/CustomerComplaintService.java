@@ -3,7 +3,9 @@ package nl.quin.complaintservicesystem.service;
 import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
 import nl.quin.complaintservicesystem.model.CustomerComplaint;
+import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.repository.CustomerComplaintRepository;
+import nl.quin.complaintservicesystem.repository.CustomerDetailsRepository;
 import nl.quin.complaintservicesystem.repository.UploadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,9 @@ public class CustomerComplaintService {
 
     @Autowired
     CustomerComplaintRepository customerComplaintRepository;
+
+    @Autowired
+    CustomerDetailsRepository customerDetailsRepository;
 
     @Autowired
     UploadRepository uploadRepository;
@@ -102,6 +107,53 @@ public class CustomerComplaintService {
 
     }
 
+    public void assignCustomerDetails(Long customerComplaintId, Long customerDetailsId) {
+
+        var optionalCustomerComplaint = customerComplaintRepository.findById(customerComplaintId);
+
+        var optionalCustomerDetails = customerDetailsRepository.findById(customerDetailsId);
+
+        if (optionalCustomerComplaint.isPresent() && optionalCustomerDetails.isPresent()) {
+
+            var customerComplaint = optionalCustomerComplaint.get();
+
+            var customerDetails = optionalCustomerDetails.get();
+
+            customerComplaint.setCustomerDetails(customerDetails);
+
+            customerComplaintRepository.save(customerComplaint);
+
+        } else {
+
+            throw new RecordNotFoundException("geen gegevens gevonden om op te slaan");
+
+        }
+
+    }
+ /*   public void assignCustomerDetailsToCustomerComplaint(Long id, Long customerDetailsId) {
+
+        var optionalCustomerComplaint = customerComplaintRepository.findById(id);
+
+        var optionalCustomerDetails = customerDetailsRepository.findById(customerDetailsId);
+
+        if (optionalCustomerComplaint.isPresent() && optionalCustomerDetails.isPresent()) {
+
+            var customerComplaint = optionalCustomerComplaint.get();
+
+            var customerDetails = optionalCustomerDetails.get();
+
+            customerComplaint.setCustomerDetails(customerDetails);
+
+            customerComplaintRepository.save(customerComplaint);
+
+        } else {
+
+            throw new RecordNotFoundException("geen gegevens gevonden om op te slaan");
+
+        }
+    }
+
+  */
 }
 
 /*//TODO//TODO//TODO

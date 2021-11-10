@@ -24,10 +24,14 @@ public class CustomerComplaint {
     @Column
     String customerCommentary;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne
+    CustomerDetails customerDetails;
+
+ /*   @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "customer_details_id", nullable = false)
     @JsonIgnore
     private CustomerDetails customerDetails;
+  */
 
   /*
 @OneToOne(mappedBy = "customerComplaint", cascade = CascadeType.ALL)
