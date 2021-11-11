@@ -27,6 +27,9 @@ public class Upload {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "ordernumber_upload")
+    private String orderNumberUpload;
+
     @Column(name = "location")
     private String location;
 
@@ -70,6 +73,14 @@ CustomerComplaint customerComplaint;
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getOrderNumberUpload() {
+        return orderNumberUpload;
+    }
+
+    public void setOrderNumberUpload(String orderNumberUpload) {
+        this.orderNumberUpload = orderNumberUpload;
     }
 
     public String getLocation() {

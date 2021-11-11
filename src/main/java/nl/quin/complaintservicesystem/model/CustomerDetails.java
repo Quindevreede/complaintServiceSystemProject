@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 import java.util.List;
 
@@ -19,12 +20,15 @@ public class CustomerDetails {
     @Column
     String username;
 
+    @NotBlank(message = "FIRST NAME is mandatory")
     @Column
     String firstName;
 
+    @NotBlank(message = "LAST NAME is mandatory")
     @Column
     String lastName;
 
+    @NotBlank(message = "EMAIL is mandatory")
     @Column
     String email;
 

@@ -7,8 +7,9 @@ import java.sql.Timestamp;
 
 public class UploadResponseDto {
         private String title;
-        private String description;
         private String fileName;
+        private String description;
+        private String orderNumberUpload;
         private String downloadUri;
         private String uploadedByUserName;
         private Timestamp uploadedOnDate;
@@ -21,6 +22,14 @@ public class UploadResponseDto {
                 this.title = title;
         }
 
+        public String getFileName() {
+                return fileName;
+        }
+
+        public void setFileName(String fileName) {
+                this.fileName = fileName;
+        }
+
         public String getDescription() {
                 return description;
         }
@@ -29,13 +38,9 @@ public class UploadResponseDto {
                 this.description = description;
         }
 
-        public String getFileName() {
-                return fileName;
-        }
+        public String getOrderNumberUpload() { return orderNumberUpload;}
 
-        public void setFileName(String fileName) {
-                this.fileName = fileName;
-        }
+        public void setOrderNumberUpload(String orderNumberUpload) {this.orderNumberUpload = orderNumberUpload;}
 
         public String getDownloadUri() {
                 return downloadUri;

@@ -72,6 +72,7 @@ public class UploadService {
         newFileToStore.setLocation(copyLocation.toString());
         newFileToStore.setTitle(uploadRequestDto.getTitle());
         newFileToStore.setDescription(uploadRequestDto.getDescription());
+        newFileToStore.setOrderNumberUpload(uploadRequestDto.getOrderNumberUpload());
         newFileToStore.setUploadedByUsername(username.getCurrentUserName());
         newFileToStore.setUploadedOnDate(Timestamp.valueOf(LocalDateTime.now()));
         Upload saved = repository.save(newFileToStore);
@@ -110,6 +111,7 @@ public class UploadService {
             responseDto.setFileName(stored.get().getFileName());
             responseDto.setTitle(stored.get().getTitle());
             responseDto.setDescription(stored.get().getDescription());
+            responseDto.setOrderNumberUpload(stored.get().getOrderNumberUpload());
             responseDto.setDownloadUri(uri.toString());
             responseDto.setUploadedByUserName(stored.get().getUploadedByUsername());
             responseDto.setUploadedOnDate(stored.get().getUploadedOnDate());

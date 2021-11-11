@@ -5,13 +5,9 @@ import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.repository.CustomerComplaintRepository;
 import nl.quin.complaintservicesystem.repository.CustomerDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import nl.quin.complaintservicesystem.payload.response.ErrorResponse;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.Map;
 
 
 @Service
@@ -57,7 +53,7 @@ public class CustomerDetailsService {
     }
 
     public void updateCustomer(long id, CustomerDetails customerDetails) {
-        ErrorResponse errorResponse = new ErrorResponse();
+//        ErrorResponse errorResponse = new ErrorResponse();
 
         if (!customerDetailsRepository.existsById(id)) {
             throw new UserNotFoundException();
