@@ -67,16 +67,16 @@ public class CustomerComplaintController {
     }
 
 
-    @PutMapping("/{id}/upload/{uploadId}")
-    public void assignUploadToCustomerComplaint(@PathVariable("id") Long id,@PathVariable("uploadId") Long uploadId) {
-        customerComplaintService.assignUploadToCustomerComplaint(id, uploadId);
+    @PutMapping("/{ordernumber}/upload/{uploadId}")
+    public void assignUploadToCustomerComplaint(@PathVariable("ordernumber") String orderNumber,@PathVariable("uploadId") Long uploadId) {
+        customerComplaintService.assignUploadToCustomerComplaint(orderNumber, uploadId);
     }
 
-    @PutMapping("/{id}/customer_details/{customer_details_Id}")
-    public void assignCustomerDetailsToJob(@PathVariable("id") Long customerComplaintId,
+    @PutMapping("/{ordernumber}/customer_details/{customer_details_Id}")
+    public void assignCustomerDetailsToJob(@PathVariable("ordernumber") String orderNumber,
                                            @PathVariable("customer_details_Id") Long customerDetailsId) {
 
-        customerComplaintService.assignCustomerDetails(customerComplaintId, customerDetailsId);
+        customerComplaintService.assignCustomerDetails(orderNumber, customerDetailsId);
 
     }
    /* @PutMapping("/{id}/customer_details/{customerDetailsId}")

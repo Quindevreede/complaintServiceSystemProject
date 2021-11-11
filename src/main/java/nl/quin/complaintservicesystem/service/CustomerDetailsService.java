@@ -1,20 +1,15 @@
 package nl.quin.complaintservicesystem.service;
 
-import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
-import nl.quin.complaintservicesystem.model.CustomerComplaint;
 import nl.quin.complaintservicesystem.model.CustomerDetails;
-import nl.quin.complaintservicesystem.model.Speler;
-import nl.quin.complaintservicesystem.model.Team;
 import nl.quin.complaintservicesystem.repository.CustomerComplaintRepository;
 import nl.quin.complaintservicesystem.repository.CustomerDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Map;
-import java.util.Optional;
 
 
 @Service
@@ -50,7 +45,8 @@ public class CustomerDetailsService {
 
     public long createCustomer(CustomerDetails customerDetails) {
         customerDetails.setUsername(username.getCurrentUserName()); //TODO if no currentUserName? kan deze in uiteindelijke???
-        CustomerDetails storedCustomerDetails = customerDetailsRepository.save(customerDetails);
+        CustomerDetails storedCustomerDetails = customerDetailsRepository.save(customerDetails); //TODO hierna: autowired User user, haal op User die hoort bij username, user.setcustomerdetails.  User user =userRepository.save(user);
+
         return storedCustomerDetails.getId();
     }
 

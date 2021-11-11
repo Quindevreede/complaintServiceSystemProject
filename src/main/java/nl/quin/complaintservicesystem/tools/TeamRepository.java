@@ -1,6 +1,5 @@
-package nl.quin.complaintservicesystem.repository;
+package nl.quin.complaintservicesystem.tools;
 
-import nl.quin.complaintservicesystem.model.Team;
 import org.springframework.data.repository.CrudRepository;
 
 public interface TeamRepository extends CrudRepository<Team, Long> {

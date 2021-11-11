@@ -1,6 +1,5 @@
-package nl.quin.complaintservicesystem.repository;
+package nl.quin.complaintservicesystem.tools;
 
-import nl.quin.complaintservicesystem.model.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

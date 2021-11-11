@@ -1,7 +1,4 @@
-package nl.quin.complaintservicesystem.controller;
-
-import nl.quin.complaintservicesystem.service.SpelerService;
-import nl.quin.complaintservicesystem.model.Speler;
+package nl.quin.complaintservicesystem.tools;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
