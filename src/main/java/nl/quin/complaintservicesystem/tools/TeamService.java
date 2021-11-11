@@ -1,10 +1,6 @@
-package nl.quin.complaintservicesystem.service;
+package nl.quin.complaintservicesystem.tools;
 
 import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
-import nl.quin.complaintservicesystem.model.Speler;
-import nl.quin.complaintservicesystem.model.Team;
-import nl.quin.complaintservicesystem.repository.SpelerRepository;
-import nl.quin.complaintservicesystem.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -83,9 +83,9 @@ public class CustomerComplaintService {
         customerComplaintRepository.deleteById(id);
     }
 
-    public void assignUploadToCustomerComplaint(Long id, Long uploadId) {
+    public void assignUploadToCustomerComplaint(String orderNumber, Long uploadId) {
 
-        var optionalCustomerComplaint = customerComplaintRepository.findById(id);
+        var optionalCustomerComplaint = customerComplaintRepository.findByOrderNumber(orderNumber);
 
         var optionalUpload = uploadRepository.findById(uploadId);
 
@@ -107,9 +107,9 @@ public class CustomerComplaintService {
 
     }
 
-    public void assignCustomerDetails(Long customerComplaintId, Long customerDetailsId) {
+    public void assignCustomerDetails(String orderNumber, Long customerDetailsId) {
 
-        var optionalCustomerComplaint = customerComplaintRepository.findById(customerComplaintId);
+        var optionalCustomerComplaint = customerComplaintRepository.findByOrderNumber(orderNumber);
 
         var optionalCustomerDetails = customerDetailsRepository.findById(customerDetailsId);
 

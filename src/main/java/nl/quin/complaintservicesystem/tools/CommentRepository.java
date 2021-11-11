@@ -1,6 +1,5 @@
-package nl.quin.complaintservicesystem.repository;
+package nl.quin.complaintservicesystem.tools;
 
-import nl.quin.complaintservicesystem.model.Comment;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

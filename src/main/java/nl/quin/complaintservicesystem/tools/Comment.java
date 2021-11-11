@@ -1,8 +1,9 @@
-package nl.quin.complaintservicesystem.model;
+package nl.quin.complaintservicesystem.tools;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 

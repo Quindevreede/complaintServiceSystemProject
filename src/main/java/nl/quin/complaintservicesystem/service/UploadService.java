@@ -29,11 +29,14 @@ import java.util.Optional;
 public class UploadService {
 
     @Value("${app.upload.dir:${user.home}}")
-    private String uploadDirectory;  // relative to root
+    private String uploadDirectory;
     private final Path uploads = Paths.get("uploads");
 
     @Autowired
     private UploadRepository repository;
+
+    @Autowired
+    UserService username;
 
     public void init() {
         try {
@@ -65,7 +68,7 @@ public class UploadService {
         newFileToStore.setLocation(copyLocation.toString());
         newFileToStore.setTitle(uploadRequestDto.getTitle());
         newFileToStore.setDescription(uploadRequestDto.getDescription());
-
+        newFileToStore.setUploadedByUsername(username.getCurrentUserName());
         Upload saved = repository.save(newFileToStore);
 
         return saved.getId();
@@ -103,6 +106,7 @@ public class UploadService {
             responseDto.setTitle(stored.get().getTitle());
             responseDto.setDescription(stored.get().getDescription());
             responseDto.setDownloadUri(uri.toString());
+            responseDto.setUploadedByUserName(stored.get().getUploadedByUsername());
             return responseDto;
         }
         else {

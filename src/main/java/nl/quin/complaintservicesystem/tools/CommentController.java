@@ -1,12 +1,7 @@
-package nl.quin.complaintservicesystem.controller;
+package nl.quin.complaintservicesystem.tools;
 
 import nl.quin.complaintservicesystem.exceptions.ResourceNotFoundException;
-import nl.quin.complaintservicesystem.model.Comment;
-import nl.quin.complaintservicesystem.repository.CommentRepository;
-import nl.quin.complaintservicesystem.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

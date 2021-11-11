@@ -1,4 +1,4 @@
-package nl.quin.complaintservicesystem.model;
+package nl.quin.complaintservicesystem.tools;
 
 
 import javax.persistence.*;

@@ -7,6 +7,7 @@ public class UploadResponseDto {
         private String description;
         private String fileName;
         private String downloadUri;
+        private String uploadedByUserName;
 
         public String getTitle() {
                 return title;
@@ -39,4 +40,8 @@ public class UploadResponseDto {
         public void setDownloadUri(String downloadUri) {
                 this.downloadUri = downloadUri;
         }
+
+        public String getUploadedByUserName() { return uploadedByUserName;}
+
+        public void setUploadedByUserName(String uploadedByUserName) { this.uploadedByUserName = uploadedByUserName;}
 }
