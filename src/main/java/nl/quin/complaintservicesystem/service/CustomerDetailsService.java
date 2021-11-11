@@ -5,6 +5,8 @@ import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.repository.CustomerComplaintRepository;
 import nl.quin.complaintservicesystem.repository.CustomerDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import nl.quin.complaintservicesystem.payload.response.ErrorResponse;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +46,10 @@ public class CustomerDetailsService {
     }
 
     public long createCustomer(CustomerDetails customerDetails) {
+        if(customerDetailsRepository.existsByEmail(customerDetails.getEmail())) {
+            throw new RuntimeException("The email is already in use.");
+        }
+
         customerDetails.setUsername(username.getCurrentUserName()); //TODO if no currentUserName? kan deze in uiteindelijke???
         CustomerDetails storedCustomerDetails = customerDetailsRepository.save(customerDetails); //TODO hierna: autowired User user, haal op User die hoort bij username, user.setcustomerdetails.  User user =userRepository.save(user);
 
@@ -51,9 +57,15 @@ public class CustomerDetailsService {
     }
 
     public void updateCustomer(long id, CustomerDetails customerDetails) {
+        ErrorResponse errorResponse = new ErrorResponse();
+
         if (!customerDetailsRepository.existsById(id)) {
             throw new UserNotFoundException();
         }
+
+        if(customerDetailsRepository.existsByEmail(customerDetails.getEmail())) {
+            throw new RuntimeException("The email is already in use.");        }
+
         CustomerDetails storedCustomerDetails = customerDetailsRepository.findById(id).orElse(null);
         storedCustomerDetails.setUsername(username.getCurrentUserName());
         storedCustomerDetails.setFirstName(customerDetails.getFirstName());
@@ -62,34 +74,12 @@ public class CustomerDetailsService {
         customerDetailsRepository.save(customerDetails);
     }
 
-    public void partialUpdateCustomer(long id, Map<String, String> fields) {
-        if (!customerDetailsRepository.existsById(id)) {
-            throw new UserNotFoundException();
-        }
-        CustomerDetails storedCustomerDetails = customerDetailsRepository.findById(id).orElse(null);
-        for (String field : fields.keySet()) {
-            switch (field) {
-                case "firstName":
-                    storedCustomerDetails.setFirstName((String) fields.get(field));
-                    customerDetailsRepository.save(storedCustomerDetails);
-                    break;
-                case "lastName":
-                    storedCustomerDetails.setLastName((String) fields.get(field));
-                    break;
-                case "email":
-                    storedCustomerDetails.setEmail((String) fields.get(field));
-                    break;
+        public void deleteCustomer ( long id){
+            if (!customerDetailsRepository.existsById(id)) {
+                throw new UserNotFoundException();
             }
+            customerDetailsRepository.deleteById(id);
         }
-        customerDetailsRepository.save(storedCustomerDetails);
-    }
-
-    public void deleteCustomer(long id) {
-        if (!customerDetailsRepository.existsById(id)) {
-            throw new UserNotFoundException();
-        }
-        customerDetailsRepository.deleteById(id);
-    }
 
 }
 

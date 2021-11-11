@@ -2,12 +2,16 @@ package nl.quin.complaintservicesystem.payload.response;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.print.attribute.standard.DateTimeAtCreation;
+import java.sql.Timestamp;
+
 public class UploadResponseDto {
         private String title;
         private String description;
         private String fileName;
         private String downloadUri;
         private String uploadedByUserName;
+        private Timestamp uploadedOnDate;
 
         public String getTitle() {
                 return title;
@@ -44,4 +48,12 @@ public class UploadResponseDto {
         public String getUploadedByUserName() { return uploadedByUserName;}
 
         public void setUploadedByUserName(String uploadedByUserName) { this.uploadedByUserName = uploadedByUserName;}
+
+        public Timestamp getUploadedOnDate() {
+                return uploadedOnDate;
+        }
+
+        public void setUploadedOnDate(Timestamp uploadedOnDate) {
+                this.uploadedOnDate = uploadedOnDate;
+        }
 }

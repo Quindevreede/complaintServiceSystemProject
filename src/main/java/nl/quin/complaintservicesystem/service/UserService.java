@@ -5,6 +5,7 @@ import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
 import nl.quin.complaintservicesystem.model.Authority;
 import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.model.User;
+import nl.quin.complaintservicesystem.payload.response.ErrorResponse;
 import nl.quin.complaintservicesystem.payload.request.UserPostRequest;
 import nl.quin.complaintservicesystem.repository.CustomerDetailsRepository;
 import nl.quin.complaintservicesystem.repository.UserRepository;
@@ -56,6 +57,8 @@ public class UserService {
 
     public String createUser(UserPostRequest userPostRequest) {
         String encryptedPassword = passwordEncoder.encode(userPostRequest.getPassword());
+        if(userRepository.existsByUsername(userPostRequest.getUsername())) {
+            throw new RuntimeException("The username is already in use.");        }
 
         User user = new User();
         user.setUsername(userPostRequest.getUsername());
@@ -72,8 +75,11 @@ public class UserService {
 
     public void updateUser(String username, User newUser) {
         if (!userRepository.existsById(username)) throw new RecordNotFoundException();
+        if(userRepository.existsByUsername(newUser.getUsername())) {
+            throw new RuntimeException("The username is already in use.");        }
         User user = userRepository.findById(username).get();
         user.setPassword(passwordEncoder.encode(newUser.getPassword()));
+
         userRepository.save(user);
     }
 

@@ -49,12 +49,19 @@ public class CustomerComplaintService {
 
     public long createCustomerComplaint (CustomerComplaint customerComplaint) {
         customerComplaint.setUsername(username.getCurrentUserName()); //TODO if no currentUserName? kan deze in uiteindelijke???
+        if(customerComplaintRepository.existsByOrderNumber(customerComplaint.getOrderNumber())) {
+            throw new RuntimeException("The ordernumber is already in use.");
+        }
         CustomerComplaint storedCustomerComplaint = customerComplaintRepository.save(customerComplaint);
+
         return storedCustomerComplaint.getId();
     }
 
     public void updateCustomerComplaint(long id, CustomerComplaint customerComplaint) {
         if (!customerComplaintRepository.existsById(id)) { throw new UserNotFoundException(); }
+        if(customerComplaintRepository.existsByOrderNumber(customerComplaint.getOrderNumber())) {
+            throw new RuntimeException("The ordernumber is already in use.");
+        }
         CustomerComplaint storedCustomerComplaint = customerComplaintRepository.findById(id).orElse(null);
         storedCustomerComplaint.setUsername(username.getCurrentUserName());
         storedCustomerComplaint.setOrderNumber(customerComplaint.getOrderNumber());
@@ -67,9 +74,6 @@ public class CustomerComplaintService {
         CustomerComplaint storedCustomerComplaint = customerComplaintRepository.findById(id).orElse(null);
         for (String field : fields.keySet()) {
             switch (field) {
-                case "order_number":
-                    storedCustomerComplaint.setOrderNumber((String) fields.get(field));
-                    break;
                 case "customer_commentary":
                     storedCustomerComplaint.setCustomerCommentary((String) fields.get(field));
                     break;
