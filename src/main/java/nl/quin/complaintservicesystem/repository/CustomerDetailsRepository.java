@@ -7,5 +7,7 @@ import java.util.Collection;
 
 public interface CustomerDetailsRepository extends JpaRepository<CustomerDetails, Long> {
     Collection<CustomerDetails> findAllByLastName(String last_name);
+    boolean existsByEmail(String email);
+    boolean existsByUsername(String username);
 }
 

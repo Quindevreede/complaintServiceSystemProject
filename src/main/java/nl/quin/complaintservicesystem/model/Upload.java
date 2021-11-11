@@ -5,7 +5,9 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.print.attribute.standard.DateTimeAtCreation;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -25,11 +27,17 @@ public class Upload {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "ordernumber_upload")
+    private String orderNumberUpload;
+
     @Column(name = "location")
     private String location;
 
     @Column(name = "uploaded_by_username")
     private String uploadedByUsername;
+
+    @Column(name = "uploaded_on_Date")
+    private Timestamp uploadedOnDate;
 
     @JsonIgnore
 @OneToOne(mappedBy = "upload")
@@ -67,6 +75,14 @@ CustomerComplaint customerComplaint;
         this.description = description;
     }
 
+    public String getOrderNumberUpload() {
+        return orderNumberUpload;
+    }
+
+    public void setOrderNumberUpload(String orderNumberUpload) {
+        this.orderNumberUpload = orderNumberUpload;
+    }
+
     public String getLocation() {
         return location;
     }
@@ -81,6 +97,14 @@ CustomerComplaint customerComplaint;
 
     public void setUploadedByUsername(String uploadedByUsername) {
         this.uploadedByUsername = uploadedByUsername;
+    }
+
+    public Timestamp getUploadedOnDate() {
+        return uploadedOnDate;
+    }
+
+    public void setUploadedOnDate(Timestamp uploadedOnDate) {
+        this.uploadedOnDate = uploadedOnDate;
     }
 
     public CustomerComplaint getCustomerComplaint() {

@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface CustomerComplaintRepository extends JpaRepository<CustomerComplaint, Long> {
     Collection<CustomerComplaint> findAllByOrderNumber(String orderNumber);
     Optional<CustomerComplaint> findByOrderNumber(String orderNumber);
+    boolean existsByOrderNumber(String orderNumber);
 }

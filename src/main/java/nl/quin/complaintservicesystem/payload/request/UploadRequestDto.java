@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class UploadRequestDto {
         private String title;
         private String description;
+        private String orderNumberUpload;
         private MultipartFile file;
 
         public String getTitle() {
@@ -23,6 +24,14 @@ public class UploadRequestDto {
                 this.description = description;
         }
 
+        public String getOrderNumberUpload() {
+                return orderNumberUpload;
+        }
+
+        public void setOrderNumberUpload(String orderNumberUpload) {
+                this.orderNumberUpload = orderNumberUpload;
+        }
+
         public MultipartFile getFile() {
                 return file;
         }
@@ -30,4 +39,6 @@ public class UploadRequestDto {
         public void setFile(MultipartFile file) {
                 this.file = file;
         }
+
+
 }

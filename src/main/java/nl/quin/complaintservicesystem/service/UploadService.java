@@ -16,6 +16,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -23,6 +24,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -68,7 +72,9 @@ public class UploadService {
         newFileToStore.setLocation(copyLocation.toString());
         newFileToStore.setTitle(uploadRequestDto.getTitle());
         newFileToStore.setDescription(uploadRequestDto.getDescription());
+        newFileToStore.setOrderNumberUpload(uploadRequestDto.getOrderNumberUpload());
         newFileToStore.setUploadedByUsername(username.getCurrentUserName());
+        newFileToStore.setUploadedOnDate(Timestamp.valueOf(LocalDateTime.now()));
         Upload saved = repository.save(newFileToStore);
 
         return saved.getId();
@@ -105,8 +111,10 @@ public class UploadService {
             responseDto.setFileName(stored.get().getFileName());
             responseDto.setTitle(stored.get().getTitle());
             responseDto.setDescription(stored.get().getDescription());
+            responseDto.setOrderNumberUpload(stored.get().getOrderNumberUpload());
             responseDto.setDownloadUri(uri.toString());
             responseDto.setUploadedByUserName(stored.get().getUploadedByUsername());
+            responseDto.setUploadedOnDate(stored.get().getUploadedOnDate());
             return responseDto;
         }
         else {
