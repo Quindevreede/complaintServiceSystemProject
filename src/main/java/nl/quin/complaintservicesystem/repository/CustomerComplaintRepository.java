@@ -1,6 +1,7 @@
 package nl.quin.complaintservicesystem.repository;
 
 import nl.quin.complaintservicesystem.model.CustomerComplaint;
+import nl.quin.complaintservicesystem.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Collection;
@@ -10,4 +11,5 @@ public interface CustomerComplaintRepository extends JpaRepository<CustomerCompl
     Collection<CustomerComplaint> findAllByOrderNumber(String orderNumber);
     Optional<CustomerComplaint> findByOrderNumber(String orderNumber);
     boolean existsByOrderNumber(String orderNumber);
+    Optional<CustomerComplaint> findByUsername(String username);
 }

@@ -46,7 +46,7 @@ public class ProductionComplaintController {
 
     @PatchMapping(value = "/{id}")
     public ResponseEntity<Object> updateProductionComplaintPartial(@PathVariable("id") long id, @RequestBody Map<String, String> fields) {
-        productionComplaintService.partialUpdateProductionComplaint(id, fields);
+        productionComplaintService.updateProductionComplaintPartial(id, fields);
         return ResponseEntity.noContent().build();
     }
 

@@ -3,10 +3,7 @@ package nl.quin.complaintservicesystem.service;
 import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
 import nl.quin.complaintservicesystem.model.CustomerComplaint;
-import nl.quin.complaintservicesystem.model.CustomerDetails;
-import nl.quin.complaintservicesystem.repository.CustomerComplaintRepository;
-import nl.quin.complaintservicesystem.repository.CustomerDetailsRepository;
-import nl.quin.complaintservicesystem.repository.UploadRepository;
+import nl.quin.complaintservicesystem.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +21,12 @@ public class CustomerComplaintService {
     CustomerDetailsRepository customerDetailsRepository;
 
     @Autowired
+    ProductionComplaintRepository productionComplaintRepository;
+
+    @Autowired
+    AssistComplaintRepository assistComplaintRepository;
+
+    @Autowired
     UploadRepository uploadRepository;
 
     @Autowired
@@ -36,20 +39,21 @@ public class CustomerComplaintService {
     public Collection<CustomerComplaint> getCustomerComplaint(String name) {
         if (name.isEmpty()) {
             return customerComplaintRepository.findAll();
-        }
-        else {
+        } else {
             return customerComplaintRepository.findAllByOrderNumber(name);
         }
     }
 
     public CustomerComplaint getCustomerComplaintById(long id) {
-        if (!customerComplaintRepository.existsById(id)) { throw new UserNotFoundException(); }
+        if (!customerComplaintRepository.existsById(id)) {
+            throw new UserNotFoundException();
+        }
         return customerComplaintRepository.findById(id).orElse(null);
     }
 
-    public long createCustomerComplaint (CustomerComplaint customerComplaint) {
+    public long createCustomerComplaint(CustomerComplaint customerComplaint) {
         customerComplaint.setUsername(username.getCurrentUserName()); //TODO if no currentUserName? kan deze in uiteindelijke???
-        if(customerComplaintRepository.existsByOrderNumber(customerComplaint.getOrderNumber())) {
+        if (customerComplaintRepository.existsByOrderNumber(customerComplaint.getOrderNumber())) {
             throw new RuntimeException("The ordernumber is already in use.");
         }
         CustomerComplaint storedCustomerComplaint = customerComplaintRepository.save(customerComplaint);
@@ -58,10 +62,10 @@ public class CustomerComplaintService {
     }
 
     public void updateCustomerComplaint(long id, CustomerComplaint customerComplaint) {
-        if (!customerComplaintRepository.existsById(id)) { throw new UserNotFoundException(); }
-        if(customerComplaintRepository.existsByOrderNumber(customerComplaint.getOrderNumber())) {
-            throw new RuntimeException("The ordernumber is already in use.");
+        if (!customerComplaintRepository.existsById(id)) {
+            throw new UserNotFoundException();
         }
+
         CustomerComplaint storedCustomerComplaint = customerComplaintRepository.findById(id).orElse(null);
         storedCustomerComplaint.setUsername(username.getCurrentUserName());
         storedCustomerComplaint.setOrderNumber(customerComplaint.getOrderNumber());
@@ -70,7 +74,9 @@ public class CustomerComplaintService {
     }
 
     public void partialUpdateCustomerComplaint(long id, Map<String, String> fields) {
-        if (!customerComplaintRepository.existsById(id)) { throw new UserNotFoundException(); }
+        if (!customerComplaintRepository.existsById(id)) {
+            throw new UserNotFoundException();
+        }
         CustomerComplaint storedCustomerComplaint = customerComplaintRepository.findById(id).orElse(null);
         for (String field : fields.keySet()) {
             switch (field) {
@@ -83,7 +89,9 @@ public class CustomerComplaintService {
     }
 
     public void deleteCustomerComplaint(long id) {
-        if (!customerComplaintRepository.existsById(id)) { throw new UserNotFoundException(); }
+        if (!customerComplaintRepository.existsById(id)) {
+            throw new UserNotFoundException();
+        }
         customerComplaintRepository.deleteById(id);
     }
 
@@ -111,11 +119,11 @@ public class CustomerComplaintService {
 
     }
 
-    public void assignCustomerDetails(String orderNumber, Long customerDetailsId) {
+    public void assignCustomerDetails(String orderNumber, String username) {
 
         var optionalCustomerComplaint = customerComplaintRepository.findByOrderNumber(orderNumber);
 
-        var optionalCustomerDetails = customerDetailsRepository.findById(customerDetailsId);
+        var optionalCustomerDetails = customerDetailsRepository.findByUsername(username);
 
         if (optionalCustomerComplaint.isPresent() && optionalCustomerDetails.isPresent()) {
 
@@ -129,42 +137,58 @@ public class CustomerComplaintService {
 
         } else {
 
-            throw new RecordNotFoundException("geen gegevens gevonden om op te slaan");
+            throw new RecordNotFoundException("no data to save");
 
         }
 
     }
- /*   public void assignCustomerDetailsToCustomerComplaint(Long id, Long customerDetailsId) {
 
-        var optionalCustomerComplaint = customerComplaintRepository.findById(id);
+    public void assignProductionComplaintToCustomerComplaint(String orderNumber, Long productionComplaintId) {
 
-        var optionalCustomerDetails = customerDetailsRepository.findById(customerDetailsId);
+        var optionalCustomerComplaint = customerComplaintRepository.findByOrderNumber(orderNumber);
 
-        if (optionalCustomerComplaint.isPresent() && optionalCustomerDetails.isPresent()) {
+        var optionalProductionComplaint = productionComplaintRepository.findById(productionComplaintId);
+
+        if (optionalCustomerComplaint.isPresent() && optionalProductionComplaint.isPresent()) {
 
             var customerComplaint = optionalCustomerComplaint.get();
 
-            var customerDetails = optionalCustomerDetails.get();
+            var productionComplaint = optionalProductionComplaint.get();
 
-            customerComplaint.setCustomerDetails(customerDetails);
+            customerComplaint.setProductionComplaint(productionComplaint);
 
             customerComplaintRepository.save(customerComplaint);
 
         } else {
 
-            throw new RecordNotFoundException("geen gegevens gevonden om op te slaan");
+            throw new RecordNotFoundException("no data to save");
 
         }
+
     }
 
-  */
+    public void assignAssistComplaintToCustomerComplaint(String orderNumber, Long assistComplaintId) {
+
+        var optionalCustomerComplaint = customerComplaintRepository.findByOrderNumber(orderNumber);
+
+        var optionalAssistComplaint = assistComplaintRepository.findById(assistComplaintId);
+
+        if (optionalCustomerComplaint.isPresent() && optionalAssistComplaint.isPresent()) {
+
+            var customerComplaint = optionalCustomerComplaint.get();
+
+            var assistComplaint = optionalAssistComplaint.get();
+
+            customerComplaint.setAssistComplaint(assistComplaint);
+
+            customerComplaintRepository.save(customerComplaint);
+
+        } else {
+
+            throw new RecordNotFoundException("no data to save");
+
+        }
+
+    }
+
 }
-
-/*//TODO//TODO//TODO
-
-    public void save(CustomerComplaint customerComplaint) {
-        customerComplaintRepository.save(customerComplaint);
-    }
-
- */
-

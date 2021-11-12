@@ -40,8 +40,8 @@ public class Upload {
     private Timestamp uploadedOnDate;
 
     @JsonIgnore
-@OneToOne(mappedBy = "upload")
-CustomerComplaint customerComplaint;
+    @OneToOne(mappedBy = "upload")
+    CustomerComplaint customerComplaint;
 
     public long getId() {
         return id;
