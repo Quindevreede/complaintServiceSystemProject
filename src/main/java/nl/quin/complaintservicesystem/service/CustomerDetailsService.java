@@ -53,8 +53,6 @@ public class CustomerDetailsService {
     }
 
     public void updateCustomer(long id, CustomerDetails customerDetails) {
-//        ErrorResponse errorResponse = new ErrorResponse();
-
         if (!customerDetailsRepository.existsById(id)) {
             throw new UserNotFoundException();
         }

@@ -1,9 +1,5 @@
 package nl.quin.complaintservicesystem.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import nl.quin.complaintservicesystem.method1.Method1File;
-
 import javax.persistence.*;
 
 @Entity
@@ -24,6 +20,9 @@ public class CustomerComplaint {
     @Column
     String customerCommentary;
 
+    @Column
+    boolean isRePrintAprroved;
+
     @ManyToOne
     CustomerDetails customerDetails;
 
@@ -40,8 +39,13 @@ private Upload upload;
    */
 
  @OneToOne
-    Upload upload;
+ Upload upload;
 
+ @OneToOne
+ ProductionComplaint productionComplaint;
+
+ @OneToOne
+ AssistComplaint assistComplaint;
 
     // CONSTRUCTORS
 
@@ -91,7 +95,23 @@ private Upload upload;
         this.upload = upload;
     }
 
-/*
+    public ProductionComplaint getProductionComplaint() {
+        return productionComplaint;
+    }
+
+    public void setProductionComplaint(ProductionComplaint productionComplaint) {
+        this.productionComplaint = productionComplaint;
+    }
+
+    public AssistComplaint getAssistComplaint() {
+        return assistComplaint;
+    }
+
+    public void setAssistComplaint(AssistComplaint assistComplaint) {
+        this.assistComplaint = assistComplaint;
+    }
+
+    /*
     public Method1File getMethod1File() {
         return method1File;
     }

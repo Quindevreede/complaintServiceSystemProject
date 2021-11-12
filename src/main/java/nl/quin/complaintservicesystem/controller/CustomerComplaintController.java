@@ -29,7 +29,7 @@ public class CustomerComplaintController {
     private UploadService uploadService;
 
     @GetMapping(value = "")
-    public ResponseEntity<Object> searchCustomerComplaints(@RequestParam(name="name", defaultValue="") String name) {
+    public ResponseEntity<Object> searchCustomerComplaints(@RequestParam(name = "name", defaultValue = "") String name) {
         return ResponseEntity.ok().body(customerComplaintService.getCustomerComplaint(name));
     }
 
@@ -68,39 +68,25 @@ public class CustomerComplaintController {
 
 
     @PutMapping("/{ordernumber}/upload/{uploadId}")
-    public void assignUploadToCustomerComplaint(@PathVariable("ordernumber") String orderNumber,@PathVariable("uploadId") Long uploadId) {
+    public void assignUploadToCustomerComplaint(@PathVariable("ordernumber") String orderNumber, @PathVariable("uploadId") Long uploadId) {
         customerComplaintService.assignUploadToCustomerComplaint(orderNumber, uploadId);
     }
 
-    @PutMapping("/{ordernumber}/customer_details/{customer_details_Id}")
+    @PutMapping("/{ordernumber}/customer_details/{username}")
     public void assignCustomerDetailsToJob(@PathVariable("ordernumber") String orderNumber,
-                                           @PathVariable("customer_details_Id") Long customerDetailsId) {
+                                           @PathVariable("username") String username) {
 
-        customerComplaintService.assignCustomerDetails(orderNumber, customerDetailsId);
-
-    }
-   /* @PutMapping("/{id}/customer_details/{customerDetailsId}")
-    public void assignCustomerComplaintToCustomerDetails(@PathVariable("id") Long id,
-                                                         @PathVariable("customerDetailsId") Long customerDetailsId) {
-
-        customerDetailsService.assignCustomerComplaintToCustomerDetails(id, customerDetailsId);
-
+        customerComplaintService.assignCustomerDetails(orderNumber, username);
     }
 
-    */
+    @PutMapping("/{ordernumber}/production_complaint/{production_complaintId}")
+    public void assignProductionComplaintToCustomerComplaint(@PathVariable("ordernumber") String orderNumber, @PathVariable("production_complaintId") Long productionComplaintId) {
+        customerComplaintService.assignProductionComplaintToCustomerComplaint(orderNumber, productionComplaintId);
+    }
+
+    @PutMapping("/{ordernumber}/assist_complaint/{assist_complaintId}")
+    public void assignAssistComplaintToCustomerComplaint(@PathVariable("ordernumber") String orderNumber, @PathVariable("assist_complaintId") Long assistComplaintId) {
+        customerComplaintService.assignAssistComplaintToCustomerComplaint(orderNumber, assistComplaintId);
+    }
+
 }
-
-
-/*//TODO //TODO //TODO
-    @PostMapping(value = "/customer_complaint")
-    public ResponseEntity addCustomerComplaint(@RequestBody CustomerComplaint customercomplaint) {
-        customerComplaintService.save(customercomplaint);
-        return ResponseEntity.ok("Toegevoegd");
-    }
- */
-
-//   @GetMapping("/{id}/upload/files/{id}")
-//    public ResponseEntity<Object> getFileInfo(@PathVariable long id) {
-//        UploadResponseDto response = uploadService.getFileById(id);
-//        return ResponseEntity.ok().body(response);
-//    }

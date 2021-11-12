@@ -1,14 +1,13 @@
 package nl.quin.complaintservicesystem.model;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "production_complaint")
-public class ProductionComplaint {
+@Table(name = "assist_complaint")
+public class AssistComplaint {
 
     @Id
     Long id;
@@ -20,13 +19,16 @@ public class ProductionComplaint {
     String assistedBy;
 
     @Column
-    String productionDepartment;
+    String assistDepartment;
 
     @Column
-    String productionCommentary;
+    String assistCommentary;
+
+    @Column
+    BigDecimal extraCosts;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "productionComplaint")
+    @OneToOne(mappedBy = "assistComplaint")
     CustomerComplaint customerComplaint;
 
     // CONSTRUCTORS
@@ -53,15 +55,17 @@ public class ProductionComplaint {
 
     public void setAssistedBy(String assistedBy) { this.assistedBy = assistedBy; }
 
-    public String getProductionDepartment() { return productionDepartment; }
+    public String getAssistDepartment() { return assistDepartment; }
 
-    public void setProductionDepartment(String productionDepartment) { this.productionDepartment = productionDepartment; }
+    public void setAssistDepartment(String assistDepartment) { this.assistDepartment = assistDepartment; }
 
-    public String getProductionCommentary() {
-        return productionCommentary;
-    }
+    public String getAssistCommentary() { return assistCommentary; }
 
-    public void setProductionCommentary(String productionCommentary) { this.productionCommentary = productionCommentary; }
+    public void setAssistCommentary(String assistCommentary) { this.assistCommentary = assistCommentary; }
+
+    public BigDecimal getExtraCosts() { return extraCosts; }
+
+    public void setExtraCosts(BigDecimal extraCosts) { this.extraCosts = extraCosts; }
 
     public CustomerComplaint getCustomerComplaint() { return customerComplaint; }
 
