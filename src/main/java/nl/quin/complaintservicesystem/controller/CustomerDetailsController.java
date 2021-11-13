@@ -2,6 +2,7 @@ package nl.quin.complaintservicesystem.controller;
 
 import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.service.CustomerDetailsService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -65,14 +66,3 @@ public class CustomerDetailsController {
         return errors;
     }
 }
-
-
-/* //TODO//TODO//TODO
-
-    @GetMapping(value = "/customer_details/{id}/customer_complaint")
-    public ResponseEntity getCustomerDetailsCustomerComplaint(@PathVariable long id) {
-        Iterable<CustomerComplaint> customerDetailsCustomerComplaint = customerDetailsService.getCustomerDetailsCustomerComplaint(id);
-        return ResponseEntity.ok(customerDetailsCustomerComplaint);
-    }
- */
-

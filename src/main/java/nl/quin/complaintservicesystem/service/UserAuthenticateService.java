@@ -1,6 +1,5 @@
 package nl.quin.complaintservicesystem.service;
 
-
 import nl.quin.complaintservicesystem.payload.request.AuthenticationRequest;
 import nl.quin.complaintservicesystem.payload.response.AuthenticationResponse;
 import nl.quin.complaintservicesystem.security.JwtUtil;

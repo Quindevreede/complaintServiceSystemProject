@@ -16,6 +16,8 @@ public class Authority implements Serializable {
     @Column(nullable = false)
     private String authority;
 
+    // CONSTRUCTORS
+
     public Authority() {
     }
 
@@ -23,6 +25,8 @@ public class Authority implements Serializable {
         this.username = username;
         this.authority = authority;
     }
+
+    // GETTERS SETTERS
 
     public String getUsername() {
         return username;

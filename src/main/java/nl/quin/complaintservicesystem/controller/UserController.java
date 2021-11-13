@@ -1,11 +1,11 @@
 package nl.quin.complaintservicesystem.controller;
 
-import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.model.User;
 import nl.quin.complaintservicesystem.service.CustomerDetailsService;
 import nl.quin.complaintservicesystem.service.UserService;
 import nl.quin.complaintservicesystem.payload.request.UserPostRequest;
 import nl.quin.complaintservicesystem.exceptions.BadRequestException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
@@ -75,7 +75,6 @@ public class UserController {
         }
     }
 
-    // http://users/management/authorities/ROLE_ADMIN
     @DeleteMapping(value = "/{username}/authorities/{authority}")
     public ResponseEntity<Object> deleteUserAuthority(@PathVariable("username") String username, @PathVariable("authority") String authority) {
         userService.removeAuthority(username, authority);
@@ -83,8 +82,7 @@ public class UserController {
     }
 
     @PutMapping("/{username}/customer_details/{Id}")
-    public void assignCustomerDetailsToUser(@PathVariable("username") String username,
-        @PathVariable("Id") long customerDetailsId){
+    public void assignCustomerDetailsToUser(@PathVariable("username") String username, @PathVariable("Id") long customerDetailsId){
         userService.assignCustomerDetailsToUser(customerDetailsId, username);
     }
 

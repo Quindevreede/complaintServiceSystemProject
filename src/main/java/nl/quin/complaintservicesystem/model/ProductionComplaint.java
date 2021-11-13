@@ -1,10 +1,8 @@
 package nl.quin.complaintservicesystem.model;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "production_complaint")
@@ -33,21 +31,13 @@ public class ProductionComplaint {
 
     // GETTERS SETTERS
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setId(Long id) { this.id = id; }
 
-    public String getOrderNumber() {
-        return orderNumber;
-    }
+    public String getOrderNumber() { return orderNumber; }
 
-    public void setOrderNumber(String orderNumber) {
-        this.orderNumber = orderNumber;
-    }
+    public void setOrderNumber(String orderNumber) { this.orderNumber = orderNumber;}
 
     public String getAssistedBy() { return assistedBy; }
 
@@ -57,9 +47,7 @@ public class ProductionComplaint {
 
     public void setProductionDepartment(String productionDepartment) { this.productionDepartment = productionDepartment; }
 
-    public String getProductionCommentary() {
-        return productionCommentary;
-    }
+    public String getProductionCommentary() { return productionCommentary; }
 
     public void setProductionCommentary(String productionCommentary) { this.productionCommentary = productionCommentary; }
 

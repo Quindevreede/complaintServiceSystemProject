@@ -35,21 +35,13 @@ public class AssistComplaint {
 
     // GETTERS SETTERS
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setId(Long id) { this.id = id; }
 
-    public String getOrderNumber() {
-        return orderNumber;
-    }
+    public String getOrderNumber() { return orderNumber; }
 
-    public void setOrderNumber(String orderNumber) {
-        this.orderNumber = orderNumber;
-    }
+    public void setOrderNumber(String orderNumber) { this.orderNumber = orderNumber; }
 
     public String getAssistedBy() { return assistedBy; }
 

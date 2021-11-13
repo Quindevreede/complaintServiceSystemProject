@@ -10,7 +10,6 @@ public class CustomerComplaint {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    //Corresponds to user id : username
     @Column
     String username;
 
@@ -21,31 +20,19 @@ public class CustomerComplaint {
     String customerCommentary;
 
     @Column
-    boolean isRePrintAprroved;
+    String isRePrintApproved;
 
     @ManyToOne
     CustomerDetails customerDetails;
 
- /*   @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "customer_details_id", nullable = false)
-    @JsonIgnore
-    private CustomerDetails customerDetails;
-  */
+    @OneToOne
+    Upload upload;
 
-  /*
-@OneToOne(mappedBy = "customerComplaint", cascade = CascadeType.ALL)
-private Upload upload;
-    //TODO MET =GETTERS SETTERS
-   */
+    @OneToOne
+    ProductionComplaint productionComplaint;
 
- @OneToOne
- Upload upload;
-
- @OneToOne
- ProductionComplaint productionComplaint;
-
- @OneToOne
- AssistComplaint assistComplaint;
+    @OneToOne
+    AssistComplaint assistComplaint;
 
     // CONSTRUCTORS
 
@@ -75,9 +62,17 @@ private Upload upload;
         this.orderNumber = orderNumber;
     }
 
-    public String getCustomerCommentary() {return customerCommentary;}
+    public String getCustomerCommentary() {
+        return customerCommentary;
+    }
 
-    public void setCustomerCommentary(String customerCommentary) {this.customerCommentary = customerCommentary;}
+    public void setCustomerCommentary(String customerCommentary) {
+        this.customerCommentary = customerCommentary;
+    }
+
+    public String getIsRePrintApproved() { return isRePrintApproved; }
+
+    public void setIsRePrintApproved(String isRePrintAprroved) { this.isRePrintApproved = isRePrintAprroved; }
 
     public CustomerDetails getCustomerDetails() {
         return customerDetails;
@@ -99,9 +94,7 @@ private Upload upload;
         return productionComplaint;
     }
 
-    public void setProductionComplaint(ProductionComplaint productionComplaint) {
-        this.productionComplaint = productionComplaint;
-    }
+    public void setProductionComplaint(ProductionComplaint productionComplaint) { this.productionComplaint = productionComplaint; }
 
     public AssistComplaint getAssistComplaint() {
         return assistComplaint;
@@ -111,34 +104,4 @@ private Upload upload;
         this.assistComplaint = assistComplaint;
     }
 
-    /*
-    public Method1File getMethod1File() {
-        return method1File;
-    }
-
-    public void setMethod1File(Method1File method1File) {
-        this.method1File = method1File;
-    }
-
- */
 }
-/* //TODO//TODO//TODO
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "customer_details", nullable = false)
-    //@JsonManagedReference DEZE GEEFT "status": 415, "error": "Unsupported Media Type",
-    private CustomerDetails customerDetails;
-
-    public CustomerDetails getCustomerDetails() {return customerDetails;}
-
-    public void setCustomerDetails(CustomerDetails customerDetails) {this.customerDetails = customerDetails;}
-
----- //TODO//TODO//TODO
-
-    public CustomerDetails getCustomerDetails() {
-        return customerDetails;
-    }
-
-    public void setCustomerDetails(CustomerDetails customerDetails) {
-        this.customerDetails = customerDetails;
-    }
- */

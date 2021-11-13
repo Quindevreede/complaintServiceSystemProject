@@ -1,8 +1,8 @@
 package nl.quin.complaintservicesystem.controller;
 
-import nl.quin.complaintservicesystem.exceptions.*;
 import nl.quin.complaintservicesystem.exceptions.BadRequestException;
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

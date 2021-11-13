@@ -8,6 +8,10 @@ public class UploadRequestDto {
         private String orderNumberUpload;
         private MultipartFile file;
 
+        // CONSTRUCTORS
+
+        // GETTERS SETTERS
+
         public String getTitle() {
                 return title;
         }
@@ -39,6 +43,5 @@ public class UploadRequestDto {
         public void setFile(MultipartFile file) {
                 this.file = file;
         }
-
 
 }

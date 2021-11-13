@@ -13,4 +13,3 @@ public interface CustomerDetailsRepository extends JpaRepository<CustomerDetails
     boolean existsByUsername(String username);
     Optional<CustomerDetails> findByUsername(String username);
 }
-

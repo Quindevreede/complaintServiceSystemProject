@@ -1,14 +1,9 @@
 package nl.quin.complaintservicesystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.print.attribute.standard.DateTimeAtCreation;
-import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Date;
 
 @Entity
 @Table(name = "upload")
@@ -42,6 +37,10 @@ public class Upload {
     @JsonIgnore
     @OneToOne(mappedBy = "upload")
     CustomerComplaint customerComplaint;
+
+    // CONSTRUCTORS
+
+    // GETTERS SETTERS
 
     public long getId() {
         return id;

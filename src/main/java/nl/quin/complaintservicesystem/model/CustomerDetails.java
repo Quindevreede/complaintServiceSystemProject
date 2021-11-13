@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -16,7 +15,6 @@ public class CustomerDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    //Corresponds to user id : username
     @Column
     String username;
 
@@ -38,9 +36,9 @@ public class CustomerDetails {
     @JsonBackReference("customerComplaintCustomerDetails")
     List<CustomerComplaint> customerComplaintList;
 
-   @JsonIgnore
-   @OneToOne(mappedBy = "customerDetails")
-   User user;
+    @JsonIgnore
+    @OneToOne(mappedBy = "customerDetails")
+    User user;
 
     // CONSTRUCTORS
 
@@ -86,36 +84,4 @@ public class CustomerDetails {
         this.email = email;
     }
 
-/*
-    public List<CustomerComplaint> getCustomerComplaints() {
-        return customerComplaints;
-    }
-
-    public void setCustomerComplaint(List<CustomerComplaint> customerComplaints) {
-        this.customerComplaints = customerComplaints;
-    }
-
-
-    // methoden
-    void addCustomerComplaint(CustomerComplaint customerComplaint) {
-        this.customerComplaints.add(customerComplaint);
-    }
-
-     */
-
 }
-
-/* //TODO//TODO//TODO
-
-    @OneToMany(mappedBy = "customerDetails",
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    @JsonBackReference
-    private List<CustomerComplaint> customerComplaint;
-
-//TODO//TODO//TODO
----------------------
-
-
- */
-

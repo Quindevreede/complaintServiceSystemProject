@@ -1,16 +1,14 @@
 package nl.quin.complaintservicesystem.controller;
 
 import nl.quin.complaintservicesystem.model.AssistComplaint;
-import nl.quin.complaintservicesystem.model.ProductionComplaint;
 import nl.quin.complaintservicesystem.service.AssistComplaintService;
-import nl.quin.complaintservicesystem.service.ProductionComplaintService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -38,12 +36,6 @@ public class AssistComplaintController {
     @PutMapping(value = "/{id}")
     public ResponseEntity<Object> updateAssistComplaint(@PathVariable("id") long id, @RequestBody AssistComplaint assistComplaint) {
         assistComplaintService.updateAssistComplaint(id, assistComplaint);
-        return ResponseEntity.noContent().build();
-    }
-
-    @PatchMapping(value = "/{id}")
-    public ResponseEntity<Object> updateAssistComplaintPartial(@PathVariable("id") long id, @RequestBody Map<String, String> fields) {
-        assistComplaintService.updateAssistComplaintPartial(id, fields);
         return ResponseEntity.noContent().build();
     }
 

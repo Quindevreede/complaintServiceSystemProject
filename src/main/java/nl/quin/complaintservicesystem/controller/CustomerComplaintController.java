@@ -1,21 +1,15 @@
 package nl.quin.complaintservicesystem.controller;
 
 import nl.quin.complaintservicesystem.model.CustomerComplaint;
-import nl.quin.complaintservicesystem.model.CustomerDetails;
-import nl.quin.complaintservicesystem.payload.request.UploadRequestDto;
-import nl.quin.complaintservicesystem.payload.response.UploadResponseDto;
 import nl.quin.complaintservicesystem.service.CustomerComplaintService;
 import nl.quin.complaintservicesystem.service.UploadService;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -54,18 +48,11 @@ public class CustomerComplaintController {
         return ResponseEntity.noContent().build();
     }
 
-    @PatchMapping(value = "/{id}")
-    public ResponseEntity<Object> updateCustomerComplaintPartial(@PathVariable("id") long id, @RequestBody Map<String, String> fields) {
-        customerComplaintService.partialUpdateCustomerComplaint(id, fields);
-        return ResponseEntity.noContent().build();
-    }
-
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Object> deleteCustomerComplaint(@PathVariable("id") long id) {
         customerComplaintService.deleteCustomerComplaint(id);
         return ResponseEntity.noContent().build();
     }
-
 
     @PutMapping("/{ordernumber}/upload/{uploadId}")
     public void assignUploadToCustomerComplaint(@PathVariable("ordernumber") String orderNumber, @PathVariable("uploadId") Long uploadId) {
@@ -73,10 +60,8 @@ public class CustomerComplaintController {
     }
 
     @PutMapping("/{ordernumber}/customer_details/{username}")
-    public void assignCustomerDetailsToJob(@PathVariable("ordernumber") String orderNumber,
-                                           @PathVariable("username") String username) {
-
-        customerComplaintService.assignCustomerDetails(orderNumber, username);
+    public void assignCustomerDetailsToCustomerComplaint(@PathVariable("ordernumber") String orderNumber, @PathVariable("username") String username) {
+        customerComplaintService.assignCustomerDetailsToCustomerComplaint(orderNumber, username);
     }
 
     @PutMapping("/{ordernumber}/production_complaint/{production_complaintId}")

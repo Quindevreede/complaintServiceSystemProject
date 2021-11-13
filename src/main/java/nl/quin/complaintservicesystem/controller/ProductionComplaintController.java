@@ -2,13 +2,14 @@ package nl.quin.complaintservicesystem.controller;
 
 import nl.quin.complaintservicesystem.model.ProductionComplaint;
 import nl.quin.complaintservicesystem.service.ProductionComplaintService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.Map;
+
 
 @RestController
 @CrossOrigin
@@ -41,12 +42,6 @@ public class ProductionComplaintController {
     @PutMapping(value = "/{id}")
     public ResponseEntity<Object> updateProductionComplaint(@PathVariable("id") long id, @RequestBody ProductionComplaint productionComplaint) {
         productionComplaintService.updateProductionComplaint(id, productionComplaint);
-        return ResponseEntity.noContent().build();
-    }
-
-    @PatchMapping(value = "/{id}")
-    public ResponseEntity<Object> updateProductionComplaintPartial(@PathVariable("id") long id, @RequestBody Map<String, String> fields) {
-        productionComplaintService.updateProductionComplaintPartial(id, fields);
         return ResponseEntity.noContent().build();
     }
 

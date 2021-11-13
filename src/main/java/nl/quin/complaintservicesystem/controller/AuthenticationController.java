@@ -4,6 +4,7 @@ package nl.quin.complaintservicesystem.controller;
 import nl.quin.complaintservicesystem.service.UserAuthenticateService;
 import nl.quin.complaintservicesystem.payload.request.AuthenticationRequest;
 import nl.quin.complaintservicesystem.payload.response.AuthenticationResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,8 +24,7 @@ public class AuthenticationController {
         this.userAuthenticateService = userAuthenticateService;
     }
 
-    // This is the ENDPOINT where you POST { "username":"johndoe", "password":"se7en" }
-    // to get JWT TOKEN (Fill in this JWT TOKEN in Authorization tab under BEARER TOKEN to get access)
+
     @PostMapping(value = "/authenticate")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
 

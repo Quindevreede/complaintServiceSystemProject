@@ -30,16 +30,12 @@ public class UserService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-//    @Autowired
-//    private AuthorityRepository authorityRepository;
-
-    //op public gezet, also called in customerservice
     public String getCurrentUserName() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return ((UserDetails) authentication.getPrincipal()).getUsername();
     }
 
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    //    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Collection<User> getUsers() {
         return userRepository.findAll();
     }
@@ -51,7 +47,6 @@ public class UserService {
     public boolean userExists(String username) {
         return userRepository.existsById(username);
     }
-
 
     public String createUser(UserPostRequest userPostRequest) {
         String encryptedPassword = passwordEncoder.encode(userPostRequest.getPassword());
@@ -65,7 +60,7 @@ public class UserService {
         user.getAuthorities().add(new Authority(user.getUsername(),"ROLE_USER"));
         User newUser = userRepository.save(user);
         return newUser.getUsername();
-    } // Wat je doet hier in Create User kun je alleen maar customers creeeren
+    }
 
     public void deleteUser(String username) {
         userRepository.deleteById(username);
@@ -104,22 +99,17 @@ public class UserService {
 
 
     public void assignCustomerDetailsToUser(Long customerDetailsId, String username) {
-
         var optionalUser = userRepository.findById(username);
-
         var optionalCustomerDetails = customerDetailsRepository.findById(customerDetailsId);
 
         if (optionalCustomerDetails.isPresent() && optionalUser.isPresent()) {
-
             var user = optionalUser.get();
-
             var customerDetails = optionalCustomerDetails.get();
 
             user.setCustomerDetails(customerDetails);
 
             userRepository.save(user);
-
         }
-
     }
+
 }

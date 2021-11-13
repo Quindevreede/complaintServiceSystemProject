@@ -114,12 +114,10 @@ public class CustomerComplaintService {
         } else {
 
             throw new RecordNotFoundException();
-
         }
-
     }
 
-    public void assignCustomerDetails(String orderNumber, String username) {
+    public void assignCustomerDetailsToCustomerComplaint(String orderNumber, String username) {
 
         var optionalCustomerComplaint = customerComplaintRepository.findByOrderNumber(orderNumber);
 

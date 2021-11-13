@@ -45,9 +45,14 @@ public class CustomerDetailsService {
         if(customerDetailsRepository.existsByEmail(customerDetails.getEmail())) {
             throw new RuntimeException("The email is already in use.");
         }
-
-        customerDetails.setUsername(username.getCurrentUserName()); //TODO if no currentUserName? kan deze in uiteindelijke???
-        CustomerDetails storedCustomerDetails = customerDetailsRepository.save(customerDetails); //TODO hierna: autowired User user, haal op User die hoort bij username, user.setcustomerdetails.  User user =userRepository.save(user);
+        if(!customerDetails.getEmail().contains("@")) {
+            throw new RuntimeException("Not a valid email address.");
+        }
+        if(!customerDetails.getEmail().contains(".")) {
+            throw new RuntimeException("Not a valid email address.");
+        }
+        customerDetails.setUsername(username.getCurrentUserName());
+        CustomerDetails storedCustomerDetails = customerDetailsRepository.save(customerDetails);
 
         return storedCustomerDetails.getId();
     }
@@ -56,10 +61,12 @@ public class CustomerDetailsService {
         if (!customerDetailsRepository.existsById(id)) {
             throw new UserNotFoundException();
         }
-
-        if(customerDetailsRepository.existsByEmail(customerDetails.getEmail())) {
-            throw new RuntimeException("The email is already in use.");        }
-
+        if(!customerDetails.getEmail().contains("@")) {
+            throw new RuntimeException("Not a valid email address.");
+        }
+        if(!customerDetails.getEmail().contains(".")) {
+            throw new RuntimeException("Not a valid email address.");
+        }
         CustomerDetails storedCustomerDetails = customerDetailsRepository.findById(id).orElse(null);
         storedCustomerDetails.setUsername(username.getCurrentUserName());
         storedCustomerDetails.setFirstName(customerDetails.getFirstName());
@@ -68,23 +75,11 @@ public class CustomerDetailsService {
         customerDetailsRepository.save(customerDetails);
     }
 
-        public void deleteCustomer ( long id){
-            if (!customerDetailsRepository.existsById(id)) {
-                throw new UserNotFoundException();
-            }
-            customerDetailsRepository.deleteById(id);
+    public void deleteCustomer ( long id){
+        if (!customerDetailsRepository.existsById(id)) {
+            throw new UserNotFoundException();
         }
+        customerDetailsRepository.deleteById(id);
+    }
 
 }
-
-/* //TODO//TODO//TODO
-     public Iterable<CustomerComplaint> getCustomerDetailsCustomerComplaint(long id) {
-        Optional<CustomerDetails> customerDetails = customerDetailsRepository.findById(id);
-        if (customerDetails.isPresent()) {
-            return customerDetails.get().getCustomerComplaint();
-        }
-        else {
-            throw new RecordNotFoundException("Team with id " + id + " not found");
-        }
-    }
- */

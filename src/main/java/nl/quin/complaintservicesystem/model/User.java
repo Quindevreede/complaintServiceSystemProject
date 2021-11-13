@@ -29,6 +29,10 @@ public class User {
     @OneToOne
     CustomerDetails customerDetails;
 
+    // CONSTRUCTORS
+
+    // GETTERS SETTERS
+
     public String getUsername() {
         return username;
     }
@@ -57,19 +61,12 @@ public class User {
         return authorities;
     }
 
-    public void addAuthority(nl.quin.complaintservicesystem.model.Authority authority) {
-        this.authorities.add(authority);
-    }
+    public void addAuthority(nl.quin.complaintservicesystem.model.Authority authority) { this.authorities.add(authority); }
 
-    public void removeAuthority(nl.quin.complaintservicesystem.model.Authority authority) {
-        this.authorities.remove(authority);
-    }
+    public void removeAuthority(nl.quin.complaintservicesystem.model.Authority authority) { this.authorities.remove(authority); }
 
-    public CustomerDetails getCustomerDetails() {
-        return customerDetails;
-    }
+    public CustomerDetails getCustomerDetails() { return customerDetails; }
 
-    public void setCustomerDetails(CustomerDetails customerDetails) {
-        this.customerDetails = customerDetails;
-    }
+    public void setCustomerDetails(CustomerDetails customerDetails) { this.customerDetails = customerDetails; }
+
 }
