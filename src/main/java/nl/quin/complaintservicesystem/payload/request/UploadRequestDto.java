@@ -3,6 +3,7 @@ package nl.quin.complaintservicesystem.payload.request;
 import org.springframework.web.multipart.MultipartFile;
 
 public class UploadRequestDto {
+
         private String title;
         private String description;
         private String orderNumberUpload;

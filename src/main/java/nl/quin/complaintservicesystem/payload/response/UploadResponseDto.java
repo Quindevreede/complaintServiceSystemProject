@@ -40,4 +40,5 @@ public class UploadResponseDto {
         public Timestamp getUploadedOnDate() { return uploadedOnDate; }
 
         public void setUploadedOnDate(Timestamp uploadedOnDate) { this.uploadedOnDate = uploadedOnDate; }
+
 }

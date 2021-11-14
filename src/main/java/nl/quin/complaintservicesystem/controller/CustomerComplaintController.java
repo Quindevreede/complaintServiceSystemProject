@@ -23,7 +23,7 @@ public class CustomerComplaintController {
     private UploadService uploadService;
 
     @GetMapping(value = "")
-    public ResponseEntity<Object> searchCustomerComplaints(@RequestParam(name = "name", defaultValue = "") String name) {
+    public ResponseEntity<Object> getAllCustomerComplaints(@RequestParam(name = "name", defaultValue = "") String name) {
         return ResponseEntity.ok().body(customerComplaintService.getCustomerComplaint(name));
     }
 
@@ -57,6 +57,11 @@ public class CustomerComplaintController {
     @PutMapping("/{ordernumber}/upload/{uploadId}")
     public void assignUploadToCustomerComplaint(@PathVariable("ordernumber") String orderNumber, @PathVariable("uploadId") Long uploadId) {
         customerComplaintService.assignUploadToCustomerComplaint(orderNumber, uploadId);
+    }
+
+    @PutMapping("/{ordernumber}/receipt_upload/{receiptUploadId}")
+    public void assignUploadReceiptToCustomerComplaint(@PathVariable("ordernumber") String orderNumber, @PathVariable("receiptUploadId") Long receiptUploadId) {
+        customerComplaintService.assignReceiptUploadToCustomerComplaint(orderNumber, receiptUploadId);
     }
 
     @PutMapping("/{ordernumber}/customer_details/{username}")

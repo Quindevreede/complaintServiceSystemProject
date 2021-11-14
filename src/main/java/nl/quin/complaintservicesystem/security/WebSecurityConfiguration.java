@@ -28,14 +28,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
 
-    /*
-    @Autowired
-    WebSecurityConfiguration(DataSource dataSource, JwtRequestFilter jwtRequestFilter) {
-        this.dataSource = dataSource;
-        this.jwtRequestFilter = jwtRequestFilter;
-    }
-     */
-
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
@@ -83,4 +75,5 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
     }
+
 }

@@ -7,6 +7,8 @@ import java.util.Collection;
 import java.util.Optional;
 
 public interface ProductionComplaintRepository extends JpaRepository<ProductionComplaint, Long> {
+
     Collection<ProductionComplaint> findAllByOrderNumber(String orderNumber);
     Optional<ProductionComplaint> findById(Long id);
+
 }

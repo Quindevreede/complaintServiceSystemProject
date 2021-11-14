@@ -2,11 +2,11 @@ package nl.quin.complaintservicesystem.service;
 
 import nl.quin.complaintservicesystem.exceptions.FileStorageException;
 import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
-
 import nl.quin.complaintservicesystem.model.Upload;
 import nl.quin.complaintservicesystem.payload.request.UploadRequestDto;
 import nl.quin.complaintservicesystem.payload.response.UploadResponseDto;
 import nl.quin.complaintservicesystem.repository.UploadRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -16,7 +16,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -26,7 +25,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Optional;
 
 @Service

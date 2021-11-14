@@ -14,5 +14,4 @@ public class UserPostRequest {
     private String username;
     private String password;
 
-
 }

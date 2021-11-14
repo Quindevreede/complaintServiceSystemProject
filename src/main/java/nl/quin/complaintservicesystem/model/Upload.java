@@ -13,25 +13,25 @@ public class Upload {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "file_name")
+    @Column
     private String fileName;
 
-    @Column(name = "title")
+    @Column
     private String title;
 
-    @Column(name = "description")
+    @Column
     private String description;
 
-    @Column(name = "ordernumber_upload")
+    @Column
     private String orderNumberUpload;
 
-    @Column(name = "location")
+    @Column
     private String location;
 
-    @Column(name = "uploaded_by_username")
+    @Column
     private String uploadedByUsername;
 
-    @Column(name = "uploaded_on_Date")
+    @Column
     private Timestamp uploadedOnDate;
 
     @JsonIgnore

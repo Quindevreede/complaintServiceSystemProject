@@ -3,6 +3,7 @@ package nl.quin.complaintservicesystem.service;
 import nl.quin.complaintservicesystem.payload.request.AuthenticationRequest;
 import nl.quin.complaintservicesystem.payload.response.AuthenticationResponse;
 import nl.quin.complaintservicesystem.security.JwtUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;

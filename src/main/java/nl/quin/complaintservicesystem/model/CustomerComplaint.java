@@ -29,6 +29,9 @@ public class CustomerComplaint {
     Upload upload;
 
     @OneToOne
+    ReceiptUpload receiptUpload;
+
+    @OneToOne
     ProductionComplaint productionComplaint;
 
     @OneToOne
@@ -89,6 +92,10 @@ public class CustomerComplaint {
     public void setUpload(Upload upload) {
         this.upload = upload;
     }
+
+    public ReceiptUpload getReceiptUpload() { return receiptUpload; }
+
+    public void setReceiptUpload(ReceiptUpload receiptUpload) { this.receiptUpload = receiptUpload; }
 
     public ProductionComplaint getProductionComplaint() {
         return productionComplaint;

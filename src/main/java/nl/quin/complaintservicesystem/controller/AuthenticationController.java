@@ -1,6 +1,5 @@
 package nl.quin.complaintservicesystem.controller;
 
-
 import nl.quin.complaintservicesystem.service.UserAuthenticateService;
 import nl.quin.complaintservicesystem.payload.request.AuthenticationRequest;
 import nl.quin.complaintservicesystem.payload.response.AuthenticationResponse;

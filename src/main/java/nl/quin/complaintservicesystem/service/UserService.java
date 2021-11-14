@@ -7,6 +7,7 @@ import nl.quin.complaintservicesystem.model.User;
 import nl.quin.complaintservicesystem.payload.request.UserPostRequest;
 import nl.quin.complaintservicesystem.repository.CustomerDetailsRepository;
 import nl.quin.complaintservicesystem.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

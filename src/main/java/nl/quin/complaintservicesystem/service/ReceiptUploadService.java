@@ -1,8 +1,12 @@
-package nl.quin.complaintservicesystem.method1;
+package nl.quin.complaintservicesystem.service;
 
 import nl.quin.complaintservicesystem.exceptions.FileStorageException;
 import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
 
+import nl.quin.complaintservicesystem.model.ReceiptUpload;
+import nl.quin.complaintservicesystem.payload.request.ReceiptUploadRequestDto;
+import nl.quin.complaintservicesystem.payload.response.ReceiptUploadResponseDto;
+import nl.quin.complaintservicesystem.repository.ReceiptUploadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -19,17 +23,19 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
-public class Method1Service {
+public class ReceiptUploadService {
 
     @Value("${app.upload.dir:${user.home}}")
     private String uploadDirectory;  // relative to root
     private final Path uploads = Paths.get("uploads");
 
     @Autowired
-    private Method1Repository repository;
+    private ReceiptUploadRepository repository;
 
     public void init() {
         try {
@@ -39,13 +45,13 @@ public class Method1Service {
         }
     }
 
-    public Iterable<Method1File> getFiles() {
+    public Iterable<ReceiptUpload> getFiles() {
         return repository.findAll();
     }
 
-    public long uploadFile(Method1RequestDto method1Dto) {
+    public long uploadFile(ReceiptUploadRequestDto receiptUploadRequestDto) {
 
-        MultipartFile file = method1Dto.getFile();
+        MultipartFile file = receiptUploadRequestDto.getFile();
 
         String originalFilename = StringUtils.cleanPath(file.getOriginalFilename());
         Path copyLocation = this.uploads.resolve(file.getOriginalFilename());
@@ -56,19 +62,20 @@ public class Method1Service {
             throw new FileStorageException("Could not store file " + originalFilename + ". Please try again!");
         }
 
-        Method1File newFileToStore = new Method1File();
+        ReceiptUpload newFileToStore = new ReceiptUpload();
         newFileToStore.setFileName(originalFilename);
+        newFileToStore.setOrdernumber(receiptUploadRequestDto.getOrdernumber());
+        newFileToStore.setUploadedByEmployee((receiptUploadRequestDto.getUploadedByEmployee()));
         newFileToStore.setLocation(copyLocation.toString());
-        newFileToStore.setTitle(method1Dto.getTitle());
-        newFileToStore.setDescription(method1Dto.getDescription());
+        newFileToStore.setUploadedTimestamp((Timestamp.valueOf(LocalDateTime.now())));
 
-        Method1File saved = repository.save(newFileToStore);
+        ReceiptUpload saved = repository.save(newFileToStore);
 
         return saved.getId();
     }
 
     public void deleteFile(long id) {
-        Optional<Method1File> stored = repository.findById(id);
+        Optional<ReceiptUpload> stored = repository.findById(id);
 
         if (stored.isPresent()) {
             String filename = stored.get().getFileName();
@@ -87,18 +94,17 @@ public class Method1Service {
         }
     }
 
-    public Method1ResponseDto getFileById(long id) {
-        Optional<Method1File> stored = repository.findById(id);
+    public ReceiptUploadResponseDto getFileById(long id) {
+        Optional<ReceiptUpload> stored = repository.findById(id);
 
         if (stored.isPresent()) {
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                     .buildAndExpand("download").toUri();
 
-            Method1ResponseDto responseDto = new Method1ResponseDto();
+            ReceiptUploadResponseDto responseDto = new ReceiptUploadResponseDto();
             responseDto.setFileName(stored.get().getFileName());
-            responseDto.setTitle(stored.get().getTitle());
-            responseDto.setDescription(stored.get().getDescription());
-            responseDto.setMediaType(stored.get().getMediaType());
+            responseDto.setOrdernumber(stored.get().getOrdernumber());
+            responseDto.setUploadedByEmployee(stored.get().getUploadedByEmployee());
             responseDto.setDownloadUri(uri.toString());
             return responseDto;
         }
@@ -112,7 +118,7 @@ public class Method1Service {
     }
 
     public Resource downloadFile(long id) {
-        Optional<Method1File> stored = repository.findById(id);
+        Optional<ReceiptUpload> stored = repository.findById(id);
 
         if (stored.isPresent()) {
             String filename = stored.get().getFileName();
