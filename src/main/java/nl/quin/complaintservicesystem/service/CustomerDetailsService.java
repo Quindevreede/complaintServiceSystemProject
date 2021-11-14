@@ -6,6 +6,7 @@ import nl.quin.complaintservicesystem.repository.CustomerComplaintRepository;
 import nl.quin.complaintservicesystem.repository.CustomerDetailsRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -22,10 +23,12 @@ public class CustomerDetailsService {
     @Autowired
     CustomerComplaintRepository customerComplaintRepository;
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Collection<CustomerDetails> getAllCustomers() {
         return customerDetailsRepository.findAll();
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Collection<CustomerDetails> getCustomers(String name) {
         if (name.isEmpty()) {
             return customerDetailsRepository.findAll();
@@ -75,6 +78,7 @@ public class CustomerDetailsService {
         customerDetailsRepository.save(customerDetails);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteCustomer ( long id){
         if (!customerDetailsRepository.existsById(id)) {
             throw new UserNotFoundException();

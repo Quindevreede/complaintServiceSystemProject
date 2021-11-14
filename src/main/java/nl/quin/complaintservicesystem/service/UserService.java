@@ -9,6 +9,7 @@ import nl.quin.complaintservicesystem.repository.CustomerDetailsRepository;
 import nl.quin.complaintservicesystem.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -36,7 +37,7 @@ public class UserService {
         return ((UserDetails) authentication.getPrincipal()).getUsername();
     }
 
-    //    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Collection<User> getUsers() {
         return userRepository.findAll();
     }
@@ -63,6 +64,7 @@ public class UserService {
         return newUser.getUsername();
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteUser(String username) {
         userRepository.deleteById(username);
     }
@@ -77,12 +79,14 @@ public class UserService {
         userRepository.save(user);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Set<Authority> getAuthorities(String username) {
         if (!userRepository.existsById(username)) throw new UserNotFoundException(username);
         User user = userRepository.findById(username).get();
         return user.getAuthorities();
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void addAuthority(String username, String authority) {
         if (!userRepository.existsById(username)) throw new UserNotFoundException(username);
         User user = userRepository.findById(username).get();
@@ -90,6 +94,7 @@ public class UserService {
         userRepository.save(user);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void removeAuthority(String username, String authority) {
         if (!userRepository.existsById(username)) throw new UserNotFoundException(username);
         User user = userRepository.findById(username).get();

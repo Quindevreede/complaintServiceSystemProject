@@ -19,9 +19,6 @@ public class CustomerComplaint {
     @Column
     String customerCommentary;
 
-    @Column
-    String isRePrintApproved;
-
     @ManyToOne
     CustomerDetails customerDetails;
 
@@ -36,6 +33,9 @@ public class CustomerComplaint {
 
     @OneToOne
     AssistComplaint assistComplaint;
+
+    @OneToOne
+    CustomerReply customerReply;
 
     // CONSTRUCTORS
 
@@ -73,10 +73,6 @@ public class CustomerComplaint {
         this.customerCommentary = customerCommentary;
     }
 
-    public String getIsRePrintApproved() { return isRePrintApproved; }
-
-    public void setIsRePrintApproved(String isRePrintAprroved) { this.isRePrintApproved = isRePrintAprroved; }
-
     public CustomerDetails getCustomerDetails() {
         return customerDetails;
     }
@@ -110,5 +106,9 @@ public class CustomerComplaint {
     public void setAssistComplaint(AssistComplaint assistComplaint) {
         this.assistComplaint = assistComplaint;
     }
+
+    public CustomerReply getCustomerReply() { return customerReply; }
+
+    public void setCustomerReply(CustomerReply customerReply) { this.customerReply = customerReply; }
 
 }

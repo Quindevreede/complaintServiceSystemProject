@@ -54,6 +54,11 @@ public class CustomerComplaintController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("/{ordernumber}/customer_details/{username}")
+    public void assignCustomerDetailsToCustomerComplaint(@PathVariable("ordernumber") String orderNumber, @PathVariable("username") String username) {
+        customerComplaintService.assignCustomerDetailsToCustomerComplaint(orderNumber, username);
+    }
+
     @PutMapping("/{ordernumber}/upload/{uploadId}")
     public void assignUploadToCustomerComplaint(@PathVariable("ordernumber") String orderNumber, @PathVariable("uploadId") Long uploadId) {
         customerComplaintService.assignUploadToCustomerComplaint(orderNumber, uploadId);
@@ -64,11 +69,6 @@ public class CustomerComplaintController {
         customerComplaintService.assignReceiptUploadToCustomerComplaint(orderNumber, receiptUploadId);
     }
 
-    @PutMapping("/{ordernumber}/customer_details/{username}")
-    public void assignCustomerDetailsToCustomerComplaint(@PathVariable("ordernumber") String orderNumber, @PathVariable("username") String username) {
-        customerComplaintService.assignCustomerDetailsToCustomerComplaint(orderNumber, username);
-    }
-
     @PutMapping("/{ordernumber}/production_complaint/{production_complaintId}")
     public void assignProductionComplaintToCustomerComplaint(@PathVariable("ordernumber") String orderNumber, @PathVariable("production_complaintId") Long productionComplaintId) {
         customerComplaintService.assignProductionComplaintToCustomerComplaint(orderNumber, productionComplaintId);
@@ -77,6 +77,11 @@ public class CustomerComplaintController {
     @PutMapping("/{ordernumber}/assist_complaint/{assist_complaintId}")
     public void assignAssistComplaintToCustomerComplaint(@PathVariable("ordernumber") String orderNumber, @PathVariable("assist_complaintId") Long assistComplaintId) {
         customerComplaintService.assignAssistComplaintToCustomerComplaint(orderNumber, assistComplaintId);
+    }
+
+    @PutMapping("/{ordernumber}/customer_reply/{customer_replyId}")
+    public void assignCustomerReplyToCustomerComplaint(@PathVariable("ordernumber") String orderNumber, @PathVariable("customer_replyId") Long customerReplyId) {
+        customerComplaintService.assignCustomerReplyToCustomerComplaint(orderNumber, customerReplyId);
     }
 
 }

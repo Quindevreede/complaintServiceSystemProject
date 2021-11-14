@@ -7,6 +7,7 @@ import nl.quin.complaintservicesystem.repository.ReceiptUploadRepository;
 import nl.quin.complaintservicesystem.repository.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -33,12 +34,18 @@ public class CustomerComplaintService {
     ReceiptUploadRepository receiptUploadRepository;
 
     @Autowired
+    CustomerReplyRepository customerReplyRepository;
+
+    @Autowired
     UserService username;
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Collection<CustomerComplaint> getAllCustomerComplaints() {
         return customerComplaintRepository.findAll();
     }
 
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Collection<CustomerComplaint> getCustomerComplaint(String name) {
         if (name.isEmpty()) {
             return customerComplaintRepository.findAll();
@@ -55,7 +62,7 @@ public class CustomerComplaintService {
     }
 
     public long createCustomerComplaint(CustomerComplaint customerComplaint) {
-        customerComplaint.setUsername(username.getCurrentUserName()); //TODO if no currentUserName? kan deze in uiteindelijke???
+        customerComplaint.setUsername(username.getCurrentUserName());
         if (customerComplaintRepository.existsByOrderNumber(customerComplaint.getOrderNumber())) {
             throw new RuntimeException("The ordernumber is already in use.");
         }
@@ -75,6 +82,7 @@ public class CustomerComplaintService {
         customerComplaintRepository.save(customerComplaint);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteCustomerComplaint(long id) {
         if (!customerComplaintRepository.existsById(id)) {
             throw new UserNotFoundException();
@@ -140,6 +148,7 @@ public class CustomerComplaintService {
 
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void assignProductionComplaintToCustomerComplaint(String orderNumber, Long productionComplaintId) {
 
         var optionalCustomerComplaint = customerComplaintRepository.findByOrderNumber(orderNumber);
@@ -159,6 +168,7 @@ public class CustomerComplaintService {
         }
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void assignAssistComplaintToCustomerComplaint(String orderNumber, Long assistComplaintId) {
 
         var optionalCustomerComplaint = customerComplaintRepository.findByOrderNumber(orderNumber);
@@ -170,6 +180,25 @@ public class CustomerComplaintService {
             var assistComplaint = optionalAssistComplaint.get();
 
             customerComplaint.setAssistComplaint(assistComplaint);
+
+            customerComplaintRepository.save(customerComplaint);
+        } else {
+
+            throw new RecordNotFoundException("no data to save");
+        }
+    }
+
+    public void assignCustomerReplyToCustomerComplaint(String orderNumber, Long customerReplyId) {
+
+        var optionalCustomerComplaint = customerComplaintRepository.findByOrderNumber(orderNumber);
+        var optionalCustomerReply = customerReplyRepository.findById(customerReplyId);
+
+        if (optionalCustomerComplaint.isPresent() && optionalCustomerReply.isPresent()) {
+
+            var customerComplaint = optionalCustomerComplaint.get();
+            var customerReply = optionalCustomerReply.get();
+
+            customerComplaint.setCustomerReply(customerReply);
 
             customerComplaintRepository.save(customerComplaint);
         } else {

@@ -7,23 +7,11 @@ import nl.quin.complaintservicesystem.repository.AssistComplaintRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-
 @Service
 public class AssistComplaintService {
 
     @Autowired
     AssistComplaintRepository assistComplaintRepository;
-
-    @Autowired
-    UserService username;
-
-    @Autowired
-    CustomerComplaintService getOrderNumber;
-
-    public Collection<AssistComplaint> getAllAssistComplaints() {
-        return assistComplaintRepository.findAll();
-    }
 
     public AssistComplaint getAssistComplaintById(long id) {
         if (!assistComplaintRepository.existsById(id)) { throw new UserNotFoundException(); }
@@ -31,6 +19,7 @@ public class AssistComplaintService {
     }
 
     public long createAssistComplaint (AssistComplaint assistComplaint) {
+        assistComplaint.setInvoiceLink("http://localhost:666/receipt_upload/files/" + assistComplaint.getInvoiceLink() + "/download");
         AssistComplaint storedAssistComplaint = assistComplaintRepository.save(assistComplaint);
         return storedAssistComplaint.getId();
     }

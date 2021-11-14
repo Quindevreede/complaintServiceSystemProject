@@ -7,8 +7,6 @@ import nl.quin.complaintservicesystem.repository.ProductionComplaintRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-
 @Service
 public class ProductionComplaintService {
 
@@ -20,15 +18,6 @@ public class ProductionComplaintService {
 
     @Autowired
     CustomerComplaintService getOrderNumber;
-
-    public Collection<ProductionComplaint> getProductionComplaint(String name) {
-        if (name.isEmpty()) {
-            return productionComplaintRepository.findAll();
-        }
-        else {
-            return productionComplaintRepository.findAllByOrderNumber(name);
-        }
-    }
 
     public ProductionComplaint getProductionComplaintById(long id) {
         if (!productionComplaintRepository.existsById(id)) { throw new UserNotFoundException(); }

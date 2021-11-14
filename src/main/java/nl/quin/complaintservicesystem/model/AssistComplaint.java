@@ -13,9 +13,6 @@ public class AssistComplaint {
     Long id;
 
     @Column
-    String orderNumber;
-
-    @Column
     String assistedBy;
 
     @Column
@@ -26,6 +23,9 @@ public class AssistComplaint {
 
     @Column
     BigDecimal extraCosts;
+
+    @Column
+    String invoiceLink;
 
     @JsonIgnore
     @OneToOne(mappedBy = "assistComplaint")
@@ -38,10 +38,6 @@ public class AssistComplaint {
     public Long getId() { return id; }
 
     public void setId(Long id) { this.id = id; }
-
-    public String getOrderNumber() { return orderNumber; }
-
-    public void setOrderNumber(String orderNumber) { this.orderNumber = orderNumber; }
 
     public String getAssistedBy() { return assistedBy; }
 
@@ -58,6 +54,10 @@ public class AssistComplaint {
     public BigDecimal getExtraCosts() { return extraCosts; }
 
     public void setExtraCosts(BigDecimal extraCosts) { this.extraCosts = extraCosts; }
+
+    public String getInvoiceLink() { return invoiceLink; }
+
+    public void setInvoiceLink(String invoiceLink) { this.invoiceLink = invoiceLink; }
 
     public CustomerComplaint getCustomerComplaint() { return customerComplaint; }
 

@@ -18,11 +18,6 @@ public class ProductionComplaintController {
     @Autowired
     private ProductionComplaintService productionComplaintService;
 
-    @GetMapping(value = "")
-    public ResponseEntity<Object> searchProductionComplaints(@RequestParam(name="name", defaultValue="") String name) {
-        return ResponseEntity.ok().body(productionComplaintService.getProductionComplaint(name));
-    }
-
     @GetMapping(value = "/{id}")
     public ResponseEntity<Object> getProductionComplaint(@PathVariable("id") long id) {
         return ResponseEntity.ok().body(productionComplaintService.getProductionComplaintById(id));

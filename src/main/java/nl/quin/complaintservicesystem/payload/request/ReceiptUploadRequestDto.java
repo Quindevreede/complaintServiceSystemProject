@@ -4,7 +4,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class ReceiptUploadRequestDto {
         private String ordernumber;
-        private String uploadedByEmployee;
         private MultipartFile file;
 
         // GETTERS SETTERS
@@ -16,10 +15,6 @@ public class ReceiptUploadRequestDto {
         public void setOrdernumber(String ordernumber) {
                 this.ordernumber = ordernumber;
         }
-
-        public String getUploadedByEmployee() { return uploadedByEmployee; }
-
-        public void setUploadedByEmployee(String uploadedByEmployee) { this.uploadedByEmployee = uploadedByEmployee; }
 
         public MultipartFile getFile() {
                 return file;

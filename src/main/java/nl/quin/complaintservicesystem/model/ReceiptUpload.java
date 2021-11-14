@@ -27,9 +27,6 @@ public class ReceiptUpload {
     @Column
     private Timestamp uploadedTimestamp;
 
-    @Column
-    private String uploadedByEmployee;
-
     @JsonIgnore
     @OneToOne(mappedBy = "receiptUpload")
     CustomerComplaint customerComplaint;
@@ -68,14 +65,6 @@ public class ReceiptUpload {
 
     public void setUploadedTimestamp(Timestamp uploadedTimestamp) {
         this.uploadedTimestamp = uploadedTimestamp;
-    }
-
-    public String getUploadedByEmployee() {
-        return uploadedByEmployee;
-    }
-
-    public void setUploadedByEmployee(String uploadedByEmployee) {
-        this.uploadedByEmployee = uploadedByEmployee;
     }
 
     public CustomerComplaint getCustomerComplaint() { return customerComplaint; }

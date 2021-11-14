@@ -65,7 +65,6 @@ public class ReceiptUploadService {
         ReceiptUpload newFileToStore = new ReceiptUpload();
         newFileToStore.setFileName(originalFilename);
         newFileToStore.setOrdernumber(receiptUploadRequestDto.getOrdernumber());
-        newFileToStore.setUploadedByEmployee((receiptUploadRequestDto.getUploadedByEmployee()));
         newFileToStore.setLocation(copyLocation.toString());
         newFileToStore.setUploadedTimestamp((Timestamp.valueOf(LocalDateTime.now())));
 
@@ -104,7 +103,6 @@ public class ReceiptUploadService {
             ReceiptUploadResponseDto responseDto = new ReceiptUploadResponseDto();
             responseDto.setFileName(stored.get().getFileName());
             responseDto.setOrdernumber(stored.get().getOrdernumber());
-            responseDto.setUploadedByEmployee(stored.get().getUploadedByEmployee());
             responseDto.setDownloadUri(uri.toString());
             return responseDto;
         }

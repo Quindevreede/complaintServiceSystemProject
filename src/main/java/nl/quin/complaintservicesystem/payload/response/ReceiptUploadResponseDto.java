@@ -4,7 +4,6 @@ public class ReceiptUploadResponseDto {
         private String ordernumber;
         private String fileName;
         private String downloadUri;
-        private String uploadedByEmployee;
 
         // GETTERS SETTERS
 
@@ -15,10 +14,6 @@ public class ReceiptUploadResponseDto {
         public void setOrdernumber(String ordernumber) {
                 this.ordernumber = ordernumber;
         }
-
-        public String getUploadedByEmployee() { return uploadedByEmployee; }
-
-        public void setUploadedByEmployee(String uploadedByEmployee) { this.uploadedByEmployee = uploadedByEmployee; }
 
         public String getFileName() {
                 return fileName;
