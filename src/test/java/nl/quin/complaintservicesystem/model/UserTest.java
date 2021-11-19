@@ -1,11 +1,53 @@
 package nl.quin.complaintservicesystem.model;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class UserTest {
+
+    private User user;
+
+    //ARRANGE
+    @BeforeEach
+    void setUp() {
+        this.user = new User();
+        this.user.setUsername("johndoe");
+        this.user.setPassword("se7en");
+        this.user.setEnabled(true);
+    }
+
+    @Test
+    void testGetUserName() {
+
+        //ACT
+        String expectedUsername = "johndoe";
+        String actualUsername = this.user.getUsername();
+        String expectedPassword = "se7en";
+        String actualPassword = this.user.getPassword();
+
+        //ASSERT
+        assertEquals(expectedUsername, actualUsername);
+        assertEquals(expectedPassword, actualPassword);
+    }
+
+    @Test
+    void testSetUserName() {
+
+        //ACT
+        String expectedUsername = "johndoe";
+        this.user.setUsername("peterparker");
+        String actualUsername = this.user.getUsername();
+        String expectedPassword = "USER";
+        this.user.setPassword("ADMIN");
+        String actualPassword = this.user.getPassword();
+
+        //ASSERT
+        assertNotEquals(expectedUsername, actualUsername);
+        assertNotEquals(expectedPassword, actualPassword);
+    }
 
     @Test
     void getterUsername() {

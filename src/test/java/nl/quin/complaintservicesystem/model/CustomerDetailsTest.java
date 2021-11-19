@@ -1,76 +1,59 @@
 package nl.quin.complaintservicesystem.model;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class CustomerDetailsTest {
 
-    @Test
-    void getFirstName() {
-        //Arrange
-       CustomerDetails customer = new CustomerDetails();
-        //Act
-        customer.setFirstName("John");
-        //Assert
-        assertEquals("John", customer.getFirstName());
+    private CustomerDetails customerDetails;
+
+    //ARRANGE
+    @BeforeEach
+    void setUp() {
+        this.customerDetails = new CustomerDetails();
+        this.customerDetails.setFirstName("John");
+        this.customerDetails.setLastName("Doe");
+        this.customerDetails.setEmail("johndoe@hotmail.com");
     }
 
     @Test
-    void setFirstName() {
-        //Arrange
-        CustomerDetails customer = new CustomerDetails();
-        //Act
-        customer.setFirstName("John");
-        customer.setFirstName("Harry");
-        customer.setFirstName("John");
-        //Assert
-        assertEquals("John", customer.getFirstName());
+    void testGetCustomerDetails() {
+
+        //ACT
+        String expectedFirstName = "John";
+        String actualFirstName = this.customerDetails.getFirstName();
+        String expectedLastName = "Doe";
+        String actualLastName = this.customerDetails.getLastName();
+        String expectedEmail = "johndoe@hotmail.com";
+        String actualEmail = this.customerDetails.getEmail();
+
+        //ASSERT
+        assertEquals(expectedFirstName, actualFirstName);
+        assertEquals(expectedLastName, actualLastName);
+        assertEquals(expectedEmail, actualEmail);
     }
 
     @Test
-    void getLastName() {
-        //Arrange
-        CustomerDetails customer = new CustomerDetails();
-        //Act
-        customer.setLastName("Doe");
-        //Assert
-        assertEquals("Doe", customer.getLastName());
-    }
+    void testSetFirstName() {
 
-    @Test
-    void setLastName() {
-        //Arrange
-        CustomerDetails customer = new CustomerDetails();
-        //Act
-        customer.setLastName("Doe");
-        customer.setLastName("Berry");
-        customer.setLastName("Doe");
-        //Assert
-        assertEquals("Doe", customer.getLastName());
-    }
+        //ACT
+        String expectedFirstName = "John";
+        this.customerDetails.setFirstName("Peter");
+        String actualFirstName = this.customerDetails.getFirstName();
+        String expectedLastName = "Doe";
+        this.customerDetails.setLastName("Parker");
+        String actualLastName = this.customerDetails.getLastName();
+        String expectedEmail = "johndoe@hotmail.com";
+        this.customerDetails.setEmail("peterparker@hotmail.com");
+        String actualEmail = this.customerDetails.getEmail();
 
-    @Test
-    void getEmail() {
-        //Arrange
-        CustomerDetails customer = new CustomerDetails();
-        //Act
-        customer.setEmail("johndoe@hotmail.com");
-        //Assert
-        assertEquals("johndoe@hotmail.com", customer.getEmail());
-    }
-
-    @Test
-    void setEmail() {
-        //Arrange
-        CustomerDetails customer = new CustomerDetails();
-        //Act
-        customer.setEmail("johndoe@hotmail.com");
-        customer.setEmail("harryberry@hotmail.com");
-        customer.setEmail("johndoe@hotmail.com");
-        //Assert
-        assertEquals("johndoe@hotmail.com", customer.getEmail());
+        //ASSERT
+        assertNotEquals(expectedFirstName, actualFirstName);
+        assertNotEquals(expectedLastName, actualLastName);
+        assertNotEquals(expectedEmail, actualEmail);
     }
 
 }

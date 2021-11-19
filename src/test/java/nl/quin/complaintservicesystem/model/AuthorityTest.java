@@ -1,48 +1,49 @@
 package nl.quin.complaintservicesystem.model;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class AuthorityTest {
 
-    @Test
-    void getUsername() {
-        //Arrange
-        Authority authority = new Authority();
-        //Act
-        authority.setUsername("Harry");
-        //Assert
-        assertEquals("Harry", authority.getUsername());
+    private Authority authority;
+
+    //ARRANGE
+    @BeforeEach
+    void setUp() {
+        this.authority = new Authority("johndoe", "USER");
     }
 
     @Test
-    void setUsername() {
-        //Arrange
-        Authority authority = new Authority();
-        //Act
-        authority.setUsername("Harry");
-        //Assert
-        assertEquals("Harry", authority.getUsername());
+    void testGetUserName() {
+
+    //ACT
+        String expectedUserName = "johndoe";
+        String actualUserName = this.authority.getUsername();
+        String expectedAuthority = "USER";
+        String actualAuthority = this.authority.getAuthority();
+
+    //ASSERT
+        assertEquals(expectedUserName, actualUserName);
+        assertEquals(expectedAuthority, actualAuthority);
     }
 
     @Test
-    void getAuthority() {
-        //Arrange
-        Authority authority = new Authority();
-        //Act
-        authority.setAuthority("ROLE_USER");
-        //Assert
-        assertEquals("ROLE_USER", authority.getAuthority());
+    void testSetUserName() {
+
+        //ACT
+        String expectedUserName = "johndoe";
+        this.authority.setUsername("peterparker");
+        String actualUserName = this.authority.getUsername();
+        String expectedAuthority = "USER";
+        this.authority.setAuthority("ADMIN");
+        String actualAuthority = this.authority.getAuthority();
+
+        //ASSERT
+        assertNotEquals(expectedUserName, actualUserName);
+        assertNotEquals(expectedAuthority, actualAuthority);
     }
 
-    @Test
-    void setAuthority() {
-        //Arrange
-        Authority authority = new Authority();
-        //Act
-        authority.setAuthority("ROLE_USER");
-        //Assert
-        assertEquals("ROLE_USER", authority.getAuthority());
-    }
 }
