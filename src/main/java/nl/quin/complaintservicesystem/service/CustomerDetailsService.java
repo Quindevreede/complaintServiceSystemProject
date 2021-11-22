@@ -98,10 +98,13 @@ public class CustomerDetailsService {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteCustomer (long id) {
-        if (!customerDetailsRepository.existsById(id)) {
+        Optional<CustomerDetails> customerDetails = customerDetailsRepository.findById(id);
+        if (customerDetails.isPresent()) {
+            customerDetailsRepository.deleteById(id);
+        } else {
             throw new UserNotFoundException();
         }
-        customerDetailsRepository.deleteById(id);
+
     }
 
 }

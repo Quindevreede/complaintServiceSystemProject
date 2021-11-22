@@ -73,7 +73,6 @@ class CustomerDetailsServiceTest {
         assertThrows(UserNotFoundException.class, () -> customerDetailsService.getCustomerById(1L));
     }
 
-
     @Test
     public void testGetCustomerByLastName2() {
         customerDetails = new CustomerDetails();
@@ -84,13 +83,14 @@ class CustomerDetailsServiceTest {
 
                 .when(customerDetailsRepository
                 .findById(1L)).thenReturn(Optional.of(customerDetails));
+
 String expected = "Doe";
 
 customerDetailsService.getCustomerById(1L);
 assertEquals(expected, customerDetails.getLastName());
     }
 
-    @Test
+/*    @Test
     public void updateEmployeeTest() {
         CustomerDetails customerDetails = new CustomerDetails();
         customerDetails.setId(1L);
@@ -105,6 +105,26 @@ assertEquals(expected, customerDetails.getLastName());
         assertThat(customerDetails.getId()).isEqualTo(1);
         assertThat(customerDetails.getLastName()).isEqualTo("test1");
     }
+ */
+
+    @Test
+    public void deleteCustomerDetailsTest() {
+        CustomerDetails customerDetails = new CustomerDetails();
+        customerDetails.setId(1L);
+        customerDetails.setLastName("Doe");
+
+        customerDetailsRepository.delete(customerDetails);
+
+        Mockito
+
+                .when(customerDetailsRepository
+                        .findById(1L)).thenReturn(Optional.of(customerDetails));
+
+        customerDetailsService.deleteCustomer(1L);
+
+        verify(customerDetailsRepository, times(1)).delete(customerDetails);
+    }
+
 }
 
 
