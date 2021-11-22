@@ -10,6 +10,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @Service
 public class CustomerDetailsService {
@@ -37,12 +38,29 @@ public class CustomerDetailsService {
         }
     }
 
+    public String getCustomerByEmail(String email) {
+        if (!customerDetailsRepository.existsByEmail(email)) {
+            throw new UserNotFoundException();
+        }
+        return customerDetailsRepository.findByEmail(email).getEmail();
+    }
+
     public CustomerDetails getCustomerById(long id) {
+        Optional<CustomerDetails> customerDetails = customerDetailsRepository.findById(id);
+        if (customerDetails.isPresent()) {
+            return customerDetails.get();
+        } else {
+            throw new UserNotFoundException();
+        }
+    }
+
+ /*   public CustomerDetails getCustomerById(long id) {
         if (!customerDetailsRepository.existsById(id)) {
             throw new UserNotFoundException();
         }
         return customerDetailsRepository.findById(id).orElse(null);
     }
+  */
 
     public long createCustomer(CustomerDetails customerDetails) {
         if(customerDetailsRepository.existsByEmail(customerDetails.getEmail())) {
@@ -79,7 +97,7 @@ public class CustomerDetailsService {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public void deleteCustomer ( long id){
+    public void deleteCustomer (long id) {
         if (!customerDetailsRepository.existsById(id)) {
             throw new UserNotFoundException();
         }

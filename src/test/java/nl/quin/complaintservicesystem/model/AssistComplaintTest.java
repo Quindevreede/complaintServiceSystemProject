@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 
 import java.math.BigDecimal;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -15,7 +17,9 @@ class AssistComplaintTest {
     //ARRANGE
     @BeforeEach
     void setUp() {
+
         this.assistComplaint = new AssistComplaint();
+        this.assistComplaint.setId(123L);
         this.assistComplaint.setAssistedBy("James");
         this.assistComplaint.setAssistDepartment("DeskAssist");
         this.assistComplaint.setAssistCommentary("REPRINT, without extra costs");
@@ -24,9 +28,16 @@ class AssistComplaintTest {
     }
 
     @Test
+    void testGetId() {
+        assertNotNull(this.assistComplaint.getId());
+    }
+
+    @Test
     void testGetCustomerDetails() {
 
         //ACT
+        Long expectedId = 123L;
+        Long actualId = this.assistComplaint.getId();
         String expectedAssistedBy = "James";
         String actualAssistedBy = this.assistComplaint.getAssistedBy();
         String expectedAssistDepartment = "DeskAssist";
@@ -39,6 +50,7 @@ class AssistComplaintTest {
         String actualInvoiceLink = this.assistComplaint.getInvoiceLink();
 
         //ASSERT
+        assertEquals(expectedId, actualId);
         assertEquals(expectedAssistedBy, actualAssistedBy);
         assertEquals(expectedAssistDepartment, actualAssistDepartment);
         assertEquals(expectedAssistCommentary, actualAssistCommentary);
@@ -50,6 +62,9 @@ class AssistComplaintTest {
     void testSetFirstName() {
 
         //ACT
+        Long expectedId = 123L;
+        this.assistComplaint.setId(456L);
+        Long actualId = this.assistComplaint.id;
         String expectedAssistedBy = "James";
         this.assistComplaint.setAssistedBy("Peter");
         String actualAssistedBy = this.assistComplaint.getAssistedBy();
@@ -67,6 +82,8 @@ class AssistComplaintTest {
         String actualInvoiceLink = this.assistComplaint.getInvoiceLink();
 
         //ASSERT
+
+        assertNotEquals(expectedId, actualId);
         assertNotEquals(expectedAssistedBy, actualAssistedBy);
         assertNotEquals(expectedAssistDepartment, actualAssistDepartment);
         assertNotEquals(expectedAssistCommentary, actualAssistCommentary);

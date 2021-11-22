@@ -3,8 +3,7 @@ package nl.quin.complaintservicesystem.model;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerDetailsTest {
 
@@ -17,6 +16,11 @@ class CustomerDetailsTest {
         this.customerDetails.setFirstName("John");
         this.customerDetails.setLastName("Doe");
         this.customerDetails.setEmail("johndoe@hotmail.com");
+    }
+
+    @Test
+    void testGetId() {
+        assertNull(this.customerDetails.getId());
     }
 
     @Test

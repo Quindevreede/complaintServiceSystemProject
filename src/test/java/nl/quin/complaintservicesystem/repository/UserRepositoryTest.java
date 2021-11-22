@@ -37,7 +37,7 @@ class UserRepositoryTest {
     }
 
     @Test
-    void testFindByLastLast() {
+    void testFindByLastName() {
 
         // Arrange
 

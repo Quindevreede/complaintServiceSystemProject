@@ -40,8 +40,8 @@ class UserTest {
         String expectedUsername = "johndoe";
         this.user.setUsername("peterparker");
         String actualUsername = this.user.getUsername();
-        String expectedPassword = "USER";
-        this.user.setPassword("ADMIN");
+        String expectedPassword = "se7en";
+        this.user.setPassword("3ight");
         String actualPassword = this.user.getPassword();
 
         //ASSERT
@@ -65,7 +65,7 @@ class UserTest {
         User user = new User();
         //Act
         user.setUsername("johndoe");
-        user.setUsername("Harry");
+        user.setUsername("peterparker");
         user.setUsername("johndoe");
         //Assert
         assertEquals("johndoe", user.getUsername());
