@@ -2,10 +2,13 @@ package nl.quin.complaintservicesystem.service;
 
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
 import nl.quin.complaintservicesystem.model.AssistComplaint;
+import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.repository.AssistComplaintRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class AssistComplaintService {
@@ -14,8 +17,12 @@ public class AssistComplaintService {
     AssistComplaintRepository assistComplaintRepository;
 
     public AssistComplaint getAssistComplaintById(long id) {
-        if (!assistComplaintRepository.existsById(id)) { throw new UserNotFoundException(); }
-        return assistComplaintRepository.findById(id).orElse(null);
+        Optional<AssistComplaint> assistComplaint = assistComplaintRepository.findById(id);
+        if (assistComplaint.isPresent()) {
+            return assistComplaint.get();
+        } else {
+            throw new UserNotFoundException();
+        }
     }
 
     public long createAssistComplaint (AssistComplaint assistComplaint) {
@@ -34,8 +41,12 @@ public class AssistComplaintService {
     }
 
     public void deleteAssistComplaint(long id) {
-        if (!assistComplaintRepository.existsById(id)) { throw new UserNotFoundException(); }
-        assistComplaintRepository.deleteById(id);
+        Optional<AssistComplaint> assistComplaint = assistComplaintRepository.findById(id);
+        if (assistComplaint.isPresent()) {
+            assistComplaintRepository.deleteById(id);
+        } else {
+            throw new UserNotFoundException();
+        }
     }
 
 }

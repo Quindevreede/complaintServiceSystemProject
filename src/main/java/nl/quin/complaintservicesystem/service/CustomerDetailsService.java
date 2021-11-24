@@ -38,13 +38,6 @@ public class CustomerDetailsService {
         }
     }
 
-    public String getCustomerByEmail(String email) {
-        if (!customerDetailsRepository.existsByEmail(email)) {
-            throw new UserNotFoundException();
-        }
-        return customerDetailsRepository.findByEmail(email).getEmail();
-    }
-
     public CustomerDetails getCustomerById(long id) {
         Optional<CustomerDetails> customerDetails = customerDetailsRepository.findById(id);
         if (customerDetails.isPresent()) {
@@ -53,14 +46,6 @@ public class CustomerDetailsService {
             throw new UserNotFoundException();
         }
     }
-
- /*   public CustomerDetails getCustomerById(long id) {
-        if (!customerDetailsRepository.existsById(id)) {
-            throw new UserNotFoundException();
-        }
-        return customerDetailsRepository.findById(id).orElse(null);
-    }
-  */
 
     public long createCustomer(CustomerDetails customerDetails) {
         if(customerDetailsRepository.existsByEmail(customerDetails.getEmail())) {
@@ -104,7 +89,6 @@ public class CustomerDetailsService {
         } else {
             throw new UserNotFoundException();
         }
-
     }
 
 }

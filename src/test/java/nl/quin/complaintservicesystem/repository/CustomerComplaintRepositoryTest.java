@@ -1,11 +1,8 @@
 package nl.quin.complaintservicesystem.repository;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import nl.quin.complaintservicesystem.ComplaintServiceSystemApplication;
-import nl.quin.complaintservicesystem.model.User;
+import nl.quin.complaintservicesystem.model.CustomerComplaint;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,39 +10,34 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ContextConfiguration;
 
-import javax.persistence.PersistenceException;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @ContextConfiguration(classes={ComplaintServiceSystemApplication.class})
-class UserRepositoryTest {
 
+class CustomerComplaintRepositoryTest {
 
     @Autowired
     private TestEntityManager entityManager;
 
-
     @Autowired
-    private UserRepository userRepository;
+    private CustomerComplaintRepository customerComplaintRepository;
 
     @Test
-    void testFindByLastName() {
+    void testFindById() {
         // Arrange
-        User user = new User();
-        user.setUsername("johndoe");
-        user.setPassword("se7en");
-
-        entityManager.persist(user);
+        CustomerComplaint customerComplaint = new CustomerComplaint();
+        entityManager.persist(customerComplaint);
         entityManager.flush();
 
         // Act
-        Optional<User> found = userRepository.findByUsername(user.getUsername());
+        Optional<CustomerComplaint> found = customerComplaintRepository.findById(customerComplaint.getId());
 
         // Assert
-        String expected = "johndoe";
-        String actual = found.get().getUsername();
+        Long expected = 1L;
+        Long actual = found.get().getId();
         assertEquals(expected, actual);
     }
-
 }

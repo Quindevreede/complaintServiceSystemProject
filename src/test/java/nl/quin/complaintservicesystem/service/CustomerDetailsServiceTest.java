@@ -40,18 +40,25 @@ class CustomerDetailsServiceTest {
     }
 
     @Test
-    public void getCustomerByLastNameTest() {
-        CustomerDetails customerDetails = new CustomerDetails();
+    public void testGetCustomer() {
+        customerDetails = new CustomerDetails();
         customerDetails.setLastName("Doe");
-        when(customerDetailsRepository.findById(1L)).thenReturn(Optional.of(customerDetails));
+        customerDetails.setId(1L);
 
-        var customerDetails1 = customerDetailsService.getCustomers("Doe");
-        assertThat(customerDetails.getLastName()).isEqualTo("Doe");
+        Mockito
+
+                .when(customerDetailsRepository
+                        .findById(1L)).thenReturn(Optional.of(customerDetails));
+
+        String expected = "Doe";
+
+        customerDetailsService.getCustomerById(1L);
+        assertEquals(expected, customerDetails.getLastName());
     }
 
     @Test
     public void createCustomerTest() {
-        CustomerDetails customerDetails = new CustomerDetails();
+        customerDetails = new CustomerDetails();
         customerDetails.setId(1L);
         customerDetails.setFirstName("John");
         customerDetails.setLastName("Doe");
@@ -74,42 +81,8 @@ class CustomerDetailsServiceTest {
     }
 
     @Test
-    public void testGetCustomerByLastName2() {
-        customerDetails = new CustomerDetails();
-        customerDetails.setLastName("Doe");
-        customerDetails.setId(1L);
-
-        Mockito
-
-                .when(customerDetailsRepository
-                .findById(1L)).thenReturn(Optional.of(customerDetails));
-
-String expected = "Doe";
-
-customerDetailsService.getCustomerById(1L);
-assertEquals(expected, customerDetails.getLastName());
-    }
-
-/*    @Test
-    public void updateEmployeeTest() {
-        CustomerDetails customerDetails = new CustomerDetails();
-        customerDetails.setId(1L);
-        customerDetails.setLastName("Doe");
-        when(customerDetailsRepository.findById(1L)).thenReturn(Optional.of(customerDetails));
-
-        customerDetails.setLastName("Doe1");
-        customerDetailsService.updateCustomer(1L, customerDetails);
-
-        verify(customerDetailsRepository).save(customerDetails);
-
-        assertThat(customerDetails.getId()).isEqualTo(1);
-        assertThat(customerDetails.getLastName()).isEqualTo("test1");
-    }
- */
-
-    @Test
     public void deleteCustomerDetailsTest() {
-        CustomerDetails customerDetails = new CustomerDetails();
+        customerDetails = new CustomerDetails();
         customerDetails.setId(1L);
         customerDetails.setLastName("Doe");
 
@@ -121,7 +94,6 @@ assertEquals(expected, customerDetails.getLastName());
                         .findById(1L)).thenReturn(Optional.of(customerDetails));
 
         customerDetailsService.deleteCustomer(1L);
-
         verify(customerDetailsRepository, times(1)).delete(customerDetails);
     }
 

@@ -11,7 +11,5 @@ public interface CustomerDetailsRepository extends JpaRepository<CustomerDetails
     boolean existsById(Long id);
     Collection<CustomerDetails> findAllByLastName(String last_name);
     boolean existsByEmail(String email);
-    CustomerDetails findByEmail(String email);
     Optional<CustomerDetails> findByUsername(String username);
-    void findByLastName(String last_name);
 }

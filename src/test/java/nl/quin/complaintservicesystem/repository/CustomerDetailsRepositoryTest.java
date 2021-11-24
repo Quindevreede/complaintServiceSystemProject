@@ -1,44 +1,46 @@
 package nl.quin.complaintservicesystem.repository;
 
 import nl.quin.complaintservicesystem.ComplaintServiceSystemApplication;
-
 import nl.quin.complaintservicesystem.model.CustomerDetails;
+
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ContextConfiguration;
 
-import java.util.Collection;
+import java.util.Optional;
 
-    @DataJpaTest
+import static org.junit.jupiter.api.Assertions.*;
+
+@DataJpaTest
     @ContextConfiguration(classes={ComplaintServiceSystemApplication.class})
 
     class CustomerDetailsRepositoryTest {
 
-        @Autowired
-        private TestEntityManager entityManager;
+    @Autowired
+    private TestEntityManager entityManager;
 
-        @Autowired
-        private CustomerDetailsRepository customerDetailsRepository;
+    @Autowired
+    private CustomerDetailsRepository customerDetailsRepository;
 
-        @Test
-        void testFindAllByLastName() {
-            // Arrange
-            CustomerDetails customerDetails = new CustomerDetails();
-            customerDetails.setLastName("Doe");
-            entityManager.persist(customerDetails);
-            entityManager.flush();
+    @Test
+    void testFindByIdWithMandatoryFields() {
+        // Arrange
+        CustomerDetails customerDetails = new CustomerDetails();
+        customerDetails.setFirstName("John");
+        customerDetails.setLastName("Doe");
+        customerDetails.setEmail("johndoe@hotmail.com");
+        entityManager.persist(customerDetails);
+        entityManager.flush();
 
-            // Act
-            Collection<CustomerDetails> found = customerDetailsRepository.findAllByLastName(customerDetails.getLastName());
+        // Act
+        Optional<CustomerDetails> found = customerDetailsRepository.findById(customerDetails.getId());
 
-            // Assert
-            String expected = "Doe";
-            String actual = customerDetails.getLastName();
-            assertEquals(expected, actual);
-        }
-
+        // Assert
+        Long expected = 1L;
+        Long actual = found.get().getId();
+        assertEquals(expected, actual);
+    }
 }
