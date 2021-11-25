@@ -1,11 +1,14 @@
 package nl.quin.complaintservicesystem.service;
 
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
+import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.model.ProductionComplaint;
 import nl.quin.complaintservicesystem.repository.ProductionComplaintRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class ProductionComplaintService {
@@ -20,8 +23,12 @@ public class ProductionComplaintService {
     CustomerComplaintService getOrderNumber;
 
     public ProductionComplaint getProductionComplaintById(long id) {
-        if (!productionComplaintRepository.existsById(id)) { throw new UserNotFoundException(); }
-        return productionComplaintRepository.findById(id).orElse(null);
+        Optional<ProductionComplaint> productionComplaint = productionComplaintRepository.findById(id);
+        if (productionComplaint.isPresent()) {
+            return productionComplaint.get();
+        } else {
+            throw new UserNotFoundException();
+        }
     }
 
     public long createProductionComplaint (ProductionComplaint productionComplaint) {
@@ -39,8 +46,12 @@ public class ProductionComplaintService {
     }
 
     public void deleteProductionComplaint(long id) {
-        if (!productionComplaintRepository.existsById(id)) { throw new UserNotFoundException(); }
-        productionComplaintRepository.deleteById(id);
+        Optional<ProductionComplaint> productionComplaint = productionComplaintRepository.findById(id);
+        if (productionComplaint.isPresent()) {
+            productionComplaintRepository.deleteById(id);
+        } else {
+            throw new UserNotFoundException();
+        }
     }
 
 }
