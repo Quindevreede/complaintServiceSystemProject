@@ -3,6 +3,7 @@ package nl.quin.complaintservicesystem.service;
 import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
 import nl.quin.complaintservicesystem.model.CustomerComplaint;
+import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.repository.ReceiptUploadRepository;
 import nl.quin.complaintservicesystem.repository.*;
 
@@ -11,6 +12,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @Service
 public class CustomerComplaintService {
@@ -55,10 +57,12 @@ public class CustomerComplaintService {
     }
 
     public CustomerComplaint getCustomerComplaintById(long id) {
-        if (!customerComplaintRepository.existsById(id)) {
+        Optional<CustomerComplaint> customerComplaint = customerComplaintRepository.findById(id);
+        if (customerComplaint.isPresent()) {
+            return customerComplaint.get();
+        } else {
             throw new UserNotFoundException();
         }
-        return customerComplaintRepository.findById(id).orElse(null);
     }
 
     public long createCustomerComplaint(CustomerComplaint customerComplaint) {
@@ -84,10 +88,12 @@ public class CustomerComplaintService {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteCustomerComplaint(long id) {
-        if (!customerComplaintRepository.existsById(id)) {
+        Optional<CustomerComplaint> customerComplaint = customerComplaintRepository.findById(id);
+        if (customerComplaint.isPresent()) {
+            customerComplaintRepository.deleteById(id);
+        } else {
             throw new UserNotFoundException();
         }
-        customerComplaintRepository.deleteById(id);
     }
 
     public void assignUploadToCustomerComplaint(String orderNumber, Long uploadId) {

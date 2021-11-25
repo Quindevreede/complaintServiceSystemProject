@@ -1,6 +1,7 @@
 package nl.quin.complaintservicesystem.service;
 
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
+import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.model.CustomerReply;
 import nl.quin.complaintservicesystem.repository.CustomerReplyRepository;
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class CustomerReplyService {
@@ -20,8 +22,12 @@ public class CustomerReplyService {
     AssistComplaintService assistComplaintService;
 
     public CustomerReply getCustomerReplyById(long id) {
-        if (!customerReplyRepository.existsById(id)) { throw new UserNotFoundException(); }
-        return customerReplyRepository.findById(id).orElse(null);
+        Optional<CustomerReply> customerReply = customerReplyRepository.findById(id);
+        if (customerReply.isPresent()) {
+            return customerReply.get();
+        } else {
+            throw new UserNotFoundException();
+        }
     }
 
     public long createCustomerReply (CustomerReply customerReply) {
@@ -39,8 +45,12 @@ public class CustomerReplyService {
     }
 
     public void deleteCustomerReply(long id) {
-        if (!customerReplyRepository.existsById(id)) { throw new UserNotFoundException(); }
-        customerReplyRepository.deleteById(id);
+        Optional<CustomerReply> customerReply = customerReplyRepository.findById(id);
+        if (customerReply.isPresent()) {
+            customerReplyRepository.deleteById(id);
+        } else {
+            throw new UserNotFoundException();
+        }
     }
 
 }
