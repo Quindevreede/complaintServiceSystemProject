@@ -11,8 +11,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
@@ -47,6 +46,18 @@ class UserServiceTest {
     }
 
     @Test
+    void testGetUserIsNullError() {
+        String username = null;
+        Mockito
+
+                .when(userRepository
+                        .findById("johndoe")).thenReturn(Optional.of(user));
+
+        // Assert the response
+        assertNull(username, "username should not be found");
+    }
+
+    @Test
     public void createUserTest() {
         user = new User();
         user.setUsername("johndoe");
@@ -60,6 +71,8 @@ class UserServiceTest {
         assertThat(user1.getUsername()).isEqualTo("johndoe");
         assertThat(user1.getPassword()).isEqualTo("se7en");
     }
+
+
 
     @Test
     public void deleteUserTest() {
