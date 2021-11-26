@@ -3,6 +3,8 @@ package nl.quin.complaintservicesystem.service;
 import nl.quin.complaintservicesystem.exceptions.FileStorageException;
 import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
 
+import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
+import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.model.ReceiptUpload;
 import nl.quin.complaintservicesystem.payload.request.ReceiptUploadRequestDto;
 import nl.quin.complaintservicesystem.payload.response.ReceiptUploadResponseDto;
