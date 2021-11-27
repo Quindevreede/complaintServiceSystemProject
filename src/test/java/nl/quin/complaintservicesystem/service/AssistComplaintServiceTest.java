@@ -3,19 +3,15 @@ package nl.quin.complaintservicesystem.service;
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
 import nl.quin.complaintservicesystem.model.AssistComplaint;
 import nl.quin.complaintservicesystem.repository.AssistComplaintRepository;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-
 import org.mockito.*;
-
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
 import java.math.BigDecimal;
 import java.util.Optional;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
@@ -34,7 +30,7 @@ class AssistComplaintServiceTest {
     ArgumentCaptor<AssistComplaint> assistComplaintCaptor;
 
     @Test
-    void testGetAssistComplaintByIdThrowException() {
+    void getAssistComplaintByIdThrowExceptionTest() {
         when(assistComplaintRepository.findById(1L)).thenReturn(Optional.empty());
         assertThrows(UserNotFoundException.class, () -> {
             assistComplaintService.getAssistComplaintById(1L);
@@ -43,7 +39,7 @@ class AssistComplaintServiceTest {
     }
 
     @Test
-    void testGetAssistComplaintIsNullError() {
+    void getAssistComplaintIsNullErrorTest() {
         String assistedBy = null;
         Mockito
 
@@ -54,7 +50,7 @@ class AssistComplaintServiceTest {
     }
 
     @Test
-    public void testGetAssistComplaint() {
+    public void getAssistComplaintTest() {
         assistComplaint = new AssistComplaint();
         assistComplaint.setAssistedBy("Peter");
         assistComplaint.setId(1L);
@@ -91,6 +87,19 @@ class AssistComplaintServiceTest {
         assertThat(assistComplaint1.getInvoiceLink()).isEqualTo("www.bla.com");
         assertThat(assistComplaint1.getExtraCosts()).isEqualTo(BigDecimal.valueOf(7.77));
         assertThat(assistComplaint1.getId()).isEqualTo(1);
+    }
+
+    @Test
+    public void createAssistComplaintTestByOnlyId() {
+        assistComplaint = new AssistComplaint();
+        assistComplaint.setId(1L);
+        given(assistComplaintRepository.findById(assistComplaint.getId())).willReturn(Optional.empty());
+        given(assistComplaintRepository.save(assistComplaint)).willAnswer(invocation -> invocation.getArgument(0));
+
+        long savedAssistComplaint = assistComplaintService.createAssistComplaint(assistComplaint);
+        assertThat(savedAssistComplaint).isNotNull();
+
+        verify(assistComplaintRepository).save(any(AssistComplaint.class));
     }
 
     @Test

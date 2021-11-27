@@ -7,11 +7,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
@@ -30,7 +31,20 @@ class CustomerDetailsServiceTest {
     ArgumentCaptor<CustomerDetails> customerDetailsCaptor;
 
     @Test
-    void testGetCustomerDetailsByIdThrowException() {
+    void getAllAssistComplaintsTest() {
+        List<CustomerDetails> customerDetails = new ArrayList();
+        customerDetails.add(new CustomerDetails(1L,"John", "Doe", "johndoe@hotmail.com"));
+        customerDetails.add(new CustomerDetails(2L,"John", "Doe", "johndoe@hotmail.com"));
+        customerDetails.add(new CustomerDetails(3L,"John", "Doe", "johndoe@hotmail.com"));
+
+        given(customerDetailsRepository.findAll()).willReturn(customerDetails);
+
+        List<CustomerDetails> expected = customerDetailsService.customerDetailsRepository.findAll();
+        assertEquals(expected,customerDetails);
+    }
+
+    @Test
+    void getCustomerDetailsByIdThrowExceptionTest() {
         when(customerDetailsRepository.findById(1L)).thenReturn(Optional.empty());
         assertThrows(UserNotFoundException.class, () -> {
             customerDetailsService.getCustomerById(1L);
@@ -39,7 +53,7 @@ class CustomerDetailsServiceTest {
     }
 
     @Test
-    public void testGetCustomer() {
+    public void getCustomerTest() {
         customerDetails = new CustomerDetails();
         customerDetails.setLastName("Doe");
         customerDetails.setId(1L);
@@ -75,7 +89,7 @@ class CustomerDetailsServiceTest {
     }
 
     @Test
-    public void updateCustomerDeleteThrowExceptionTest() {
+    public void updateCustomerThrowExceptionTest() {
         assertThrows(UserNotFoundException.class, () -> customerDetailsService.getCustomerById(1L));
     }
 

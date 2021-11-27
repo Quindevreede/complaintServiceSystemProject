@@ -42,6 +42,20 @@ public class CustomerDetails {
 
     // CONSTRUCTORS
 
+    public CustomerDetails() {
+    }
+
+    public CustomerDetails(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public CustomerDetails(Long id, String firstName, String lastName, String email) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
     // GETTERS SETTERS
 
     public Long getId() {

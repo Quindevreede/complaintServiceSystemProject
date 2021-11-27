@@ -2,16 +2,12 @@ package nl.quin.complaintservicesystem.repository;
 
 import nl.quin.complaintservicesystem.ComplaintServiceSystemApplication;
 import nl.quin.complaintservicesystem.model.ProductionComplaint;
-
 import org.junit.jupiter.api.Test;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ContextConfiguration;
-
 import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest

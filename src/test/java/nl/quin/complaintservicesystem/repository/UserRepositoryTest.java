@@ -1,21 +1,14 @@
 package nl.quin.complaintservicesystem.repository;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import nl.quin.complaintservicesystem.ComplaintServiceSystemApplication;
 import nl.quin.complaintservicesystem.model.User;
-
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ContextConfiguration;
-
-import javax.persistence.PersistenceException;
 import java.util.Optional;
-
 
 @DataJpaTest
 @ContextConfiguration(classes={ComplaintServiceSystemApplication.class})

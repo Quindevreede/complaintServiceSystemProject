@@ -1,15 +1,12 @@
 package nl.quin.complaintservicesystem.service;
 
-import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
 import nl.quin.complaintservicesystem.model.User;
 import nl.quin.complaintservicesystem.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
 import java.util.Optional;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -48,12 +45,12 @@ class UserServiceTest {
     @Test
     void testGetUserIsNullError() {
         String username = null;
+
         Mockito
 
                 .when(userRepository
                         .findById("johndoe")).thenReturn(Optional.of(user));
 
-        // Assert the response
         assertNull(username, "username should not be found");
     }
 
@@ -71,8 +68,6 @@ class UserServiceTest {
         assertThat(user1.getUsername()).isEqualTo("johndoe");
         assertThat(user1.getPassword()).isEqualTo("se7en");
     }
-
-
 
     @Test
     public void deleteUserTest() {
