@@ -21,7 +21,7 @@ public class ProductionComplaintControllerTest {
     ProductionComplaintService productionComplaintService;
 
     @Test
-    void indexTest() throws Exception {
+    void initialEndpointTestIfUnauthorized() throws Exception {
         mvc.perform(get("/production_complaint"))
                 .andExpect(status().isUnauthorized());
     }

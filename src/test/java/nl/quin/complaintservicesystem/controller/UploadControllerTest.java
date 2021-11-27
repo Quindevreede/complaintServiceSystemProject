@@ -21,7 +21,7 @@ public class UploadControllerTest {
     UploadService uploadService;
 
     @Test
-    void indexTest() throws Exception {
+    void initialEndpointTestIfUnauthorized() throws Exception {
         mvc.perform(get("/upload"))
                 .andExpect(status().isUnauthorized());
     }

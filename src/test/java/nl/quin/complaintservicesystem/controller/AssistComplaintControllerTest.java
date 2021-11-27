@@ -21,7 +21,7 @@ public class AssistComplaintControllerTest {
     AssistComplaintService assistComplaintService;
 
     @Test
-    void indexTest() throws Exception {
+    void initialEndpointTestIfUnauthorized() throws Exception {
         mvc.perform(get("/assist_complaint"))
                 .andExpect(status().isUnauthorized());
     }

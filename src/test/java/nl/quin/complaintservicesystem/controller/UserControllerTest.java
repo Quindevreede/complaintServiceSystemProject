@@ -21,13 +21,13 @@ public class UserControllerTest {
     UserService userService;
 
     @Test
-    void indexTest() throws Exception {
+    void initialEndpointTestIfOk() throws Exception {
         mvc.perform(get("/users"))
                 .andExpect(status().isOk());
     }
 
     @Test
-    void indexTest1() throws Exception {
+    void initialEndpointTestIfOk1() throws Exception {
         mvc.perform(get("/users/johndoe"))
                 .andExpect(status().isOk());
     }

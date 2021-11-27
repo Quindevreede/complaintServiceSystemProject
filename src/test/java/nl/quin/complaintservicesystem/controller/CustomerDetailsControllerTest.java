@@ -21,7 +21,7 @@ public class CustomerDetailsControllerTest {
     CustomerDetailsService customerDetailsService;
 
     @Test
-    void indexTest() throws Exception {
+    void initialEndpointTestIfUnauthorized() throws Exception {
         mvc.perform(get("/customer_details"))
                 .andExpect(status().isUnauthorized());
     }

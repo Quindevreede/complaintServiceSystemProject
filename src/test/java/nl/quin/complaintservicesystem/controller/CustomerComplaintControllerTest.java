@@ -21,7 +21,7 @@ public class CustomerComplaintControllerTest {
     CustomerComplaintService customerComplaintService;
 
     @Test
-    void indexTest() throws Exception {
+    void initialEndpointTestIfOk() throws Exception {
         mvc.perform(get("/customer_complaint"))
                 .andExpect(status().isOk());
     }

@@ -17,7 +17,7 @@ public class BaseControllerTest {
     private MockMvc mvc;
 
     @Test
-    void indexTest() throws Exception {
+    void initialEndpointTest() throws Exception {
         mvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Hello World"));
