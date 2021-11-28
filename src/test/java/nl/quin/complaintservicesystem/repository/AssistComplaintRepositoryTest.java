@@ -23,16 +23,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
         @Test
         void testFindById() {
-            // Arrange
+
+            // ARRANGE
             AssistComplaint assistComplaint = new AssistComplaint();
             assistComplaint.setId(1L);
             entityManager.persist(assistComplaint);
             entityManager.flush();
 
-            // Act
+            // ACT
             Optional<AssistComplaint> found = assistComplaintRepository.findById(assistComplaint.getId());
 
-            // Assert
+            // ASSERT
             Long expected = 1L;
             Long actual = found.get().getId();
             assertEquals(expected, actual);

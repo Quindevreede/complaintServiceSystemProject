@@ -1,6 +1,7 @@
 package nl.quin.complaintservicesystem.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,9 +10,11 @@ import java.util.Set;
 public class User {
 
     @Id
+    @NotBlank(message = "USERNAME is mandatory")
     @Column(nullable = false, unique = true)
     private String username;
 
+    @NotBlank(message = "PASSWORD is mandatory")
     @Column(nullable = false, length = 255)
     private String password;
 
@@ -30,6 +33,14 @@ public class User {
     CustomerDetails customerDetails;
 
     // CONSTRUCTORS
+
+    public User() {
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     // GETTERS SETTERS
 

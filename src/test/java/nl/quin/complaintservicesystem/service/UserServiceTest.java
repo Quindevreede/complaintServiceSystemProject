@@ -32,7 +32,6 @@ class UserServiceTest {
         user.setUsername("johndoe");
 
         Mockito
-
                 .when(userRepository
                         .findById("johndoe")).thenReturn(Optional.of(user));
 
@@ -47,7 +46,6 @@ class UserServiceTest {
         String username = null;
 
         Mockito
-
                 .when(userRepository
                         .findById("johndoe")).thenReturn(Optional.of(user));
 
@@ -77,7 +75,6 @@ class UserServiceTest {
         userRepository.delete(user);
 
         Mockito
-
                 .when(userRepository
                         .findById("johndoe")).thenReturn(Optional.of(user));
 

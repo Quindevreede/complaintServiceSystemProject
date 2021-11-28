@@ -22,13 +22,21 @@ public class UserControllerTest {
 
     @Test
     void initialEndpointTestIfOk() throws Exception {
+
+        // ACT
         mvc.perform(get("/users"))
+
+        // ASSERT
                 .andExpect(status().isOk());
     }
 
     @Test
     void initialEndpointTestIfOk1() throws Exception {
+
+        // ACT
         mvc.perform(get("/users/johndoe"))
+
+        // ASSERT
                 .andExpect(status().isOk());
     }
 

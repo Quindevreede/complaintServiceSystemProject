@@ -1,6 +1,7 @@
 package nl.quin.complaintservicesystem.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "customer_complaint")
@@ -13,6 +14,7 @@ public class CustomerComplaint {
     @Column
     String username;
 
+    @NotBlank(message = "ORDERNUMBER is mandatory")
     @Column
     String orderNumber;
 
@@ -38,6 +40,15 @@ public class CustomerComplaint {
     CustomerReply customerReply;
 
     // CONSTRUCTORS
+
+    public CustomerComplaint() {
+    }
+
+    public CustomerComplaint(Long id, String orderNumber, String customerCommentary) {
+        this.id = id;
+        this.orderNumber = orderNumber;
+        this.customerCommentary = customerCommentary;
+    }
 
     // GETTERS SETTERS
 

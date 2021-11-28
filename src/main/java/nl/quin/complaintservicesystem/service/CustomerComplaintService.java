@@ -3,14 +3,11 @@ package nl.quin.complaintservicesystem.service;
 import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
 import nl.quin.complaintservicesystem.model.CustomerComplaint;
-import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.repository.ReceiptUploadRepository;
 import nl.quin.complaintservicesystem.repository.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
-
 import java.util.Collection;
 import java.util.Optional;
 
@@ -86,7 +83,6 @@ public class CustomerComplaintService {
         customerComplaintRepository.save(customerComplaint);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteCustomerComplaint(long id) {
         Optional<CustomerComplaint> customerComplaint = customerComplaintRepository.findById(id);
         if (customerComplaint.isPresent()) {

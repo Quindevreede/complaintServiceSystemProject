@@ -4,7 +4,6 @@ import nl.quin.complaintservicesystem.model.Upload;
 import nl.quin.complaintservicesystem.payload.response.UploadResponseDto;
 import nl.quin.complaintservicesystem.payload.request.UploadRequestDto;
 import nl.quin.complaintservicesystem.service.UploadService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -12,7 +11,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import java.net.URI;
 
 @RestController

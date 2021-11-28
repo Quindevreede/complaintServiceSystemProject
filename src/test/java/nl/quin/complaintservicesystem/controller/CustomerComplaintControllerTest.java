@@ -22,7 +22,11 @@ public class CustomerComplaintControllerTest {
 
     @Test
     void initialEndpointTestIfOk() throws Exception {
+
+        // ACT
         mvc.perform(get("/customer_complaint"))
+
+        // ASSERT
                 .andExpect(status().isOk());
     }
 

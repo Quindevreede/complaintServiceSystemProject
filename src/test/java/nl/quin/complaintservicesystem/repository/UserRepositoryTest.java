@@ -24,7 +24,8 @@ class UserRepositoryTest {
 
     @Test
     void testFindByLastName() {
-        // Arrange
+
+        // ARRANGE
         User user = new User();
         user.setUsername("johndoe");
         user.setPassword("se7en");
@@ -32,10 +33,10 @@ class UserRepositoryTest {
         entityManager.persist(user);
         entityManager.flush();
 
-        // Act
+        // ACT
         Optional<User> found = userRepository.findByUsername(user.getUsername());
 
-        // Assert
+        // ASSERT
         String expected = "johndoe";
         String actual = found.get().getUsername();
         assertEquals(expected, actual);

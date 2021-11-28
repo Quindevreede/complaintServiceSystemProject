@@ -9,6 +9,6 @@ VALUES
 INSERT INTO authorities (username, authority)
 VALUES
      ('user', 'ROLE_USER')
-    ,('production', 'ROLE_USER')
-    ,('assist', 'ROLE_USER')
+    ,('production', 'ROLE_ADMIN')
+    ,('assist', 'ROLE_ADMIN')
     ,('management', 'ROLE_ADMIN');

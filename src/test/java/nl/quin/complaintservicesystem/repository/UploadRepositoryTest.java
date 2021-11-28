@@ -23,15 +23,16 @@ class UploadRepositoryTest {
 
     @Test
     void testFindById() {
-        // Arrange
+
+        // ARRANGE
         Upload upload = new Upload();
         entityManager.persist(upload);
         entityManager.flush();
 
-        // Act
+        // ACT
         Optional<Upload> found = uploadRepository.findById(upload.getId());
 
-        // Assert
+        // ASSERT
         Long expected = 1L;
         Long actual = found.get().getId();
         assertEquals(expected, actual);

@@ -3,12 +3,10 @@ package nl.quin.complaintservicesystem.controller;
 import nl.quin.complaintservicesystem.model.CustomerComplaint;
 import nl.quin.complaintservicesystem.service.CustomerComplaintService;
 import nl.quin.complaintservicesystem.service.UploadService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import java.net.URI;
 
 @RestController
@@ -18,9 +16,6 @@ public class CustomerComplaintController {
 
     @Autowired
     private CustomerComplaintService customerComplaintService;
-
-    @Autowired
-    private UploadService uploadService;
 
     @GetMapping(value = "")
     public ResponseEntity<Object> getAllCustomerComplaints(@RequestParam(name = "name", defaultValue = "") String name) {

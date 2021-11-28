@@ -44,7 +44,6 @@ class ProductionComplaintServiceTest {
         productionComplaint.setId(1L);
 
         Mockito
-
                 .when(productionComplaintRepository
                         .findById(1L)).thenReturn(Optional.of(productionComplaint));
 
@@ -87,7 +86,6 @@ class ProductionComplaintServiceTest {
         productionComplaintRepository.delete(productionComplaint);
 
         Mockito
-
                 .when(productionComplaintRepository
                         .findById(1L)).thenReturn(Optional.of(productionComplaint));
 

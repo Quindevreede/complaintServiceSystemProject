@@ -1,9 +1,6 @@
 package nl.quin.complaintservicesystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import nl.quin.complaintservicesystem.model.CustomerComplaint;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -30,6 +27,13 @@ public class ReceiptUpload {
     @JsonIgnore
     @OneToOne(mappedBy = "receiptUpload")
     CustomerComplaint customerComplaint;
+
+    // CONSTRUCTORS
+
+    public ReceiptUpload() {
+    }
+
+    // GETTERS SETTERS
 
     public long getId() {
         return id;

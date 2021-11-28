@@ -23,16 +23,17 @@ class ProductionComplaintRepositoryTest {
 
     @Test
     void testFindById() {
-        // Arrange
+
+        // ARRANGE
         ProductionComplaint productionComplaint = new ProductionComplaint();
         productionComplaint.setId(1L);
         entityManager.persist(productionComplaint);
         entityManager.flush();
 
-        // Act
+        // ACT
         Optional<ProductionComplaint> found = productionComplaintRepository.findById(productionComplaint.getId());
 
-        // Assert
+        // ASSERT
         Long expected = 1L;
         Long actual = found.get().getId();
         assertEquals(expected, actual);

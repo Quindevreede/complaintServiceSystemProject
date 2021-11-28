@@ -22,7 +22,11 @@ public class ProductionComplaintControllerTest {
 
     @Test
     void initialEndpointTestIfUnauthorized() throws Exception {
+
+        // ACT
         mvc.perform(get("/production_complaint"))
+
+        // ASSERT
                 .andExpect(status().isUnauthorized());
     }
 

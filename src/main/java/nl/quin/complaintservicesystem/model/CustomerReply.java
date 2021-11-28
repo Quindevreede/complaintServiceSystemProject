@@ -1,8 +1,8 @@
 package nl.quin.complaintservicesystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.sql.Timestamp;
 
 @Entity
@@ -12,6 +12,7 @@ public class CustomerReply {
     @Id
     Long id;
 
+    @NotBlank(message = "REPRINTorREFUND is mandatory")
     @Column
     String reprintOrRefund;
 
@@ -25,6 +26,18 @@ public class CustomerReply {
     @OneToOne(mappedBy = "customerReply")
     CustomerComplaint customerComplaint;
 
+    // CONSTRUCTORS
+
+    public CustomerReply() {
+    }
+
+    public CustomerReply(Long id, String reprintOrRefund, String customerCommentary) {
+        this.id = id;
+        this.reprintOrRefund = reprintOrRefund;
+        this.customerCommentary = customerCommentary;
+    }
+
+    // GETTERS SETTERS
     public Long getId() {
         return id;
     }

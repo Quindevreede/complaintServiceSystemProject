@@ -23,17 +23,18 @@ class CustomerReplyRepositoryTest {
 
     @Test
     void testFindByIdWithMandatoryFields() {
-        // Arrange
+
+        // ARRANGE
         CustomerReply customerReply = new CustomerReply();
         customerReply.setId(1L);
         customerReply.setReprintOrRefund("REPRINT");
         entityManager.persist(customerReply);
         entityManager.flush();
 
-        // Act
+        // ACT
         Optional<CustomerReply> found = customerReplyRepository.findById(customerReply.getId());
 
-        // Assert
+        // ASSERT
         Long expected = 1L;
         Long actual = found.get().getId();
         assertEquals(expected, actual);

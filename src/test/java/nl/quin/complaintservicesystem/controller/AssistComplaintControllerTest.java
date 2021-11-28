@@ -22,7 +22,11 @@ public class AssistComplaintControllerTest {
 
     @Test
     void initialEndpointTestIfUnauthorized() throws Exception {
+
+        // ACT
         mvc.perform(get("/assist_complaint"))
+
+                // ASSERT
                 .andExpect(status().isUnauthorized());
     }
 

@@ -9,8 +9,6 @@ class CustomerComplaintTest {
 
     private CustomerComplaint customerComplaint;
 
-    User username;
-
     //ARRANGE
     @BeforeEach
     void setUp() {

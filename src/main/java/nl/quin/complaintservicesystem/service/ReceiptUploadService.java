@@ -2,9 +2,6 @@ package nl.quin.complaintservicesystem.service;
 
 import nl.quin.complaintservicesystem.exceptions.FileStorageException;
 import nl.quin.complaintservicesystem.exceptions.RecordNotFoundException;
-
-import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
-import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.model.ReceiptUpload;
 import nl.quin.complaintservicesystem.payload.request.ReceiptUploadRequestDto;
 import nl.quin.complaintservicesystem.payload.response.ReceiptUploadResponseDto;
@@ -17,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;

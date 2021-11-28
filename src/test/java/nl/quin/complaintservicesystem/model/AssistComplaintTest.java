@@ -26,6 +26,8 @@ class AssistComplaintTest {
 
     @Test
     void testGetId() {
+
+        // ASSERT
         assertNotNull(this.assistComplaint.getId());
     }
 
@@ -79,7 +81,6 @@ class AssistComplaintTest {
         String actualInvoiceLink = this.assistComplaint.getInvoiceLink();
 
         //ASSERT
-
         assertNotEquals(expectedId, actualId);
         assertNotEquals(expectedAssistedBy, actualAssistedBy);
         assertNotEquals(expectedAssistDepartment, actualAssistDepartment);

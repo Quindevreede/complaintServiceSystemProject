@@ -23,7 +23,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
     @Test
     void testFindByIdWithMandatoryFields() {
-        // Arrange
+
+        // ARRANGE
         CustomerDetails customerDetails = new CustomerDetails();
         customerDetails.setFirstName("John");
         customerDetails.setLastName("Doe");
@@ -31,10 +32,10 @@ import static org.junit.jupiter.api.Assertions.*;
         entityManager.persist(customerDetails);
         entityManager.flush();
 
-        // Act
+        // ACT
         Optional<CustomerDetails> found = customerDetailsRepository.findById(customerDetails.getId());
 
-        // Assert
+        // ASSERT
         Long expected = 1L;
         Long actual = found.get().getId();
         assertEquals(expected, actual);

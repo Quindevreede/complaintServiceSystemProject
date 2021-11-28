@@ -14,7 +14,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 import javax.sql.DataSource;
 
 @Configuration
@@ -64,16 +63,20 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/users").permitAll()
-                .antMatchers("/authenticate").permitAll()
-                .antMatchers("/customer_details").hasRole("USER")
-                .antMatchers("/customer_details").hasRole("ADMIN")
-                .antMatchers("/customer_complaint/").hasRole("USER")
-                .antMatchers("/upload").hasRole("USER")
-                .antMatchers("/receipt_upload").hasRole("USER")
-                .antMatchers("/receipt_upload").hasRole("ADMIN")
-                .antMatchers("/production_complaint/**").hasRole("ADMIN")
                 .antMatchers("/assist_complaint/**").hasRole("ADMIN")
+                .antMatchers("/authenticate").permitAll()
+                .antMatchers("/customer_complaint").hasRole("USER")
+                .antMatchers("/customer_complaint/**").hasRole("ADMIN")
+                .antMatchers("/customer_details").hasRole("USER")
+                .antMatchers("/customer_details/**").hasRole("ADMIN")
+                .antMatchers("/customer_reply").hasRole("USER")
+                .antMatchers("/customer_reply/**").hasRole("ADMIN")
+                .antMatchers("/production_complaint/**").hasRole("ADMIN")
+                .antMatchers("/receipt_upload").hasRole("USER")
+                .antMatchers("/receipt_upload/**").hasRole("ADMIN")
+                .antMatchers("/upload").hasRole("USER")
+                .antMatchers("/upload/**").hasRole("ADMIN")
+                .antMatchers("/users").permitAll()
                 .and()
                 .csrf().disable()
                 .formLogin().disable()

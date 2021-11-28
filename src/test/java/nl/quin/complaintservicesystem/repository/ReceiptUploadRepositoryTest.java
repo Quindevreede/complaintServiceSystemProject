@@ -23,15 +23,16 @@ class ReceiptUploadRepositoryTest {
 
     @Test
     void testFindById() {
-        // Arrange
+
+        // ARRANGE
         ReceiptUpload receiptUpload = new ReceiptUpload();
         entityManager.persist(receiptUpload);
         entityManager.flush();
 
-        // Act
+        // ACT
         Optional<ReceiptUpload> found = receiptUploadRepository.findById(receiptUpload.getId());
 
-        // Assert
+        // ASSERT
         Long expected = 1L;
         Long actual = found.get().getId();
         assertEquals(expected, actual);

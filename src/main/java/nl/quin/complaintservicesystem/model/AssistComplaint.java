@@ -1,7 +1,6 @@
 package nl.quin.complaintservicesystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -33,7 +32,19 @@ public class AssistComplaint {
 
     // CONSTRUCTORS
 
-    // GETTERS SETTERS
+    public AssistComplaint() {
+    }
+
+    public AssistComplaint(Long id, String assistedBy, String assistDepartment, String assistCommentary, BigDecimal extraCosts, String invoiceLink) {
+        this.id = id;
+        this.assistedBy = assistedBy;
+        this.assistDepartment = assistDepartment;
+        this.assistCommentary = assistCommentary;
+        this.extraCosts = extraCosts;
+        this.invoiceLink = invoiceLink;
+    }
+
+// GETTERS SETTERS
 
     public Long getId() { return id; }
 

@@ -23,15 +23,16 @@ class CustomerComplaintRepositoryTest {
 
     @Test
     void testFindById() {
-        // Arrange
+
+        // ARRANGE
         CustomerComplaint customerComplaint = new CustomerComplaint();
         entityManager.persist(customerComplaint);
         entityManager.flush();
 
-        // Act
+        // ACT
         Optional<CustomerComplaint> found = customerComplaintRepository.findById(customerComplaint.getId());
 
-        // Assert
+        // ASSERT
         Long expected = 1L;
         Long actual = found.get().getId();
         assertEquals(expected, actual);

@@ -3,7 +3,6 @@ package nl.quin.complaintservicesystem.controller;
 import nl.quin.complaintservicesystem.service.UserAuthenticateService;
 import nl.quin.complaintservicesystem.payload.request.AuthenticationRequest;
 import nl.quin.complaintservicesystem.payload.response.AuthenticationResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;

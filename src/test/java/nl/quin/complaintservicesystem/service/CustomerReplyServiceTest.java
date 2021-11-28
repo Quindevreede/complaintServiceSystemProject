@@ -43,7 +43,6 @@ class CustomerReplyServiceTest {
         customerReply.setReprintOrRefund("REPRINT");
 
         Mockito
-
                 .when(customerReplyRepository
                         .findById(1L)).thenReturn(Optional.of(customerReply));
 
@@ -84,7 +83,6 @@ class CustomerReplyServiceTest {
         customerReplyRepository.delete(customerReply);
 
         Mockito
-
                 .when(customerReplyRepository
                         .findById(1L)).thenReturn(Optional.of(customerReply));
 

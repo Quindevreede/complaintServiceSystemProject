@@ -15,9 +15,6 @@ class UploadServiceTest {
     @Mock
     Upload upload;
 
-    @InjectMocks
-    ReceiptUploadService uploadService;
-
     @Mock
     UploadRepository uploadRepository;
 

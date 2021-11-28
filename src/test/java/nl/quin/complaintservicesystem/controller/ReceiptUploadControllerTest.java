@@ -1,6 +1,6 @@
 package nl.quin.complaintservicesystem.controller;
 
-import nl.quin.complaintservicesystem.service.CustomerDetailsService;
+import nl.quin.complaintservicesystem.service.ReceiptUploadService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -12,19 +12,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class CustomerDetailsControllerTest {
+public class ReceiptUploadControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
     @MockBean
-    CustomerDetailsService customerDetailsService;
+    ReceiptUploadService receiptuploadService;
 
     @Test
     void initialEndpointTestIfUnauthorized() throws Exception {
 
         // ACT
-        mvc.perform(get("/customer_details"))
+        mvc.perform(get("/receipt_upload"))
 
         // ASSERT
                 .andExpect(status().isUnauthorized());

@@ -18,7 +18,11 @@ public class BaseControllerTest {
 
     @Test
     void initialEndpointTest() throws Exception {
+
+        // ACT
         mvc.perform(get("/"))
+
+        // ASSERT
                 .andExpect(status().isOk())
                 .andExpect(content().string("Hello World"));
     }

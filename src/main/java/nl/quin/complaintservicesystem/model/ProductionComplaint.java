@@ -1,7 +1,6 @@
 package nl.quin.complaintservicesystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 @Entity
@@ -26,7 +25,17 @@ public class ProductionComplaint {
 
     // CONSTRUCTORS
 
-    // GETTERS SETTERS
+    public ProductionComplaint() {
+    }
+
+    public ProductionComplaint(Long id, String assistedBy, String productionDepartment, String productionCommentary) {
+        this.id = id;
+        this.assistedBy = assistedBy;
+        this.productionDepartment = productionDepartment;
+        this.productionCommentary = productionCommentary;
+    }
+
+// GETTERS SETTERS
 
     public Long getId() { return id; }
 
