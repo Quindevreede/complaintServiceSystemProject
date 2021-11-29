@@ -33,6 +33,11 @@ public class ReceiptUpload {
     public ReceiptUpload() {
     }
 
+    public ReceiptUpload(long id, String ordernumber) {
+        this.id = id;
+        this.ordernumber = ordernumber;
+    }
+
     // GETTERS SETTERS
 
     public long getId() {

@@ -1,15 +1,12 @@
 package nl.quin.complaintservicesystem.service;
 
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
-import nl.quin.complaintservicesystem.model.AssistComplaint;
 import nl.quin.complaintservicesystem.model.CustomerComplaint;
 import nl.quin.complaintservicesystem.repository.CustomerComplaintRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -51,7 +48,7 @@ class CustomerComplaintServiceTest {
     }
 
     @Test
-    void testGetCustomerComplaintByIdThrowException() {
+    void getCustomerComplaintByIdThrowExceptionTest() {
 
         // ACT
         when(customerComplaintRepository.findById(1L)).thenReturn(Optional.empty());
@@ -79,7 +76,7 @@ class CustomerComplaintServiceTest {
     }
 
     @Test
-    public void testGetCustomerComplaint() {
+    public void getCustomerComplaintTest() {
 
         // ARRANGE
         customerComplaint = new CustomerComplaint();

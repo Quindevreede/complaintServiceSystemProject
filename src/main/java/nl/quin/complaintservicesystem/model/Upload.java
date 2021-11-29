@@ -39,6 +39,15 @@ public class Upload {
 
     // CONSTRUCTORS
 
+    public Upload() {
+    }
+
+    public Upload(long id, String title, String description) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+    }
+
     // GETTERS SETTERS
 
     public long getId() {

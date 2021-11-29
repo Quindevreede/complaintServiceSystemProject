@@ -1,7 +1,6 @@
 package nl.quin.complaintservicesystem.service;
 
 import nl.quin.complaintservicesystem.exceptions.UserNotFoundException;
-import nl.quin.complaintservicesystem.model.AssistComplaint;
 import nl.quin.complaintservicesystem.model.CustomerDetails;
 import nl.quin.complaintservicesystem.repository.CustomerDetailsRepository;
 import org.junit.jupiter.api.Test;
