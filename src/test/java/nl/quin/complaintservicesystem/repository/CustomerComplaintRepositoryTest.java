@@ -26,6 +26,7 @@ class CustomerComplaintRepositoryTest {
 
         // ARRANGE
         CustomerComplaint customerComplaint = new CustomerComplaint();
+        customerComplaint.setOrderNumber("777");
         entityManager.persist(customerComplaint);
         entityManager.flush();
 

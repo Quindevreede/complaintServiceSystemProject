@@ -21,13 +21,13 @@ public class CustomerComplaintControllerTest {
     CustomerComplaintService customerComplaintService;
 
     @Test
-    void initialEndpointTestIfOk() throws Exception {
+    void initialEndpointTestIfUnauthorized() throws Exception {
 
         // ACT
         mvc.perform(get("/customer_complaint"))
 
-        // ASSERT
-                .andExpect(status().isOk());
+                // ASSERT
+                .andExpect(status().isUnauthorized());
     }
 
 }
