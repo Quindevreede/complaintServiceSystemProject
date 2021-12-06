@@ -1,0 +1,210 @@
+RESTful API webservice Customer Complaint Service
+
+Inhoud:
+
+1 - Benodigdheden
+2 - Installatie Stappenplan
+
+
+1. Benodigdheden
+
+IntelliJ IDEA 2021.2
+
+Maven 3.6.3
+
+Java Development Kit 11.0.12
+
+PostgreSQL 13
+
+PgAdmin 5.4
+
+Postman 9.1.3
+
+2. Installatie Stappenplan
+
+
+a) IntelliJ IDEA 2021.2:
+
+01 - Ga naar www.jetbrains.com/idea/ ->
+02 – Ga naar kop Developer Tools en klik op IntelliJ IDEA ->
+03 – Je komt nu in een nieuwe page waar je op de –Download- klikt ->
+04 – We komen nu op jetbrains.com/idea/download/#section=windows ->
+05 – Je ziet rechts op het scherm de Community Edition, klik op Download.exe ->
+06 – klik op gedownload bestand “idealC-2021.exe” ->
+07 – Er komt nu een pop-up die vraagt of de app wijzigingen mag aanbrengen klik op Ja ->
+08 – Je komt nu in het SETUP menu, klik op Next ->
+09 – Kies een destinationFolder en klik op Next ->
+10 – Je komt nu in de Installation Options menu, klik alles AAN en klik Next ->
+11 – Je komt nu in Choose Start Menu Folder, kies Jetbrains en klik op Install ->
+12 – IntelliJ wordt nu geinstalleerd ->
+13 – Op de nieuwe pop-up (Completing IntelliJ) kies Reboot Now en klik op Finish ->
+14 – Je Computer wordt opnieuw opgestart ->
+15 – Start IntelliJ IDEA en ga akkoord met de voorwaarden kies confirm en Continue ->
+16 – Je krijgt een nieuwe pop-up met DATA SHARING en kies hier op Don’t Send ->
+17 – IntelliJ IDEA wordt nu opgestart
+
+
+b) Maven 3.6.3:
+
+Maven staat al in de IntelliJ die je net hebt geinstalleerd, heeft dus in-built Support
+
+
+c) Java Development Kit 11.0.12
+
+Je kunt de Java Development Kit (JDK) downloaden in IntelliJ IDEA
+
+
+d)  PostgreSQL 13
+
+01 – Ga naar www.postgresql.org/download/ ->
+02 – Klik op Windows->
+03 - Je komt nu op www.postgresql.org/download/windows/ ->
+04 – Klik op Download the installer ->
+05 – Je krijgt een pop-up voor Cookies en zet alle Cookies uit en klik op verstuur ->
+06 – Je bent nu op de page: www.enterprisedb.com/downloads/postgresql-downloads ->
+07 – Bij version 13.5 klik op Download knop van Windows x86-64 ->
+08 – De installatie .exe file wordt nu gedownload ->
+09 – open de gedownloade file postgresql-13.5-1-windows-x64 ->
+10 - Er komt nu een pop-up die vraagt of de app wijzigingen mag aanbrengen klik op Ja ->
+11 – Je komt nu in het PostgreSQL setup menu, klik op Next ->
+12 – Kies een folder waar het programma wordt geinstalleerd, klik op Next - >
+13 – Klik alles AAN en klik op Next ->
+14 – Kies een directory voor je stored data, klik op Next ->
+15 – Kies een password voor database superuser, voor dit voorbeeld:customercomplaint666 ->
+16 – Select het POrt nummer die gebruikt wordt voor dit voorbeeld : 5432, klik op Next ->
+17 – Select de locale voor je database cluster vvor dit voorbeeld : Default Locale, klik op Next ->
+18 - Je komt nu bij pre-installation-summary, klik op next ->
+19 – Ready To Install, klik op Next ->
+20 – Klik op Finish ->
+21 – Je krijgt nu additional software om te installeren kies cancel
+
+
+e) PgAdmin 5.4
+
+PgAdmin staat nu ook automatisch geinstalleerd en is te vinden bij je START menu en dan bij PostgeSQL 13 map en dan hoef je alleen de pgAdmin 4 te kiezen.
+
+
+f) Postman 9.1.3
+
+01 – Ga naar www.postman.com/downloads/, klik op Windows 64-bit ->
+02 – De Postman-win64-9.3.1-Setup.exe wordt nu gedownload, open de file ->
+03 – Er komt nu een pop-up scherm en klik nu op Create Free Account ->
+04 – Je moet een account aanmaken, doe dit en klik op Create Free Account ->
+05 – Klik alles wat nu komt weg tot het programma opent ->
+06 – Create een nieuwe HTTP request ->
+07 – Nu kun je Postman gebruiken
+
+
+Na het installeren van al deze programmas kunnen we beginnen met het runnen van de SpringBoot Applicatie op jouw locale machine.
+
+01 - Start de IntelliJIDEA
+02 - Open het project
+03 - clone het project uit github
+04 - Ga naar File > New > Project from Version Control
+05 - paste in de cloned URL
+06 - Git is nog niet installed, kies download en install en proceed
+07 - Klik clone
+08 - Set up Software Development Kit
+09 - Ga naar File > Project Structure
+10 - Project Settings > Project
+11 - Project SDK: select version 11
+12 - Project language level: kies SDK default
+13 - Klik OK
+14 - Set up Database
+15 - Start up Postgres en log in op PGAdmin met je master password:
+     customercomplaint666
+16 - Open linker tab Servers
+17 - Rechter mouse klik op Login/Group Roles en kies Create
+18 - Bij tab ‘general’ vul je dit in: springboot
+19 - Bij tab ‘definition’ vul je dit password in: springboot -en dan save
+20 - Bij tab ‘privileges’ toggle can login? naar yes.
+21 - Rechter mouse klik op Databases en kies Create Database
+22 - Bij tab ‘general’ vul je de naam van de database in: springboot
+23 - Bij tab ‘general’ vul je de owner in: springboot –en dan save
+24 - Nu kan je de applicatie runnen en deze database gebruiken.
+25 - Je kunt de database ook nog veranderen en een andere database aanmaken.
+     Je kunt ook de databasenaam en password veranderen in de application.properties
+     in je project in IntelliJ IDEA. Dit is dan de code waar je naar op zoek bent:
+     spring.datasource.url=jdbc:postgresql://localhost:5432/springboot
+     spring.datasource.username=springboot
+     spring.datasource.password=springboot
+
+26 - Run de applicatie
+27 - Run met IDEA:
+28 - In je IDEA open de tab Project
+29 - complaintServiceSystem> src > main > java > ComplaintServiceSystemApplication
+30 - Om te “runnen” zoek in rechtervenster naar de groene “play” pijl naast public class:
+     ComplaintServiceSystemApplication op line 9
+31 - Klik met je rechtermiusebutton en kies:
+     Run 'ComplaintServiceSystemApplication'
+
+
+5. Users
+
+Er zijn vier hard coded users in data.sql die gebruikt kunnen worden om de endpoints in POSTMAN te testen.
+
+     ('customer', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE)
+     ('production', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE)
+     ('assist', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE)
+     ('management', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE)
+
+Ik heb ook een volledig ingevulde klachten procedure in hard code in data.sql gezet, deze kunnen gebruikt worden om heel snel alles te kunnen testen (stop de volgende code in je eigen data.sql) :
+
+INSERT INTO users (username, password, enabled)
+VALUES
+     ('customer', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE)
+    ,('production', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE)
+    ,('assist', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE)
+    ,('management', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE);
+
+INSERT INTO authorities (username, authority)
+VALUES
+     ('customer', 'ROLE_USER')
+    ,('production', 'ROLE_ADMIN')
+    ,('assist', 'ROLE_ADMIN')
+    ,('management', 'ROLE_ADMIN');
+
+INSERT INTO customer_details (id, username, first_name, last_name, email)
+VALUES
+      (6, 'customer', 'John', 'Doe', 'johndoe@hotmail.com');
+
+INSERT INTO upload (id, title, description, order_number_upload, uploaded_by_username, uploaded_on_date)
+VALUES
+    (6, 'titleOfFile', 'descriptionOfFile', '123', 'customer', 'now');
+
+INSERT INTO receipt_upload (id, ordernumber, uploaded_timestamp)
+VALUES
+    (6, '123', 'now');
+
+INSERT INTO production_complaint (id, assisted_by, production_department, production_commentary)
+VALUES
+    (123, 'James', 'Posters&Stickers', 'Can print with better colours, no extra costs');
+
+INSERT INTO assist_complaint (id, assisted_by, assist_department, assist_commentary, extra_costs, invoice_link)
+VALUES
+    (123, 'James', 'Posters&Stickers', 'print can be fixed and ready by monday, no extra costs', 0.00, '6');
+
+INSERT INTO customer_reply (id, reprint_or_refund, customer_commentary, timestamp)
+VALUES
+    (123, 'REPRINT', 'Great, pay extra attention to red colours please', 'now');
+
+INSERT INTO customer_complaint (id, username, order_number, customer_commentary, customer_details_id, upload_id, receipt_upload_id, production_complaint_id, assist_complaint_id, customer_reply_id)
+VALUES
+    (6, 'customer', '123', 'colours are faded', 6, 6, 6, 123, 123,123);
+
+
+6. Endpoints
+
+
+In Postman kun je nu ENDPOINTS testen, je hoeft deze niet zelf te schrijven. Je kunt voorgeschreven ENDPOINTS importeren in POSTMAN. Als je POSTMAN heb geopend staan er twee opties boven de ‘collections’ NEW en IMPORT. Kies voor IMPORT en kijk bij de project folder (resources>postman) :
+
+Voor de snelle HardCoded testen kun je:
+HardCoded DATASQL TEST.postman_collection kiezen.
+Je kunt dan zelfs gewoon bij http://localhost:666/customer_complaint/6 alle gegevens zien.
+
+Om zelf accounts aan te maken en de volledige procedure door te lopen raad ik aan:
+Complaint Service System.postman_collection te kiezen.
+Er is ook een uitgebreid stappenplan hoe je daarmee verder aan de slag kunt, klik import
+
+
+LET OP DAT JE BIJ HET TESTEN VAN DE ENDPOINTS RELEVANTE JWT TOKENS GEBRUIKT!

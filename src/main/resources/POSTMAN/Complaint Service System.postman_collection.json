@@ -1,0 +1,1073 @@
+{
+	"info": {
+		"_postman_id": "f5f042ba-0a2e-4f79-9de1-d4bc601aeefd",
+		"name": "Complaint Service System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "BASE",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CUSTOMER REGISTER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"username\": \"johndoe\",\r\n        \"password\": \"se7en\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:666/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET CUSTOMER USER ACCOUNT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "CUSTOMER GET JWT TOKEN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"johndoe\",\r\n    \"password\":\"se7en\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:666/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST NEW CUSTOMER DETAILS",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM5NDQzNTM3LCJpYXQiOjE2Mzg1Nzk1Mzd9.FVph63E0cv_inQkPjtxcpsaq-MdvE9RA9cfe6wssx5w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"firstName\": \"John\",\r\n        \"lastName\": \"Doe\",\r\n        \"email\": \"johndoe@hotmail.com\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:666/customer_details/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_details",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC CUSTOMER DETAILS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/customer_details/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_details",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT EXISTING CUSTOMER DETAILS",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNjM3MDkyMzA5LCJpYXQiOjE2MzYyMjgzMDl9.6deBgHgRZKDw4qq1sp66VF9w_dkD1nC2d4XHvi8T5QU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"\",\r\n    \"firstName\": \"Jan\",\r\n    \"lastName\": \"Janssen\",\r\n    \"email\": \"jjanssen@hotmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:666/customer_details/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_details",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT CUSTOMERDETAILS in USER",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/users/janedoe/customer_details/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"users",
+						"janedoe",
+						"customer_details",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST NEW CUSTOMER COMPLAINT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcm9kdWN0aW9uIiwiZXhwIjoxNjM5NjU5MTQ5LCJpYXQiOjE2Mzg3OTUxNDl9.Howkl_2ale5BLPa5Hn5UjqhUV-L8ySOymPEUAwXBQhY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"orderNumber\": \"777\",\r\n        \"customerCommentary\": \"Colours are faded\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:666/customer_complaint/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_complaint",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC CUSTOMER COMPLAINTS",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM4OTI4NzY4LCJpYXQiOjE2MzgwNjQ3Njh9.w7nZcX8g2WU2gU6WhGmwNRFshTUpM_p_gdV3nrkGzIU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/customer_complaint/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_complaint",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT EXISTING CUSTOMER Complaint",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM5NDQzNTM3LCJpYXQiOjE2Mzg1Nzk1Mzd9.FVph63E0cv_inQkPjtxcpsaq-MdvE9RA9cfe6wssx5w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": 1,\r\n        \"username\": \"johndoe\",\r\n        \"orderNumber\": \"666\",\r\n        \"customerCommentary\": \"Colours are too bright\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:666/customer_complaint/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_complaint",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT CUSTOMERDETAILS in CUSTOMERCOMPLAINT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM3Nzc4NzM4LCJpYXQiOjE2MzY5MTQ3Mzh9.R9Bwqm8oArcAedyHZY8ahEFh3dZct9n7gtRhgruuOOI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/customer_complaint/777/customer_details/johndoe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_complaint",
+						"777",
+						"customer_details",
+						"johndoe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC CUSTOMER COMPLAINTS Copy 2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM4OTI4NzY4LCJpYXQiOjE2MzgwNjQ3Njh9.w7nZcX8g2WU2gU6WhGmwNRFshTUpM_p_gdV3nrkGzIU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/customer_complaint/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_complaint",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST NEW UPLOAD",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM5NDQxNzAzLCJpYXQiOjE2Mzg1Nzc3MDN9.Yi_39jYwo1k1IJoaKSYTbj92mOOB5a3mTtKFAJ8KXA0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"contentType": "multipart/form-data",
+							"type": "file",
+							"src": "/C:/Documents Q/NOVI/EINDOPDRACHT/uploadpictureexamples/Frankenstein.jpg"
+						},
+						{
+							"key": "title",
+							"value": "\"Frankenstein\"",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "\"Dr. Frankenstein's Monster\"",
+							"type": "text"
+						},
+						{
+							"key": "orderNumberUpload",
+							"value": "\"777\"",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:666/upload/files/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"upload",
+						"files",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET UPLOAD DOWNLOADLINK Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/upload/files/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"upload",
+						"files",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT UPLOAD in CUSTOMERCOMPLAINT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:666/customer_complaint/123/upload/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_complaint",
+						"123",
+						"upload",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC CUSTOMER COMPLAINTS Copy 4",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM4OTI4NzY4LCJpYXQiOjE2MzgwNjQ3Njh9.w7nZcX8g2WU2gU6WhGmwNRFshTUpM_p_gdV3nrkGzIU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/customer_complaint/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_complaint",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST RECEIPT UPLOAD",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM4OTI4NzY4LCJpYXQiOjE2MzgwNjQ3Njh9.w7nZcX8g2WU2gU6WhGmwNRFshTUpM_p_gdV3nrkGzIU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Documents Q/NOVI/EINDOPDRACHT/receipt.txt"
+						},
+						{
+							"key": "ordernumber",
+							"value": "\"777\"",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:666/receipt_upload/files/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"receipt_upload",
+						"files",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET RECEIPT UPLOAD DOWNLOADLINK",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/receipt_upload/files/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"receipt_upload",
+						"files",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT RECEIPT UPLOAD in CUSTOMER COMPLAINTS",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/customer_complaint/777/receipt_upload/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_complaint",
+						"777",
+						"receipt_upload",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC CUSTOMER COMPLAINTS Copy 3",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM4OTI4NzY4LCJpYXQiOjE2MzgwNjQ3Njh9.w7nZcX8g2WU2gU6WhGmwNRFshTUpM_p_gdV3nrkGzIU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/customer_complaint/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_complaint",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EMPLOYEE/MANAGEMENT GET JWT TOKEN",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"username\": \"production\",\r\n        \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:666/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USERS",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcm9kdWN0aW9uIiwiZXhwIjoxNjM5NDkxODY4LCJpYXQiOjE2Mzg2Mjc4Njh9.A0CatOeMorLLZ4pBsoMTSEoBRUxEfRnOklimliEdTVk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST PRODUCTION COMPLAINT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcm9kdWN0aW9uIiwiZXhwIjoxNjM5NDkxODY4LCJpYXQiOjE2Mzg2Mjc4Njh9.A0CatOeMorLLZ4pBsoMTSEoBRUxEfRnOklimliEdTVk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"777\",\r\n    \"assistedBy\": \"James\",\r\n    \"productionDepartment\": \"LARGE-PRINTS-DEPT\",\r\n    \"productionCommentary\": \"Faded Colours were in original image, can be improved by printing again with higher contrast and more ink\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:666/production_complaint/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"production_complaint",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT PRODUCTIONCOMPLAINT in CUSTOMERCOMPLAINT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcm9kdWN0aW9uIiwiZXhwIjoxNjM5NDkxODY4LCJpYXQiOjE2Mzg2Mjc4Njh9.A0CatOeMorLLZ4pBsoMTSEoBRUxEfRnOklimliEdTVk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:666/customer_complaint/777/production_complaint/777",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_complaint",
+						"777",
+						"production_complaint",
+						"777"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC PRODUCTION COMPLAINT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcm9kdWN0aW9uIiwiZXhwIjoxNjM5NTI0ODcyLCJpYXQiOjE2Mzg2NjA4NzJ9.X6AXaWL35ngjA-8lTtwI4ZCRtPrNA1b_pPQfJT8GT8o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/production_complaint/777",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"production_complaint",
+						"777"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC CUSTOMER COMPLAINTS Copy 5",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM4OTI4NzY4LCJpYXQiOjE2MzgwNjQ3Njh9.w7nZcX8g2WU2gU6WhGmwNRFshTUpM_p_gdV3nrkGzIU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/customer_complaint/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_complaint",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST ASSISTCOMPLAINT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcm9kdWN0aW9uIiwiZXhwIjoxNjM4OTMwMDMyLCJpYXQiOjE2MzgwNjYwMzJ9.utHS3CICZoe48ZBNnPXtXCXVASffsMGw4z6ZG0SYtXo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"777\",\r\n    \"assistedBy\":\"Wilma\",\r\n    \"assistDepartment\":\"CustomerService\",\r\n    \"assistCommentary\":\"Print can be fixed, but with some extra costs\",\r\n    \"extraCosts\":6.66,\r\n    \"invoiceLink\":\"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:666/assist_complaint/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"assist_complaint",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT ASSISTCOMPLAINT in CUSTOMERCOMPLAINT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcm9kdWN0aW9uIiwiZXhwIjoxNjM5NTI0ODcyLCJpYXQiOjE2Mzg2NjA4NzJ9.X6AXaWL35ngjA-8lTtwI4ZCRtPrNA1b_pPQfJT8GT8o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/customer_complaint/777/assist_complaint/777",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_complaint",
+						"777",
+						"assist_complaint",
+						"777"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC CUSTOMER COMPLAINTS Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM4OTI4NzY4LCJpYXQiOjE2MzgwNjQ3Njh9.w7nZcX8g2WU2gU6WhGmwNRFshTUpM_p_gdV3nrkGzIU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/customer_complaint/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_complaint",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST NEW CUSTOMER REPLY",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcm9kdWN0aW9uIiwiZXhwIjoxNjM4OTMwMDMyLCJpYXQiOjE2MzgwNjYwMzJ9.utHS3CICZoe48ZBNnPXtXCXVASffsMGw4z6ZG0SYtXo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"777\",\r\n    \"reprintOrRefund\":\"REPRINT\",\r\n    \"customerCommentary\":\"I will need the rePrints by next friday\",\r\n    \"timestamp\":\"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:666/customer_reply/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_reply",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT CUSTOMER REPLY in CUSTOMER COMPLAINT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/customer_complaint/777/customer_reply/777",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_complaint",
+						"777",
+						"customer_reply",
+						"777"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC CUSTOMER REPLY",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcm9kdWN0aW9uIiwiZXhwIjoxNjM5NjU5MTQ5LCJpYXQiOjE2Mzg3OTUxNDl9.Howkl_2ale5BLPa5Hn5UjqhUV-L8ySOymPEUAwXBQhY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/customer_reply/777",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_reply",
+						"777"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL CUSTOMER COMPLAINTS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM4NTcwODQyLCJpYXQiOjE2Mzc3MDY4NDJ9.PdqzSF-H83pRff7Fa_s03IGT9FjvDOXo33oiVdklb0E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:666/customer_complaint/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_complaint",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

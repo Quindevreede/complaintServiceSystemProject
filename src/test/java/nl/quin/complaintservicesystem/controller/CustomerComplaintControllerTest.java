@@ -27,7 +27,7 @@ public class CustomerComplaintControllerTest {
         mvc.perform(get("/customer_complaint"))
 
                 // ASSERT
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isOk());
     }
 
 }

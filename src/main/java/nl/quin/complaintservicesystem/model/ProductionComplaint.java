@@ -2,6 +2,7 @@ package nl.quin.complaintservicesystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "production_complaint")

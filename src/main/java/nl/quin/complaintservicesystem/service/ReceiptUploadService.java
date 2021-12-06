@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -43,6 +44,7 @@ public class ReceiptUploadService {
         }
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Iterable<ReceiptUpload> getFiles() {
         return repository.findAll();
     }

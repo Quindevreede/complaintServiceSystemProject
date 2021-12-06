@@ -24,10 +24,10 @@ public class UploadControllerTest {
     void initialEndpointTestIfUnauthorized() throws Exception {
 
         // ACT
-        mvc.perform(get("/upload"))
+        mvc.perform(get("/upload/files"))
 
         // ASSERT
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isOk());
     }
 
 }

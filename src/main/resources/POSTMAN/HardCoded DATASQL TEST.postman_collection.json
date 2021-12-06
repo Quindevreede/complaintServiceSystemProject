@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "1fb03f8c-6611-42f1-80c4-6bad9bee9bdf",
+		"name": "HardCoded DATASQL TEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CUSTOMER GET JWT TOKEN Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"johndoe\",\r\n    \"password\":\"se7en\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:666/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC CUSTOMER DETAILS Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/customer_details/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_details",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC CUSTOMER COMPLAINTS Copy 6",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM4OTI4NzY4LCJpYXQiOjE2MzgwNjQ3Njh9.w7nZcX8g2WU2gU6WhGmwNRFshTUpM_p_gdV3nrkGzIU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/customer_complaint/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_complaint",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET UPLOAD DOWNLOADLINK Copy 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/upload/files/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"upload",
+						"files",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET RECEIPT UPLOAD DOWNLOADLINK Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/receipt_upload/files/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"receipt_upload",
+						"files",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EMPLOYEE/MANAGEMENT GET JWT TOKEN Copy",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"username\": \"production\",\r\n        \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:666/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC PRODUCTION COMPLAINT Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcm9kdWN0aW9uIiwiZXhwIjoxNjM5NTI0ODcyLCJpYXQiOjE2Mzg2NjA4NzJ9.X6AXaWL35ngjA-8lTtwI4ZCRtPrNA1b_pPQfJT8GT8o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/production_complaint/777",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"production_complaint",
+						"777"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC ASSIST COMPLAINT Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcm9kdWN0aW9uIiwiZXhwIjoxNjM5NTI0ODcyLCJpYXQiOjE2Mzg2NjA4NzJ9.X6AXaWL35ngjA-8lTtwI4ZCRtPrNA1b_pPQfJT8GT8o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/production_complaint/777",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"production_complaint",
+						"777"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
