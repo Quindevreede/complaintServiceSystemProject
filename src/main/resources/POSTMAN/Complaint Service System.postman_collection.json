@@ -111,7 +111,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM5NDQzNTM3LCJpYXQiOjE2Mzg1Nzk1Mzd9.FVph63E0cv_inQkPjtxcpsaq-MdvE9RA9cfe6wssx5w",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM5NzQ1NDY5LCJpYXQiOjE2Mzg4ODE0Njl9.ooWk8plFAqVWFjWMeOLBjQGNHc29hyn31GPIaLx1JLk",
 							"type": "string"
 						}
 					]
@@ -144,11 +144,26 @@
 		},
 		{
 			"name": "GET SPECIFIC CUSTOMER DETAILS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:666/customer_details/1/",
+					"raw": "http://localhost:666/customer_details/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -156,8 +171,7 @@
 					"port": "666",
 					"path": [
 						"customer_details",
-						"1",
-						""
+						"1"
 					]
 				}
 			},
@@ -171,7 +185,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNjM3MDkyMzA5LCJpYXQiOjE2MzYyMjgzMDl9.6deBgHgRZKDw4qq1sp66VF9w_dkD1nC2d4XHvi8T5QU",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM4OTI4NzY4LCJpYXQiOjE2MzgwNjQ3Njh9.w7nZcX8g2WU2gU6WhGmwNRFshTUpM_p_gdV3nrkGzIU",
 							"type": "string"
 						}
 					]
@@ -180,7 +194,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"\",\r\n    \"firstName\": \"Jan\",\r\n    \"lastName\": \"Janssen\",\r\n    \"email\": \"jjanssen@hotmail.com\"\r\n}",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"username\": \"johndoe\",\r\n    \"firstName\": \"Jane\",\r\n    \"lastName\": \"Doe\",\r\n    \"email\": \"janedoe@hotmail.com\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -208,7 +222,7 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:666/users/janedoe/customer_details/1",
+					"raw": "http://localhost:666/users/johndoe/customer_details/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -216,7 +230,7 @@
 					"port": "666",
 					"path": [
 						"users",
-						"janedoe",
+						"johndoe",
 						"customer_details",
 						"1"
 					]
@@ -271,7 +285,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM4OTI4NzY4LCJpYXQiOjE2MzgwNjQ3Njh9.w7nZcX8g2WU2gU6WhGmwNRFshTUpM_p_gdV3nrkGzIU",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM5NjYzMDMyLCJpYXQiOjE2Mzg3OTkwMzJ9.zPo1O_tDpbo4OkPEEBSy-w9faPkkx-D87gy8As4QOQo",
 							"type": "string"
 						}
 					]
@@ -340,7 +354,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM3Nzc4NzM4LCJpYXQiOjE2MzY5MTQ3Mzh9.R9Bwqm8oArcAedyHZY8ahEFh3dZct9n7gtRhgruuOOI",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM5NDQzNTM3LCJpYXQiOjE2Mzg1Nzk1Mzd9.FVph63E0cv_inQkPjtxcpsaq-MdvE9RA9cfe6wssx5w",
 							"type": "string"
 						}
 					]
@@ -457,10 +471,20 @@
 		{
 			"name": "GET UPLOAD DOWNLOADLINK Copy",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM5NzQ1NTY1LCJpYXQiOjE2Mzg4ODE1NjV9.FgosXWnAWmg0VqneLCVuXHWeKjBgBE2gdqccti4p4A4",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:666/upload/files/",
+					"raw": "http://localhost:666/upload/files/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -469,7 +493,7 @@
 					"path": [
 						"upload",
 						"files",
-						""
+						"1"
 					]
 				}
 			},
@@ -485,7 +509,7 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "http://localhost:666/customer_complaint/123/upload/1",
+					"raw": "http://localhost:666/customer_complaint/777/upload/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -493,7 +517,7 @@
 					"port": "666",
 					"path": [
 						"customer_complaint",
-						"123",
+						"777",
 						"upload",
 						"1"
 					]
