@@ -379,7 +379,7 @@
 			"response": []
 		},
 		{
-			"name": "GET SPECIFIC CUSTOMER COMPLAINTS Copy 2",
+			"name": "GET SPECIFIC CUSTOMER COMPLAINTS After Customercomplaint",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -526,7 +526,7 @@
 			"response": []
 		},
 		{
-			"name": "GET SPECIFIC CUSTOMER COMPLAINTS Copy 4",
+			"name": "GET SPECIFIC CUSTOMER COMPLAINTS after upload",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -645,7 +645,7 @@
 			"response": []
 		},
 		{
-			"name": "GET SPECIFIC CUSTOMER COMPLAINTS Copy 3",
+			"name": "GET SPECIFIC CUSTOMER COMPLAINTS After ReceiptUpload",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -846,7 +846,7 @@
 			"response": []
 		},
 		{
-			"name": "GET SPECIFIC CUSTOMER COMPLAINTS Copy 5",
+			"name": "GET SPECIFIC CUSTOMER COMPLAINTS After Production",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -947,7 +947,7 @@
 			"response": []
 		},
 		{
-			"name": "GET SPECIFIC CUSTOMER COMPLAINTS Copy",
+			"name": "GET SPECIFIC CUSTOMER COMPLAINTS After Assist",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -1062,6 +1062,36 @@
 					"path": [
 						"customer_reply",
 						"777"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SPECIFIC CUSTOMER COMPLAINTS After CustomerReply",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM4OTI4NzY4LCJpYXQiOjE2MzgwNjQ3Njh9.w7nZcX8g2WU2gU6WhGmwNRFshTUpM_p_gdV3nrkGzIU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/customer_complaint/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"customer_complaint",
+						"1"
 					]
 				}
 			},
