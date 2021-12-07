@@ -36,7 +36,7 @@ import static org.junit.jupiter.api.Assertions.*;
         Optional<CustomerDetails> found = customerDetailsRepository.findById(customerDetails.getId());
 
         // ASSERT
-        Long expected = 1L;
+        Long expected = 7L;
         Long actual = found.get().getId();
         assertEquals(expected, actual);
     }

@@ -33,7 +33,7 @@ class UploadRepositoryTest {
         Optional<Upload> found = uploadRepository.findById(upload.getId());
 
         // ASSERT
-        Long expected = 1L;
+        Long expected = 7L;
         Long actual = found.get().getId();
         assertEquals(expected, actual);
     }

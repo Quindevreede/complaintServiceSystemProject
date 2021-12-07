@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\":\"johndoe\",\r\n    \"password\":\"se7en\"\r\n}",
+					"raw": "{\r\n        \"username\": \"customer\",\r\n        \"password\": \"password\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -36,10 +36,20 @@
 		{
 			"name": "GET SPECIFIC CUSTOMER DETAILS Copy",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjdXN0b21lciIsImV4cCI6MTYzOTY2NTg3NCwiaWF0IjoxNjM4ODAxODc0fQ.UEKAJ4ncUaDzhdfgxcByULxgHdfIkfJBZQZwZ8KRdSs",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:666/customer_details/1/",
+					"raw": "http://localhost:666/customer_details/6",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -47,8 +57,7 @@
 					"port": "666",
 					"path": [
 						"customer_details",
-						"1",
-						""
+						"6"
 					]
 				}
 			},
@@ -62,7 +71,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNjM4OTI4NzY4LCJpYXQiOjE2MzgwNjQ3Njh9.w7nZcX8g2WU2gU6WhGmwNRFshTUpM_p_gdV3nrkGzIU",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjdXN0b21lciIsImV4cCI6MTYzOTY2NTg3NCwiaWF0IjoxNjM4ODAxODc0fQ.UEKAJ4ncUaDzhdfgxcByULxgHdfIkfJBZQZwZ8KRdSs",
 							"type": "string"
 						}
 					]
@@ -70,7 +79,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:666/customer_complaint/1",
+					"raw": "http://localhost:666/customer_complaint/6",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -78,7 +87,7 @@
 					"port": "666",
 					"path": [
 						"customer_complaint",
-						"1"
+						"6"
 					]
 				}
 			},
@@ -87,10 +96,20 @@
 		{
 			"name": "GET UPLOAD DOWNLOADLINK Copy 2",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjdXN0b21lciIsImV4cCI6MTYzOTY2NTg3NCwiaWF0IjoxNjM4ODAxODc0fQ.UEKAJ4ncUaDzhdfgxcByULxgHdfIkfJBZQZwZ8KRdSs",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:666/upload/files/",
+					"raw": "http://localhost:666/upload/files/6",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -99,7 +118,7 @@
 					"path": [
 						"upload",
 						"files",
-						""
+						"6"
 					]
 				}
 			},
@@ -108,10 +127,20 @@
 		{
 			"name": "GET RECEIPT UPLOAD DOWNLOADLINK Copy",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjdXN0b21lciIsImV4cCI6MTYzOTY2NTg3NCwiaWF0IjoxNjM4ODAxODc0fQ.UEKAJ4ncUaDzhdfgxcByULxgHdfIkfJBZQZwZ8KRdSs",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:666/receipt_upload/files/1",
+					"raw": "http://localhost:666/receipt_upload/files/6",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -120,7 +149,7 @@
 					"path": [
 						"receipt_upload",
 						"files",
-						"1"
+						"6"
 					]
 				}
 			},
@@ -165,7 +194,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcm9kdWN0aW9uIiwiZXhwIjoxNjM5NTI0ODcyLCJpYXQiOjE2Mzg2NjA4NzJ9.X6AXaWL35ngjA-8lTtwI4ZCRtPrNA1b_pPQfJT8GT8o",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcm9kdWN0aW9uIiwiZXhwIjoxNjM5NjY1OTc1LCJpYXQiOjE2Mzg4MDE5NzV9.AmXhJSgyEA198JKOs7_ul6gR9Wdy3Wq24VpGiRcrFd0",
 							"type": "string"
 						}
 					]
@@ -173,7 +202,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:666/production_complaint/777",
+					"raw": "http://localhost:666/production_complaint/123",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -181,7 +210,7 @@
 					"port": "666",
 					"path": [
 						"production_complaint",
-						"777"
+						"123"
 					]
 				}
 			},
@@ -195,7 +224,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcm9kdWN0aW9uIiwiZXhwIjoxNjM5NTI0ODcyLCJpYXQiOjE2Mzg2NjA4NzJ9.X6AXaWL35ngjA-8lTtwI4ZCRtPrNA1b_pPQfJT8GT8o",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcm9kdWN0aW9uIiwiZXhwIjoxNjM5NjY1OTc1LCJpYXQiOjE2Mzg4MDE5NzV9.AmXhJSgyEA198JKOs7_ul6gR9Wdy3Wq24VpGiRcrFd0",
 							"type": "string"
 						}
 					]
@@ -203,15 +232,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:666/production_complaint/777",
+					"raw": "http://localhost:666/assist_complaint/123",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "666",
 					"path": [
-						"production_complaint",
-						"777"
+						"assist_complaint",
+						"123"
 					]
 				}
 			},

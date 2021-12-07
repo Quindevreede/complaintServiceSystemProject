@@ -2,7 +2,6 @@ package nl.quin.complaintservicesystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 
 @Entity
@@ -45,7 +44,7 @@ public class AssistComplaint {
         this.invoiceLink = invoiceLink;
     }
 
-// GETTERS SETTERS
+    // GETTERS SETTERS
 
     public Long getId() { return id; }
 

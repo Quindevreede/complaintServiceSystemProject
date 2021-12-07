@@ -9,8 +9,6 @@ public class UploadRequestDto {
         private String orderNumberUpload;
         private MultipartFile file;
 
-        // CONSTRUCTORS
-
         // GETTERS SETTERS
 
         public String getTitle() {

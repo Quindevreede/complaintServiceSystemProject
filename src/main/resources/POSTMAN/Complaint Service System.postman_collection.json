@@ -60,7 +60,18 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "http://localhost:666/users/johndoe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"users",
+						"johndoe"
+					]
+				}
 			},
 			"response": []
 		},

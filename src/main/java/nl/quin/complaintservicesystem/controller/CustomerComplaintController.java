@@ -2,7 +2,6 @@ package nl.quin.complaintservicesystem.controller;
 
 import nl.quin.complaintservicesystem.model.CustomerComplaint;
 import nl.quin.complaintservicesystem.service.CustomerComplaintService;
-import nl.quin.complaintservicesystem.service.UploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

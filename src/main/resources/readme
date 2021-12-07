@@ -1,27 +1,22 @@
 RESTful API webservice Customer Complaint Service
+Installatie Handleiding
 
 Inhoud:
 
 1 - Benodigdheden
 2 - Installatie Stappenplan
-
+-----
 
 1. Benodigdheden
 
 IntelliJ IDEA 2021.2
-
 Maven 3.6.3
-
 Java Development Kit 11.0.12
-
 PostgreSQL 13
-
 PgAdmin 5.4
-
 Postman 9.1.3
 
 2. Installatie Stappenplan
-
 
 a) IntelliJ IDEA 2021.2:
 

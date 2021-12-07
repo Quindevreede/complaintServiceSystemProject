@@ -6,9 +6,11 @@ import java.util.Collection;
 import java.util.Optional;
 
 public interface CustomerDetailsRepository extends JpaRepository<CustomerDetails, Long> {
+
     boolean existsById(Long id);
+    Optional<CustomerDetails> findById(long id);
     Collection<CustomerDetails> findAllByLastName(String last_name);
     boolean existsByEmail(String email);
     Optional<CustomerDetails> findByUsername(String username);
-    Optional<CustomerDetails> findById(long id);
+
 }
