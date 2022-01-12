@@ -26,4 +26,5 @@ public class BaseControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string("Hello World"));
     }
+
 }
